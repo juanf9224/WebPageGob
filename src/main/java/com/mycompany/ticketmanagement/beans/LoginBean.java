@@ -10,7 +10,6 @@ import com.mycompany.ticketmanagement.entities.LoginInfo;
 import com.mycompany.ticketmanagement.servicebeans.LoginServiceBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
-import java.security.MessageDigest;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -39,6 +38,14 @@ public class LoginBean implements Serializable {
      * Creates a new instance of LoginBean
      */
     public LoginBean() {
+    }
+
+    public LoginBean(String username, String pwd, String role, String name, LoginServiceBean lsb) {
+        this.username = username;
+        this.pwd = pwd;
+        this.role = role;
+        this.name = name;
+        this.lsb = lsb;
     }
     
     
