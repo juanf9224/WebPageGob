@@ -32,7 +32,7 @@
    <p:growl id="msgs" showDetail="true"/>
  
    <p:dataTable id="tickets1" var="user" value="#{userBean.all}" editable="true" style="margin-bottom:20px" rows="10"
-                widgetVar="ticketTable" emptyMessage="No Tickets found with given criteria" filteredValue="#{userBean.filteredUsers}"
+                widgetVar="usersTable" emptyMessage="No users found with given criteria" filteredValue="#{userBean.filteredUsers}"
                 paginator="true" selectionMode="single" rowKey="#{user.userInfoId}"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15">
@@ -43,14 +43,14 @@
        <f:facet name="header">
             <p:outputPanel>
                 <h:outputText value="Search all fields:" />
-                <p:inputText id="globalFilter" onkeyup="PF('ticketTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+                <p:inputText id="globalFilter" onkeyup="PF('usersTable').filter()" style="width:150px" placeholder="Enter keyword"/>
             </p:outputPanel>
         </f:facet>
  
        <p:ajax event="rowEdit" listener="#{userBean.onRowEdit}" update=":form:msgs" />
        <p:ajax event="rowEditCancel" listener="#{userBean.onRowCancel}" update=":form:msgs" />
  
-       <p:column headerText="User Id" filterBy="ticketId" filterMatchMode="contains">
+       <p:column headerText="User Id" filterBy="userId" filterMatchMode="contains">
            <p:cellEditor>
                <f:facet name="output"><h:outputText value="#{user.userInfoId}" /></f:facet>
                <f:facet name="input"><p:inputText id="modelInput" value="#{user.userInfoId}" style="width:100%"/></f:facet>

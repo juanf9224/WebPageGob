@@ -197,11 +197,11 @@ public class UserBean implements Serializable{
             UserInfo u = new UserInfo();
             u.setUserInfoId(id);
             usb.delete(u);
-            FacesMessage msg = new FacesMessage("Ticket deleted");
+            FacesMessage msg = new FacesMessage("User deleted");
             FacesContext.getCurrentInstance().addMessage(null, msg);
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getFlash().setKeepMessages(true);
-            return "welcome.xhtml?faces-redirect=true";
+            return "listusers.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.toString();
             return null;
