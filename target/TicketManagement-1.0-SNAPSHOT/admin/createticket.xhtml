@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+    <link href="#{request.contextPath}/css/simple.css" rel="stylesheet" type="text/css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $(".loader").fadeOut("slow");
+        });
+    </script>
+    <style type="text/css">
+        .ui-widget {
+            font-size: 110%;
+        }
+    </style>
+</h:head>
+<f:view>
+    <center><h:form style="margin-top: 2%;">
+            <p:growl id="msg" showDetail="true"/>
+        <p:panelGrid columns="2">
+            <f:facet name="header">Create New Ticket</f:facet>
+            <h:outputText value="Description:" />
+            <p:inputTextarea value="#{ticketBean.description}"/>
+            <h:outputText value="Note:" />
+            <p:inputTextarea value="#{ticketBean.note}"/>
+            <f:facet name="footer"><center><p:commandButton styleClass="input" value="Create Ticket" action="#{ticketBean.createTicket}" update="msg"/></center></f:facet>
+        </p:panelGrid>
+    </h:form></center>
+</f:view>
+</html>
