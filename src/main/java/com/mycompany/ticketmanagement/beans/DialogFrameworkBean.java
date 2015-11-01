@@ -25,6 +25,8 @@ public class DialogFrameworkBean {
     public DialogFrameworkBean() {
     }
     
+    //PrimeFaces Dialog...
+    
     public void viewCreateCustomized() {
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("modal", true);
