@@ -19,8 +19,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
 
@@ -41,8 +41,7 @@ public class UserBean implements Serializable{
     private List<Department> departmentList;
     private List<UserInfo> all;
     private List<UserInfo> filteredUsers;
-    @ManagedProperty("#{userServiceBean}")
-    private UserServiceBean usb;
+    @Inject UserServiceBean usb;
     
     
     

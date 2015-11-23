@@ -11,7 +11,7 @@ import gob.gobernacionsd.servicebeans.LoginServiceBean;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedProperty;
+import javax.inject.Inject;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -28,8 +28,7 @@ public class LoginBean implements Serializable {
     private String pwd;
     private String role;
     private String name;
-    @ManagedProperty("#{LoginServiceBean}")
-    private LoginServiceBean lsb;
+    @Inject LoginServiceBean lsb;
     
     public static final String USER_SESSION_KEY = "user";
 

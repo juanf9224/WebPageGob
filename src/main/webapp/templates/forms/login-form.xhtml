@@ -15,7 +15,7 @@
         <h:outputStylesheet name="./css/cssLayout.css"/>
         <h:outputStylesheet name="./css/loader.css"/>
         <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script type="text/javascript">
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
@@ -26,7 +26,7 @@
             }
 
         </script>
-        <title>Facelets Template</title>
+        <title>Login</title>
     </h:head>
 
     <h:body>
@@ -43,7 +43,7 @@
                         <b>Password:</b>
                         <h:inputSecret value="#{loginBean.pwd}" required="true"/>
                     </p:panelGrid>
-                    <center><p:commandButton value="Login" action="#{loginBean.validateUser}" styleClass="input"/></center>
+                    <center><p:commandButton value="Login" action="#{loginBean.validateUser}" styleClass="input" icon="ui-icon-arrowstop-1-e"/></center>
                 </h:form>
         </div>
 

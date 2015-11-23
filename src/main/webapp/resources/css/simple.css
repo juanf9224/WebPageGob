@@ -1,3 +1,7 @@
 body{
     background: url('../images/geometry2.png');
 }
+
+.header-login-button{
+    float:right;
+}
