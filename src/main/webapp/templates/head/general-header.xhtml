@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition>
+            <div id="top" class="top">
+                <h1>Header</h1>
+                <div class="left_content">
+                    <form>
+                        <p:commandButton styleClass="input" value="login" action="#{home.viewLogin}"  icon="ui-icon-login" />
+                    </form>
+                </div>
+                <div> 
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active"><a href="#">Home</a></li>
+                        <li role="presentation"><a href="#">Noticias</a></li>
+                        <li role="presentation"><a href="#">Sobre nosotros</a></li>
+                        <li role="presentation"><a href="#">Servicios</a></li>
+                        <li role="presentation"><a href="#">Transparencia</a></li>
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Recursos Humanos <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li role="presentation"><a href="#">Nomina</a></li>
+                                <li role="presentation"><a href="#">Organigrama</a></li>
+                            </ul>
+                        </li>
+                        <li role="presentation"><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </ui:composition>
+    </h:body>
+
+</html>
