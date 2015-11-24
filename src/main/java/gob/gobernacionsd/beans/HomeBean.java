@@ -8,17 +8,16 @@ package gob.gobernacionsd.beans;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.primefaces.context.RequestContext;
 
 @Named
 @ViewScoped
-public class Home implements Serializable {
+public class HomeBean implements Serializable {
     
     
-    public Home() {
+    public HomeBean() {
     }
     
       public void viewLogin() {
@@ -30,5 +29,4 @@ public class Home implements Serializable {
 
         RequestContext.getCurrentInstance().openDialog("login", options, null);
     }
-    //klk
 }

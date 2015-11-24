@@ -15,7 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -23,9 +23,10 @@ import javax.persistence.Persistence;
  */
 public class LoginDAOImpl implements LoginDAO{
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-    EntityManager em = emf.createEntityManager();
-    EntityTransaction tx = em.getTransaction();
+    //EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    @PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+    private EntityManagerFactory emf; 
+    
     
 
     
@@ -37,7 +38,8 @@ public class LoginDAOImpl implements LoginDAO{
 
     @Override
     public LoginInfo retreive(LoginInfo t) {
-        
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
         try{
         
             

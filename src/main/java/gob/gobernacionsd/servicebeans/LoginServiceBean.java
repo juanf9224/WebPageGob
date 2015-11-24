@@ -8,6 +8,7 @@ package gob.gobernacionsd.servicebeans;
 import gob.gobernacionsd.dao.impl.LoginDAOImpl;
 import gob.gobernacionsd.entities.LoginInfo;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -17,8 +18,8 @@ import javax.inject.Named;
 @Named
 @ApplicationScoped
 public class LoginServiceBean {
-
-    private LoginDAOImpl ldi;
+    
+    @Inject LoginDAOImpl ldi;
     /**
      * Creates a new instance of LoginServiceBean
      */
