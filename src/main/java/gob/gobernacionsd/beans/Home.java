@@ -8,6 +8,7 @@ package gob.gobernacionsd.beans;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.primefaces.context.RequestContext;
@@ -20,7 +21,7 @@ public class Home implements Serializable {
     public Home() {
     }
     
-     public void viewLogin() {
+      public void viewLogin() {
         Map<String,Object> options = new HashMap<>();
         options.put("modal", true);
         options.put("draggable", false);
