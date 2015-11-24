@@ -42,8 +42,11 @@ public class Post implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long postId;
+    @Column(name = "title")
     private String title;
+    @Column(name = "post")
     private String post;
+    @Column(name = "note")
     private String note;
     @ManyToOne
     @JoinColumn(name="created_by")

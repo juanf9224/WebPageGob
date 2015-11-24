@@ -25,7 +25,7 @@ public class HomeBean implements Serializable {
         options.put("modal", true);
         options.put("draggable", false);
         options.put("resizable", false);
-        options.put("contentHeight", 320);
+        options.put("contentWidth", "400");
 
         RequestContext.getCurrentInstance().openDialog("login", options, null);
     }

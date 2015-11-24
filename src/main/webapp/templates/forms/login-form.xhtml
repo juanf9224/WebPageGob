@@ -11,8 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="stylesheet" href="#{request.contextPath}/resources/css/default.css"/>
-        <link rel="stylesheet" href="#{request.contextPath}/resources/css/cssLayout.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/login-form-style.css"/>
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
         <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
@@ -32,21 +31,23 @@
 
     <h:body>
         <div class="loader">
-                </div>
-        <div id="content" class="center_content ui-fluid">
-                
-                <p:growl id="growl" sticky="true" showDetail="true" />
-                <h:form id="loginForm">
-                    <p:panelGrid columns="2" styleClass="panel" layout="grid">
-                        <f:facet name="header">Login</f:facet>
-                        <b>Username:</b>
-                        <h:inputText value="#{loginBean.username}" required="true"/>
-                        <b>Password:</b>
-                        <h:inputSecret value="#{loginBean.pwd}" required="true"/>
-                    </p:panelGrid>
-                    <center><p:commandButton value="Login" type="submit" action="#{loginBean.validateUser}" styleClass="input" icon="ui-icon-arrowstop-1-e"/></center>
-                </h:form>
         </div>
+        <center><div class="login-form-content">
+            <h:form>
+            <p:growl id="growl" sticky="true" showDetail="true" />
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
+                <h:outputLabel for="username" value="Username:" />
+                <p:inputText id="username" value="#{loginBean.username}" required="true"/>
+
+                <h:outputLabel for="password" value="Password:" />
+                <p:password id="password" value="#{loginBean.pwd}" required="true"/>
+
+                <f:facet name="footer">
+                    <center><p:commandButton value="Login" type="submit" icon="ui-icon-arrowstop-1-e" action="#{loginBean.validateUser()}"/></center>
+                </f:facet>  
+            </p:panelGrid>
+            </h:form>
+            </div></center>
 
     </h:body>
 

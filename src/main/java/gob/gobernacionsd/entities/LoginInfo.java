@@ -32,8 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "LoginInfo.findByRole", query = "SELECT l FROM LoginInfo l WHERE l.role = :role")})
 public class LoginInfo implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "loginInfo")
-    private Collection<Post> postCollection;
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -110,15 +109,6 @@ public class LoginInfo implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    @XmlTransient
-    public Collection<Post> getPostCollection() {
-        return postCollection;
-    }
-
-    public void setPostsCollection(Collection<Post> postCollection) {
-        this.postCollection = postCollection;
     }
 
     
