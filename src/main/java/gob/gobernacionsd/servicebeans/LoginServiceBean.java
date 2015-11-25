@@ -7,6 +7,7 @@ package gob.gobernacionsd.servicebeans;
 
 import gob.gobernacionsd.dao.impl.LoginDAOImpl;
 import gob.gobernacionsd.entities.LoginInfo;
+import java.io.Serializable;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,7 +18,7 @@ import javax.inject.Named;
  */
 @Named
 @ApplicationScoped
-public class LoginServiceBean {
+public class LoginServiceBean implements Serializable{
     
     @Inject LoginDAOImpl ldi;
     /**

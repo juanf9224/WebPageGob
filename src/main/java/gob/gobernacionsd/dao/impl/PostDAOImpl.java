@@ -15,23 +15,25 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import gob.gobernacionsd.dao.PostDAO;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author juanf_000
  */
-public class PostDAOImpl implements PostDAO{
+public class PostDAOImpl implements PostDAO {
+    
+    @PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+    private EntityManagerFactory emf;
+    private EntityManager em;
+    private EntityTransaction tx;
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-    EntityManager em = emf.createEntityManager();
-    EntityTransaction tx = em.getTransaction();
-    
-    
     //Create new ticket...
     @Override
     public Post create(Post p) {
-       
-        try{
+        em = emf.createEntityManager();
+        tx = em.getTransaction();
+        try {
             Post post = new Post();
             long login = findUser(p.getCreatedBy().getUsername());
             LoginInfo li = em.find(LoginInfo.class, login);
@@ -42,42 +44,42 @@ public class PostDAOImpl implements PostDAO{
             tx.begin();
             em.persist(post);
             tx.commit();
-            
+
             return post;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.toString();
             return null;
         }
-        
-        
+
     }
-    
-    
-     // find username in the db that match the received username from create method and get its corresponding id...
-     @Override
-     public long findUser(String username){
-        
-        try{
-            long id = (long)em.createNamedQuery("LoginInfo.findByUsername").setParameter("username", username).getSingleResult();
-            
+
+    // find username in the db that match the received username from create method and get its corresponding id...
+    @Override
+    public long findUser(String username) {
+        em = emf.createEntityManager();
+        try {
+            long id = (long) em.createNamedQuery("LoginInfo.findByUsername").setParameter("username", username).getSingleResult();
+
             return id;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.toString();
             return 0;
         }
-        
+
     }
 
-     //Look up in the db for the required ticket...
+    //Look up in the db for the required ticket...
     @Override
     public Post retreive(Post p) {
-        try{
-            
+        em = emf.createEntityManager();
+
+        try {
+
             Post pst = em.find(Post.class, p.getPostId());
-            
+
             return pst;
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.toString();
             return null;
         }
@@ -86,15 +88,17 @@ public class PostDAOImpl implements PostDAO{
     //Update method for the tickets...
     @Override
     public Post update(Post p) {
-        try{
+        em = emf.createEntityManager();
+        tx = em.getTransaction();
+        try {
             Post ticket = em.find(Post.class, p.getPostId());
             tx.begin();
             ticket.setTitle(p.getTitle());
             ticket.setNote(p.getNote());
             tx.commit();
-            
+
             return ticket;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.toString();
             return null;
         }
@@ -103,58 +107,55 @@ public class PostDAOImpl implements PostDAO{
     //delete method for the tickets...
     @Override
     public Post delete(Post t) {
-        
-        try{
-        Post ticket = em.find(Post.class, t.getPostId());
-        
-        tx.begin();
-        em.remove(ticket);
-        tx.commit();
-        
-        return ticket;
-        }catch(Exception e){
-        e.toString();
-        return null;
-        }
-    }
+        em = emf.createEntityManager();
+        tx = em.getTransaction();
+        try {
+            Post ticket = em.find(Post.class, t.getPostId());
 
-    
-    //find all tickets in order to show the in a datatable on the view page...
-    @Override
-    public List<Post> findAll() {
-        
-        List<Post> all = null;
-        try{
-            
-            
-            TypedQuery<Post> tq = em.createNamedQuery("Ticket.findAll", Post.class);
-            
-            all = tq.getResultList();
-            
-            return all;
-            
-        }catch(Exception e){
+            tx.begin();
+            em.remove(ticket);
+            tx.commit();
+
+            return ticket;
+        } catch (Exception e) {
             e.toString();
             return null;
         }
-        
-        
     }
-    
+
+    //find all tickets in order to show the in a datatable on the view page...
+    @Override
+    public List<Post> findAll() {
+        em = emf.createEntityManager();
+        List<Post> all = null;
+        try {
+
+            TypedQuery<Post> tq = em.createNamedQuery("Post.findAll", Post.class);
+
+            all = tq.getResultList();
+
+            return all;
+
+        } catch (Exception e) {
+            e.toString();
+            return null;
+        }
+
+    }
+
     //test method to count all tickets. Not used...
     @Override
-    public long count(){
+    public long count() {
+        em = emf.createEntityManager();
         Query query = em.createQuery("select count(1) from Post p");
         long count = (long) query.getSingleResult();
-        
+
         return count;
     }
-    
 
     //Test method to get the max id of an entity instance...
     private Long getMaxId(String select_maxtid_FROM_Ticket_t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

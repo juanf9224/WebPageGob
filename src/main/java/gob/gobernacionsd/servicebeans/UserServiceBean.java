@@ -8,6 +8,7 @@ package gob.gobernacionsd.servicebeans;
 import gob.gobernacionsd.dao.impl.UserDAOImpl;
 import gob.gobernacionsd.entities.Department;
 import gob.gobernacionsd.entities.UserInfo;
+import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
@@ -18,7 +19,7 @@ import javax.inject.Named;
  */
 @Named
 @ApplicationScoped
-public class UserServiceBean {
+public class UserServiceBean implements Serializable{
 
     UserDAOImpl udi;
     /**

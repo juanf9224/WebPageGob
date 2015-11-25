@@ -7,6 +7,7 @@ package gob.gobernacionsd.servicebeans;
 
 import gob.gobernacionsd.dao.impl.PostDAOImpl;
 import gob.gobernacionsd.entities.Post;
+import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
@@ -17,7 +18,7 @@ import javax.inject.Named;
  */
 @Named
 @ApplicationScoped
-public class PostServiceBean {
+public class PostServiceBean implements Serializable{
 
     PostDAOImpl tdi;
     /**

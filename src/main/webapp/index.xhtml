@@ -33,10 +33,16 @@
         <div class="loader">
         </div>
         <ui:insert name="header">
-            <ui:include src="Templates/Head/general-header.xhtml" />
+            <ui:include src="templates/head/general-header.xhtml" />
         </ui:insert>
-        <div class="container"></div>
+            <div class="container">
+                <ui:insert name="posts">
+                    <ui:include src="templates/views/posts-view.xhtml"/>
+                </ui:insert>
+            </div>
         </div>
+        
+       
     </h:body>
 </html>
 
