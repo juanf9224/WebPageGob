@@ -25,11 +25,9 @@ import javax.persistence.PersistenceContext;
  */
 public class LoginDAOImpl implements LoginDAO {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-    //@PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
-    //private EntityManagerFactory emf;
+    //EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    @PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
     private EntityManager em;
-    private EntityTransaction tx;
 
     @Override
     public LoginInfo create(LoginInfo t) {
@@ -37,10 +35,9 @@ public class LoginDAOImpl implements LoginDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
     @Override
     public LoginInfo retreive(LoginInfo t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
 
             LoginInfo login = em.createNamedQuery("LoginInfo.findByUsernamePwdEmail", LoginInfo.class).setParameter("username", t.getUsername()).setParameter("pwd", t.getPwd()).getSingleResult();

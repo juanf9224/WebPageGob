@@ -48,11 +48,6 @@ public class PostServiceBean implements Serializable{
         
         return tdi.delete(t);
         
-    }
-    
-    public long getCount(){
-        return tdi.count();
-    }
-            
+    } 
     
 }

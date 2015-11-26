@@ -16,6 +16,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import gob.gobernacionsd.dao.PostDAO;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -23,17 +24,15 @@ import javax.persistence.PersistenceContext;
  */
 public class PostDAOImpl implements PostDAO {
     
-    //@PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
-    //private EntityManagerFactory emf;
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    //EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    @PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
     private EntityManager em;
     private EntityTransaction tx;
 
     //Create new ticket...
+    @Transactional
     @Override
     public Post create(Post p) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
             Post post = new Post();
             long login = findUser(p.getCreatedBy().getUsername());
@@ -42,10 +41,7 @@ public class PostDAOImpl implements PostDAO {
             post.setTitle(p.getTitle());
             post.setNote(p.getNote());
             post.setCreatedBy(li);
-            tx.begin();
             em.persist(post);
-            tx.commit();
-
             return post;
         } catch (Exception e) {
             e.toString();
@@ -57,7 +53,6 @@ public class PostDAOImpl implements PostDAO {
     // find username in the db that match the received username from create method and get its corresponding id...
     @Override
     public long findUser(String username) {
-        em = emf.createEntityManager();
         try {
             long id = (long) em.createNamedQuery("LoginInfo.findByUsername").setParameter("username", username).getSingleResult();
 
@@ -72,7 +67,6 @@ public class PostDAOImpl implements PostDAO {
     //Look up in the db for the required ticket...
     @Override
     public Post retreive(Post p) {
-        em = emf.createEntityManager();
 
         try {
 
@@ -87,16 +81,13 @@ public class PostDAOImpl implements PostDAO {
     }
 
     //Update method for the tickets...
+    @Transactional
     @Override
     public Post update(Post p) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
             Post ticket = em.find(Post.class, p.getPostId());
-            tx.begin();
             ticket.setTitle(p.getTitle());
             ticket.setNote(p.getNote());
-            tx.commit();
 
             return ticket;
         } catch (Exception e) {
@@ -106,16 +97,13 @@ public class PostDAOImpl implements PostDAO {
     }
 
     //delete method for the tickets...
+    @Transactional
     @Override
     public Post delete(Post t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
             Post ticket = em.find(Post.class, t.getPostId());
 
-            tx.begin();
             em.remove(ticket);
-            tx.commit();
 
             return ticket;
         } catch (Exception e) {
@@ -127,7 +115,6 @@ public class PostDAOImpl implements PostDAO {
     //find all tickets in order to show the in a datatable on the view page...
     @Override
     public List<Post> findAll() {
-        em = emf.createEntityManager();
         List<Post> all = null;
         try {
 
@@ -144,15 +131,6 @@ public class PostDAOImpl implements PostDAO {
 
     }
 
-    //test method to count all tickets. Not used...
-    @Override
-    public long count() {
-        em = emf.createEntityManager();
-        Query query = em.createQuery("select count(1) from Post p");
-        long count = (long) query.getSingleResult();
-
-        return count;
-    }
 
     //Test method to get the max id of an entity instance...
     private Long getMaxId(String select_maxtid_FROM_Ticket_t) {

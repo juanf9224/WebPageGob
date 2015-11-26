@@ -17,6 +17,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -24,16 +25,13 @@ import javax.persistence.TypedQuery;
  */
 public class UserDAOImpl implements UserDAO {
 
-    //@PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
-    //private EntityManagerFactory emf;
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    //EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    @PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
     private EntityManager em;
-    private EntityTransaction tx;
 
+    @Transactional
     @Override
     public UserInfo create(UserInfo t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
 
             UserInfo ui = new UserInfo();
@@ -45,9 +43,7 @@ public class UserDAOImpl implements UserDAO {
             ui.setDateCreated(new Date());
             ui.setLoginInfo1(t.getLoginInfo1());
 
-            tx.begin();
             em.persist(ui);
-            tx.commit();
 
             return ui;
         } catch (Exception e) {
@@ -58,7 +54,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public long findDept(String department) {
-        em = emf.createEntityManager();
         try {
 
             long id = (long) em.createNamedQuery("Department.findByDepartment").setParameter("department", department).getSingleResult();
@@ -76,10 +71,9 @@ public class UserDAOImpl implements UserDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Transactional
     @Override
     public UserInfo update(UserInfo t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
 
             LoginInfo li = em.find(LoginInfo.class, t.getLoginInfo1().getLoginInfoId());
@@ -89,13 +83,11 @@ public class UserDAOImpl implements UserDAO {
             d.setDepartment(t.getDepartmentID().getDepartment());
             UserInfo ui = em.find(UserInfo.class, li);
 
-            tx.begin();
             ui.setEmail(t.getEmail());
             ui.setName(t.getName());
             ui.setLoginInfo1(li);
             ui.setDepartmentID(d);
-            tx.commit();
-
+            
             return ui;
 
         } catch (Exception e) {
@@ -104,16 +96,13 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    @Transactional
     @Override
     public UserInfo delete(UserInfo t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
             UserInfo u = em.find(UserInfo.class, t.getUserInfoId());
 
-            tx.begin();
             em.remove(u);
-            tx.commit();
 
             return u;
         } catch (Exception e) {
@@ -124,7 +113,6 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<UserInfo> findAll() {
-        em = emf.createEntityManager();
         try {
             List<UserInfo> all = null;
             TypedQuery<UserInfo> tq = em.createNamedQuery("UserInfo.findAll", UserInfo.class);
@@ -138,7 +126,6 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<Department> findDepartment() {
-        em = emf.createEntityManager();
         try {
             List<Department> findDept = null;
 

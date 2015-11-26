@@ -122,7 +122,7 @@ public class PostBean implements Serializable {
     
     
     //Create Post...
-    public String createTicket(){
+    public String createPost(){
         try{
         Post tick = new Post();
         LoginInfo li = new LoginInfo();
@@ -135,14 +135,14 @@ public class PostBean implements Serializable {
         tsb.createTicket(tick);
         note = null;
         title = null;
-        FacesMessage msg = new FacesMessage("Ticket created");
+        FacesMessage msg = new FacesMessage("Post created");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getFlash().setKeepMessages(true);
-        return "createticket";
+        return "create-post";
         }catch(Exception e){
             e.toString();
-            FacesMessage msg = new FacesMessage("Ticket could not be created");
+            FacesMessage msg = new FacesMessage("Post could not be created");
             FacesContext.getCurrentInstance().addMessage(null, msg);
             return null;
         }

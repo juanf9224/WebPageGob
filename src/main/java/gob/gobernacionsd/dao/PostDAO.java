@@ -15,5 +15,4 @@ import java.util.List;
  */
 public interface PostDAO extends GenericDAO<Post>{
     public long findUser(String username);
-    public long count();
 }

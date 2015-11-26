@@ -7,17 +7,6 @@
       xmlns:f="http://java.sun.com/jsf/core">
 
     <h:head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="stylesheet" href="#{request.contextPath}/resources/css/default.css"/>
-        <link rel="stylesheet" href="#{request.contextPath}/resources/css/cssLayout.css"/>
-        <link rel="stylesheet" href="#{request.contextPath}/resources/css/simple.css"/>
-        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
         <title>Header</title>
     </h:head>
 
@@ -27,28 +16,10 @@
                 <h1>Header</h1>
                 <div class="header-login-button">
                     <h:form>
-                        <p:commandButton value="Login" icon="ui-icon-extlink" type="button" onclick="PF('dlg').show()" />
-                        <p:commandButton value="Login1" icon="ui-icon-extlink" type="submit" actionListener="#{homeBean.viewLogin}" />
+                        <p:commandButton value="Login" icon="ui-icon-extlink" type="submit" actionListener="#{homeBean.viewLogin}" />
                     </h:form>
                 </div>
                 
-                
-     
-                
-                <p:dialog header="Login" widgetVar="dlg" resizable="false" responsive="true" draggable="false" modal="true" position="center">
-                        <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
-                            <h:outputLabel for="username" value="Username:" />
-                            <p:inputText id="username" value="#{loginBean.username}" required="true"/>
-
-                            <h:outputLabel for="password" value="Password:" />
-                            <p:password id="password" value="#{loginBean.pwd}" required="true"/>
-
-                            <f:facet name="footer">
-                                <p:commandButton value="Login" type="button" icon="ui-icon-arrowstop-1-e" action="#{loginBean.validateUser()}"/>
-                            </f:facet>  
-                        </p:panelGrid>
-                    </p:dialog>
-                <div> 
                     <ul class="nav nav-pills">
                         <li role="presentation" class="active"><a href="#">Home</a></li>
                         <li role="presentation"><a href="#">Noticias</a></li>
@@ -66,8 +37,7 @@
                         </li>
                         <li role="presentation"><a href="#">Contacto</a></li>
                     </ul>
-                </div>
-            </div>
+            </div><br/><br/>
         </ui:composition>
 
 
