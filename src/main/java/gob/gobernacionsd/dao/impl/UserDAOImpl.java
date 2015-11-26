@@ -24,8 +24,9 @@ import javax.persistence.TypedQuery;
  */
 public class UserDAOImpl implements UserDAO {
 
-    @PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
-    private EntityManagerFactory emf;
+    //@PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+    //private EntityManagerFactory emf;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
     private EntityManager em;
     private EntityTransaction tx;
 

@@ -23,8 +23,9 @@ import javax.persistence.PersistenceContext;
  */
 public class PostDAOImpl implements PostDAO {
     
-    @PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
-    private EntityManagerFactory emf;
+    //@PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+    //private EntityManagerFactory emf;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
     private EntityManager em;
     private EntityTransaction tx;
 

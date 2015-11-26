@@ -25,9 +25,9 @@ import javax.persistence.PersistenceContext;
  */
 public class LoginDAOImpl implements LoginDAO {
 
-    //EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-    @PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
-    private EntityManagerFactory emf;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    //@PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+    //private EntityManagerFactory emf;
     private EntityManager em;
     private EntityTransaction tx;
 
