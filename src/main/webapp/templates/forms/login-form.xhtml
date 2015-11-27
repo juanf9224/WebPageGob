@@ -32,10 +32,10 @@
     <h:body>
         <div class="loader">
         </div>
-        <center><div class="login-form-content">
+        <center><div class="login-form-content ui-grid ui-grid-responsive">
             <h:form>
             <p:growl id="growl" sticky="true" showDetail="true" />
-            <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank ui-grid- ui-grid-responsive" columnClasses="ui-grid-col-4,ui-grid-col-8">
                 <h:outputLabel for="username" value="Username:" />
                 <p:inputText id="username" value="#{loginBean.username}" required="true"/>
 

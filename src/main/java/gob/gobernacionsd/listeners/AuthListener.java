@@ -9,6 +9,7 @@ package gob.gobernacionsd.listeners;
  *
  * @author juanf_000
  */
+import gob.gobernacionsd.beans.HomeBean;
 import gob.gobernacionsd.beans.LoginBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -23,8 +24,7 @@ import javax.faces.event.PhaseListener;
 public class AuthListener implements PhaseListener {
 
     
-    private static final String USER_LOGIN_OUTCOME = "login";
-    
+    private static final String USER_LOGIN_OUTCOME = "non-responsive-login";
     
     @Override
     public void afterPhase(PhaseEvent event) {
@@ -88,7 +88,7 @@ public class AuthListener implements PhaseListener {
     private boolean requestingSecureView(FacesContext context) {
         ExternalContext extContext = context.getExternalContext();       
         String path = extContext.getRequestPathInfo();
-        return (!"/index.xhtml".equals(path) && !"/templates/forms/login-form.xhtml".equals(path));              
+        return (!"/index.xhtml".equals(path) && !"/templates/forms/non-responsive-login-form.xhtml".equals(path) && !"/templates/forms/login-form.xhtml".equals(path));              
     }
     
     

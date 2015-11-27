@@ -34,6 +34,8 @@ import org.primefaces.event.RowEditEvent;
 public class UserBean implements Serializable{
 
     private String name;
+    private String lastName;
+    private int age;
     private String email;
     private String department;
     private String username;
@@ -91,6 +93,22 @@ public class UserBean implements Serializable{
         this.name = name;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -139,10 +157,11 @@ public class UserBean implements Serializable{
         
         li.setUsername(username);
         li.setPwd(pwd);
+        li.setEmail(email);
         dept.setDepartment(department);
         ui.setDepartmentID(dept);
         ui.setName(name);
-        ui.setEmail(email);
+        ui.setLastName(lastName);
         ui.setLoginInfo1(li);  
         usb.create(ui);
         FacesMessage msg = new FacesMessage("User created");
@@ -207,13 +226,13 @@ public class UserBean implements Serializable{
     }
 
     public void viewCreateCustomized() {
-        Map<String,Object> options = new HashMap<String, Object>();
+        Map<String,Object> options = new HashMap<>();
         options.put("modal", true);
         options.put("draggable", false);
         options.put("resizable", false);
-        options.put("contentHeight", 320);
+        options.put("width", 600);
 
-        RequestContext.getCurrentInstance().openDialog("create", options, null);
+        RequestContext.getCurrentInstance().openDialog("create-user", options, null);
     }
     
     

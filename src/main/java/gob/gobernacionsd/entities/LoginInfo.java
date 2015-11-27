@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -39,6 +40,12 @@ public class LoginInfo implements Serializable {
     @Basic(optional = false)
     @Column(name = "login_info_id")
     private Long loginInfoId;
+    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name="email")
+    private String email;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -85,6 +92,14 @@ public class LoginInfo implements Serializable {
 
     public void setLoginInfoId(Long loginInfoId) {
         this.loginInfoId = loginInfoId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {

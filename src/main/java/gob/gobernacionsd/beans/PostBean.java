@@ -129,12 +129,14 @@ public class PostBean implements Serializable {
         
         li.setUsername(login.getUsername());
         tick.setTitle(title);
+        tick.setPost(post);
         tick.setNote(note);
         tick.setCreatedBy(li);
         tick.setDateCreated(new Date());
         tsb.createTicket(tick);
         note = null;
         title = null;
+        post = null;
         FacesMessage msg = new FacesMessage("Post created");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         FacesContext context = FacesContext.getCurrentInstance();

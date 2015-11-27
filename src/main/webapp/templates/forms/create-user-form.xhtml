@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>User creation form</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:form>
+
+                <p:growl id="growl" sticky="true" showDetail="true"/>
+
+                <p:wizard flowListener="#{userWizard.onFlowProcess}">
+                    <p:tab id="personal" title="Personal">
+                        <p:panel header="Personal Details">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Firstname: *" />
+                                <p:inputText id="grow" title="Input your firstname here" value="#{userWizardBean.user.name}" required="true" label="Firstname"/>
+
+                                <h:outputText value="Lastname: *" />
+                                <p:inputText id="grow" value="#{userWizardBean.user.lastName}" required="true" label="Lastname"/>
+
+                                <h:outputText value="Age: " />
+                                <p:inputText id="grow" title="input your Lastname here" value="#{userWizardBean.user.age}" />
+
+                                <h:outputText value="Skip to last: " />
+                                <h:selectBooleanCheckbox id="grow" title="check to skip to confirmation tab when done with this tab" value="#{userWizard.skip}" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab id="address" title="Login information">
+                        <p:panel header="Address Details">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <h:outputText value="Email: " />
+                                <p:inputText id="grow" class="emailvalid" title="input your email here with the correct format" value="#{userWizardBean.user.email}" />
+
+                                <script>
+                                    var email = jQuery('.emailvalid').text();
+                                    if (!isEmail(email)) {
+                                        jQuery('.email').css('border-color', 'red').append('el email ingresado tiene un formato no valido.');
+                                        jQuery('#submit-user-form').prop('disabled', true);
+                                    } else {
+                                        jQuery('#submit-user-form').prop('disabled', false);
+                                    }
+                                    function isEmail(email) {
+                                        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                                        return regex.test(email);
+                                    }
+
+
+
+
+                                </script>
+
+                                <h:outputText value="Username: " />
+                                <p:inputText id="grow" title="input your username wich will be used to log in later here" value="#{userWizardBean.user.username}" />
+
+                                <h:outputText value="Password: " />
+                                <p:password id="grow" value="#{userWizardBean.user.pwd}"  match="pwdConf" required="true" label="pwd"/>
+
+                                <h:outputText value="Confirm password: " />
+                                <p:password id="grow" label="pwdConf" value="#{userWizardBean.user.pwd}" required="true"/>
+                                <h:selectBooleanCheckbox id="grow" title="" value="#{userWizard.skip}" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab id="contact" title="Department">
+                        <p:panel header="Department Information">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+
+                                <h:outputText value="Department: " />
+                                <p:selectOneMenu id="grow" title="choose your department" value="#{userWizardBean.user.department}" required="true" label="department" effect="fold"> 
+                                    <f:selectItem itemLabel="Choose your department" itemValue="" />
+                                    <f:selectItems value="#{userWizardBean.user.departmentList}" />
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab id="confirm" title="Confirmation">
+                        <p:panel header="Confirmation">
+                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <f:facet name="header">
+                                        <p:outputLabel value="User Information" />
+                                    </f:facet>
+                                    <h:outputText value="Firstname: " />
+                                    <h:outputText value="#{userWizardBean.user.name}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Lastname: " />
+                                    <h:outputText value="#{userWizardBean.user.lastName}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Age: " />
+                                    <h:outputText value="#{userWizardBean.user.age}" styleClass="outputLabel"/>
+                                </h:panelGrid>
+
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <f:facet name="header">
+                                        <p:outputLabel value="Login Information" />
+                                    </f:facet>
+                                    <h:outputText value="Email: " />
+                                    <h:outputText value="#{userWizardBean.user.email}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Username: " />
+                                    <h:outputText value="#{userWizardBean.user.username}" styleClass="outputLabel"/>
+
+                                </h:panelGrid>
+
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <f:facet name="header">
+                                        <p:outputLabel value="Department Information" />
+                                    </f:facet>
+                                    <h:outputText value="Department: " />
+                                    <h:outputText value="#{userWizardBean.user.department}" styleClass="outputLabel"/>
+
+                                    <h:outputText />
+                                    <h:outputText />
+                                </h:panelGrid>
+                            </h:panelGrid>
+                            <p:tooltip id="toolTipGrow" for="grow" showEffect="clip" hideEffect="explode" />
+                            <p:commandButton id="submit-user-form" value="Submit" actionListener="#{userWizard.save}" update="growl" process="@this"/>
+                        </p:panel>
+                    </p:tab>
+                </p:wizard>
+
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+

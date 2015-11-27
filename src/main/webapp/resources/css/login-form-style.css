@@ -1,6 +1,13 @@
-
+body{
+    background: url('../resources/images/congruent_outline.png');
+}
 
 .login-form-content{
     background-color: #dddddd;
     padding: 5px;
+    width: 400px;
+}
+
+.header-facet-login{
+  background-color: grey !important;   
 }
