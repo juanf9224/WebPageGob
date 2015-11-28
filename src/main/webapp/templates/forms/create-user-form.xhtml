@@ -10,18 +10,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
         <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
-        <script type="text/javascript">
-            $(window).load(function () {
-                $(".loader").fadeOut("slow");
-            });
-
-            function reload() {
-                setTimeout("window.location.reload(1)", 5000);
-            }
-
-        </script>
+        
         <title>User creation form</title>
     </h:head>
     <h:body>
@@ -52,26 +42,9 @@
                         </p:panel>
                     </p:tab>
 
-                    <p:tab id="Login" title="Login information">
+                    <p:tab id="login" title="Login information">
                         <p:panel header="Login Details">
                             <p:messages />
-                            <!-- <script>
-                                    var email = jQuery('.emailvalid').text();
-                                    if (!isEmail(email)) {
-                                        jQuery('.email').css('border-color', 'red').append('el email ingresado tiene un formato no valido.');
-                                        jQuery('#submit-user-form').prop('disabled', true);
-                                    } else {
-                                        jQuery('#submit-user-form').prop('disabled', false);
-                                    }
-                                    function isEmail(email) {
-                                        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                                        return regex.test(email);
-                                    }
-
-
-
-
-                                </script> -->
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 
                                 <h:outputText value="Email: " />
@@ -87,26 +60,21 @@
 
                                 <h:outputText value="Confirm password: " />
                                 <p:password label="pwdConf" value="#{userWizardBean.user.pwd}" required="true"/>
-                                 <h:outputText value="Department: " />
-                                 <p:selectOneMenu title="choose your department" value="#{userWizardBean.user.department}" required="true" label="department"> 
-                                    <f:selectItem itemLabel="Choose your department" itemValue="" />
-                                    <f:selectItems value="#{userWizardBean.user.departmentList}"  var="department" itemValue="#{department.department}" itemLabel="#{department.department}" />
-                                </p:selectOneMenu>
-                                
+                                                                 
                                 <h:outputText value="Skip to last: " />
                                 <h:selectBooleanCheckbox title="" value="#{userWizardBean.skip}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
 
-                    <p:tab id="Department" title="Department">
+                    <p:tab id="department" title="Department">
                         <p:panel header="Department Information">
                             <p:messages />
-                            <h:panelGrid columns="1" columnClasses="value">
+                            <h:panelGrid columns="2" columnClasses="label,value">
                                 <h:outputText value="Department: " />
                                 <p:selectOneMenu title="choose your department" value="#{userWizardBean.user.department}" required="true" label="department"> 
                                     <f:selectItem itemLabel="Choose your department" itemValue="" />
-                                    <f:selectItems value="#{userWizardBean.user.departmentList}" />
+                                    <f:selectItems value="#{userWizardBean.user.departmentList}"  var="department" itemValue="#{department.department}" itemLabel="#{department.department}" />
                                 </p:selectOneMenu>
                             </h:panelGrid>
                         </p:panel>
@@ -116,9 +84,7 @@
                         <p:panel header="Confirmation">
                             <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <f:facet name="header">
-                                        <p:outputLabel value="User Information" />
-                                    </f:facet>
+                                    
                                     <h:outputText value="Firstname: " />
                                     <h:outputText value="#{userWizardBean.user.name}" styleClass="outputLabel"/>
 
@@ -130,9 +96,7 @@
                                 </h:panelGrid>
 
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <f:facet name="header">
-                                        <p:outputLabel value="Login Information" />
-                                    </f:facet>
+                                    
                                     <h:outputText value="Email: " />
                                     <h:outputText value="#{userWizardBean.user.email}" styleClass="outputLabel"/>
 
@@ -142,9 +106,7 @@
                                 </h:panelGrid>
 
                                 <h:panelGrid columns="2" columnClasses="label, value">
-                                    <f:facet name="header">
-                                        <p:outputLabel value="Department Information" />
-                                    </f:facet>
+                                    
                                     <h:outputText value="Department: " />
                                     <h:outputText value="#{userWizardBean.user.department}" styleClass="outputLabel"/>
 

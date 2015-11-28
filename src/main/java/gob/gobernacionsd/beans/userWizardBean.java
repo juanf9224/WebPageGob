@@ -32,7 +32,8 @@ public class userWizardBean implements Serializable{
     }
     
     public void save() {  
-        FacesMessage msg = new FacesMessage("Successful", "USer with name:" + user.getName() + " successfully added.");
+        user.createService();
+        FacesMessage msg = new FacesMessage("Successful", "User with name:" + user.getName() + " successfully added.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
      
