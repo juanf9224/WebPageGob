@@ -5,29 +5,46 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/login-form-style.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/><script type="text/javascript">
+            $(window).load(function () {
+                $(".loader").fadeOut("slow");
+            });
+
+            function reload() {
+                setTimeout("window.location.reload(1)", 5000);
+            }
+
+        </script>
         <title>Login</title>
     </h:head>
     <h:body>
         <div class="loader">
         </div>
         <center><div class="login-form-content">
-            <h:form>
-            <p:growl id="growl" sticky="true" showDetail="true" />
-            <p:panelGrid columns="2"  styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
-                <f:facet name="header" class="header-facet-login">
-                   <center><p:outputLabel value="Login Form" /> </center>
-                </f:facet>  
-                <h:outputLabel for="username" value="Username:" />
-                <p:inputText id="username" value="#{loginBean.username}" required="true"/>
+                <h:form>
+                    <p:growl id="growl" sticky="true" showDetail="true" />
+                    <p:panel header="Login Form">
+                        <p:panelGrid columns="2"  styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
+                            <f:facet name="header">
+                                <center><p:outputLabel value="Login Form" /> </center>
+                            </f:facet>  
+                            <h:outputLabel for="username" value="Username:" />
+                            <p:inputText id="username" value="#{loginBean.username}" required="true"/>
 
-                <h:outputLabel for="password" value="Password:" />
-                <p:password id="password" value="#{loginBean.pwd}" required="true"/>
+                            <h:outputLabel for="password" value="Password:" />
+                            <p:password id="password" value="#{loginBean.pwd}" required="true"/>
 
-                <f:facet name="footer">
-                    <center><p:commandButton value="Login" type="submit" icon="ui-icon-arrowstop-1-e" action="#{loginBean.validateUser()}"/></center>
-                </f:facet>  
-            </p:panelGrid>
-            </h:form>
+                            <center><p:commandButton value="Login" type="submit" icon="ui-icon-arrowstop-1-e" actionListener="#{loginBean.validateUser}"/></center>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </h:form>
             </div></center>
     </h:body>
 </html>

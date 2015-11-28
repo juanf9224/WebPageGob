@@ -35,7 +35,7 @@ public class UserBean implements Serializable{
 
     private String name;
     private String lastName;
-    private int age;
+    private Integer age;
     private String email;
     private String department;
     private String username;
@@ -101,11 +101,11 @@ public class UserBean implements Serializable{
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -168,7 +168,7 @@ public class UserBean implements Serializable{
         FacesContext.getCurrentInstance().addMessage(null, msg);
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getFlash().setKeepMessages(true);
-        return "create.xhtml?faces-redirect=true";
+        return "admin-welcome.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.toString();
             FacesMessage msg = new FacesMessage("User could not be created");
@@ -230,7 +230,7 @@ public class UserBean implements Serializable{
         options.put("modal", true);
         options.put("draggable", false);
         options.put("resizable", false);
-        options.put("width", 600);
+        options.put("width", 700);
 
         RequestContext.getCurrentInstance().openDialog("create-user", options, null);
     }

@@ -9,12 +9,10 @@ import static gob.gobernacionsd.beans.LoginBean.USER_SESSION_KEY;
 import gob.gobernacionsd.dao.LoginDAO;
 import gob.gobernacionsd.entities.LoginInfo;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
@@ -23,10 +21,10 @@ import javax.persistence.PersistenceContext;
  *
  * @author juanf_000
  */
-public class LoginDAOImpl implements LoginDAO {
+public class LoginDAOImpl implements LoginDAO{
 
-    //EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-    @PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    //@PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     @Override
@@ -39,13 +37,14 @@ public class LoginDAOImpl implements LoginDAO {
     @Override
     public LoginInfo retreive(LoginInfo t) {
         try {
-
+            em = emf.createEntityManager();
+            
             LoginInfo login = em.createNamedQuery("LoginInfo.findByUsernamePwdEmail", LoginInfo.class).setParameter("username", t.getUsername()).setParameter("pwd", t.getPwd()).getSingleResult();
 
             return login;
 
         } catch (NoResultException nre) {
-            nre.toString();
+            nre.getMessage();
             return null;
         }
     }

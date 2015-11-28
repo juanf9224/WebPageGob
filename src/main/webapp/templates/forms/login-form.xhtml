@@ -43,7 +43,7 @@
                 <p:password id="password" value="#{loginBean.pwd}" required="true"/>
 
                 <f:facet name="footer">
-                    <center><p:commandButton value="Login" type="submit" icon="ui-icon-arrowstop-1-e" action="#{loginBean.validateUser()}"/></center>
+                    <center><p:commandButton value="Login" type="submit" icon="ui-icon-arrowstop-1-e" actionListener="#{loginBean.validateUser()}" style="border: none;"/></center>
                 </f:facet>  
             </p:panelGrid>
             </h:form>

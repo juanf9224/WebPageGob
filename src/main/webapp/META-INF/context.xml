@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/GobernacionStoDgo">
-    <Resource auth="Container" 
-              driverClassName="com.mysql.jdbc.Driver" 
-              maxActive="20" 
-              maxIdle="10" 
-              maxWait="-1" 
-              name="Mysql" 
-              password="" 
-              type="javax.sql.DataSource" 
-              url="jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull" 
-              username="root"/>
     
     <Resource auth="Container" 
               driverClassName="com.mysql.jdbc.Driver" 

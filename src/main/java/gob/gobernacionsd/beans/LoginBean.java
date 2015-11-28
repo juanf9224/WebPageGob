@@ -24,10 +24,10 @@ import javax.servlet.http.HttpSession;
 @SessionScoped
 public class LoginBean implements Serializable {
 
+    private String email;
     private String username;
     private String pwd;
     private String role;
-    private String name;
     @Inject LoginServiceBean lsb;
     
     public static final String USER_SESSION_KEY = "user";
@@ -48,6 +48,7 @@ public class LoginBean implements Serializable {
         this.lsb = lsb;
     }
 
+   
     public String getUsername() {
         return username;
     }
@@ -60,7 +61,15 @@ public class LoginBean implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
+    
+     public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public String getPwd() {
         return pwd;
     }
@@ -77,15 +86,6 @@ public class LoginBean implements Serializable {
         this.role = role;
     }
     
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
     public String validateUser(){
         try{
         LoginInfo li = new LoginInfo();
@@ -93,7 +93,7 @@ public class LoginBean implements Serializable {
         li.setPwd(pwd);
         return lsb.validateUser(li, username, pwd);
         }catch(Exception e){
-            e.toString();
+            e.getMessage();
             return null;
         }
     }

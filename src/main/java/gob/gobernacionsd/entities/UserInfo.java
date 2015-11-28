@@ -40,45 +40,52 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "UserInfo.findByDepartmentID", query = "SELECT u.departmentID.department FROM UserInfo u "),
     @NamedQuery(name = "UserInfo.findByUserInfoId", query = "SELECT u FROM UserInfo u WHERE u.userInfoId = :userInfoId"),
     @NamedQuery(name = "UserInfo.findByName", query = "SELECT u FROM UserInfo u WHERE u.name = :name"),
-    @NamedQuery(name = "UserInfo.findByEmail", query = "SELECT u FROM UserInfo u WHERE u.email = :email"),   
+    @NamedQuery(name = "UserInfo.findByEmail", query = "SELECT u FROM UserInfo u WHERE u.age = :age"),
     @NamedQuery(name = "UserInfo.findByDateCreated", query = "SELECT u FROM UserInfo u WHERE u.dateCreated = :dateCreated"),
     @NamedQuery(name = "UserInfo.findByLogin", query = "SELECT u FROM UserInfo u WHERE u.loginInfo1 = :login")})
 
 public class UserInfo implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "user_info_id")
     private Long userInfoId;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "name")
     private String name;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "last_name")
-    private String email;
+    private String lastName;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    private String lastName;
+    @Column(name = "age")
+    private Integer age;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "date_created")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
-    @OneToOne(targetEntity=LoginInfo.class,cascade=CascadeType.ALL)
-    @JoinColumn(name="login_info_id", referencedColumnName = "login_info_id")
+    
+    @OneToOne(targetEntity = LoginInfo.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "login_info_id", referencedColumnName = "login_info_id")
     private LoginInfo loginInfo1;
+    
     @ManyToOne
-    @JoinColumn(name="department_id")
+    @JoinColumn(name = "department_id")
     private Department departmentID;
 
-    
-    
     public UserInfo() {
     }
 
@@ -86,13 +93,13 @@ public class UserInfo implements Serializable {
         this.userInfoId = userInfoId;
     }
 
-    public UserInfo(Long userInfoId, String name, String email, Date dateCreated) {
+    public UserInfo(Long userInfoId, String name, Integer age, Date dateCreated) {
         this.userInfoId = userInfoId;
         this.name = name;
-        this.email = email;
+        this.age = age;
         this.dateCreated = dateCreated;
     }
-    
+
     public Department getDepartmentID() {
         return departmentID;
     }
@@ -133,13 +140,14 @@ public class UserInfo implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAge(Integer age) {
+        this.age = age;
     }
+    
 
     public Date getDateCreated() {
         return dateCreated;
@@ -148,5 +156,5 @@ public class UserInfo implements Serializable {
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
-    
+
 }

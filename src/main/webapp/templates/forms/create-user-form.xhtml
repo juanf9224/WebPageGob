@@ -6,42 +6,56 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $(".loader").fadeOut("slow");
+            });
+
+            function reload() {
+                setTimeout("window.location.reload(1)", 5000);
+            }
+
+        </script>
         <title>User creation form</title>
     </h:head>
     <h:body>
-        <ui:composition>
             <h:form>
 
                 <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                <p:wizard flowListener="#{userWizard.onFlowProcess}">
+                <p:wizard flowListener="#{userWizardBean.onFlowProcess}">
                     <p:tab id="personal" title="Personal">
                         <p:panel header="Personal Details">
                             <p:messages />
+                            <p:tooltip showEffect="clip" hideEffect="explode" />
                             <h:panelGrid columns="2" columnClasses="label, value">
+                                
                                 <h:outputText value="Firstname: *" />
-                                <p:inputText id="grow" title="Input your firstname here" value="#{userWizardBean.user.name}" required="true" label="Firstname"/>
+                                <p:inputText title="Input your firstname here" value="#{userWizardBean.user.name}" required="true" label="Firstname"/>
 
                                 <h:outputText value="Lastname: *" />
-                                <p:inputText id="grow" value="#{userWizardBean.user.lastName}" required="true" label="Lastname"/>
+                                <p:inputText value="#{userWizardBean.user.lastName}" required="true" label="Lastname"/>
 
                                 <h:outputText value="Age: " />
-                                <p:inputText id="grow" title="input your Lastname here" value="#{userWizardBean.user.age}" />
+                                <p:inputText title="input your Age here" value="#{userWizardBean.user.age}" label="age"/> 
 
                                 <h:outputText value="Skip to last: " />
-                                <h:selectBooleanCheckbox id="grow" title="check to skip to confirmation tab when done with this tab" value="#{userWizard.skip}" />
+                                <h:selectBooleanCheckbox title="check to skip to confirmation tab when done with this tab" value="#{userWizardBean.skip}" />
+                                
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
 
-                    <p:tab id="address" title="Login information">
-                        <p:panel header="Address Details">
+                    <p:tab id="Login" title="Login information">
+                        <p:panel header="Login Details">
                             <p:messages />
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Email: " />
-                                <p:inputText id="grow" class="emailvalid" title="input your email here with the correct format" value="#{userWizardBean.user.email}" />
-
-                                <script>
+                            <!-- <script>
                                     var email = jQuery('.emailvalid').text();
                                     if (!isEmail(email)) {
                                         jQuery('.email').css('border-color', 'red').append('el email ingresado tiene un formato no valido.');
@@ -57,28 +71,40 @@
 
 
 
-                                </script>
+                                </script> -->
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                
+                                <h:outputText value="Email: " />
+                                <p:inputText class="emailvalid" title="input your email here with the correct format" value="#{userWizardBean.user.email}" />
+
+                                
 
                                 <h:outputText value="Username: " />
-                                <p:inputText id="grow" title="input your username wich will be used to log in later here" value="#{userWizardBean.user.username}" />
+                                <p:inputText title="input your username wich will be used to log in later here" value="#{userWizardBean.user.username}" />
 
                                 <h:outputText value="Password: " />
-                                <p:password id="grow" value="#{userWizardBean.user.pwd}"  match="pwdConf" required="true" label="pwd"/>
+                                <p:password value="#{userWizardBean.user.pwd}"  match="pwdConf" required="true" label="pwd"/>
 
                                 <h:outputText value="Confirm password: " />
-                                <p:password id="grow" label="pwdConf" value="#{userWizardBean.user.pwd}" required="true"/>
-                                <h:selectBooleanCheckbox id="grow" title="" value="#{userWizard.skip}" />
+                                <p:password label="pwdConf" value="#{userWizardBean.user.pwd}" required="true"/>
+                                 <h:outputText value="Department: " />
+                                 <p:selectOneMenu title="choose your department" value="#{userWizardBean.user.department}" required="true" label="department"> 
+                                    <f:selectItem itemLabel="Choose your department" itemValue="" />
+                                    <f:selectItems value="#{userWizardBean.user.departmentList}"  var="department" itemValue="#{department.department}" itemLabel="#{department.department}" />
+                                </p:selectOneMenu>
+                                
+                                <h:outputText value="Skip to last: " />
+                                <h:selectBooleanCheckbox title="" value="#{userWizardBean.skip}" />
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
 
-                    <p:tab id="contact" title="Department">
+                    <p:tab id="Department" title="Department">
                         <p:panel header="Department Information">
                             <p:messages />
-                            <h:panelGrid columns="2" columnClasses="label, value">
-
+                            <h:panelGrid columns="1" columnClasses="value">
                                 <h:outputText value="Department: " />
-                                <p:selectOneMenu id="grow" title="choose your department" value="#{userWizardBean.user.department}" required="true" label="department" effect="fold"> 
+                                <p:selectOneMenu title="choose your department" value="#{userWizardBean.user.department}" required="true" label="department"> 
                                     <f:selectItem itemLabel="Choose your department" itemValue="" />
                                     <f:selectItems value="#{userWizardBean.user.departmentList}" />
                                 </p:selectOneMenu>
@@ -100,7 +126,7 @@
                                     <h:outputText value="#{userWizardBean.user.lastName}" styleClass="outputLabel"/>
 
                                     <h:outputText value="Age: " />
-                                    <h:outputText value="#{userWizardBean.user.age}" styleClass="outputLabel"/>
+                                    <h:outputText value="#{userWizardBean.user.age}"/>
                                 </h:panelGrid>
 
                                 <h:panelGrid columns="2" columnClasses="label, value">
@@ -126,14 +152,12 @@
                                     <h:outputText />
                                 </h:panelGrid>
                             </h:panelGrid>
-                            <p:tooltip id="toolTipGrow" for="grow" showEffect="clip" hideEffect="explode" />
-                            <p:commandButton id="submit-user-form" value="Submit" actionListener="#{userWizard.save}" update="growl" process="@this"/>
+                            <p:commandButton value="Submit" actionListener="#{userWizardBean.save}" update="growl" process="@this"/>
                         </p:panel>
                     </p:tab>
                 </p:wizard>
 
             </h:form>
-        </ui:composition>
     </h:body>
 </html>
 

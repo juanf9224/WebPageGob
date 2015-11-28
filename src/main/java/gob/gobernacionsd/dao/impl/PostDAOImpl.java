@@ -9,12 +9,10 @@ import gob.gobernacionsd.entities.LoginInfo;
 import gob.gobernacionsd.entities.Post;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import gob.gobernacionsd.dao.PostDAO;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -24,15 +22,15 @@ import javax.transaction.Transactional;
  */
 public class PostDAOImpl implements PostDAO {
     
-    //EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-    @PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    //@PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
     private EntityManager em;
-    private EntityTransaction tx;
 
     //Create new ticket...
     @Transactional
     @Override
     public Post create(Post p) {
+        em = emf.createEntityManager();
         try {
             Post post = new Post();
             long login = findUser(p.getCreatedBy().getUsername());
@@ -53,6 +51,7 @@ public class PostDAOImpl implements PostDAO {
     // find username in the db that match the received username from create method and get its corresponding id...
     @Override
     public long findUser(String username) {
+        em = emf.createEntityManager();
         try {
             long id = (long) em.createNamedQuery("LoginInfo.findByUsername").setParameter("username", username).getSingleResult();
 
@@ -67,7 +66,7 @@ public class PostDAOImpl implements PostDAO {
     //Look up in the db for the required ticket...
     @Override
     public Post retreive(Post p) {
-
+em = emf.createEntityManager();
         try {
 
             Post pst = em.find(Post.class, p.getPostId());
@@ -84,6 +83,7 @@ public class PostDAOImpl implements PostDAO {
     @Transactional
     @Override
     public Post update(Post p) {
+        em = emf.createEntityManager();
         try {
             Post ticket = em.find(Post.class, p.getPostId());
             ticket.setTitle(p.getTitle());
@@ -100,6 +100,7 @@ public class PostDAOImpl implements PostDAO {
     @Transactional
     @Override
     public Post delete(Post t) {
+        em = emf.createEntityManager();
         try {
             Post ticket = em.find(Post.class, t.getPostId());
 
@@ -115,6 +116,7 @@ public class PostDAOImpl implements PostDAO {
     //find all tickets in order to show the in a datatable on the view page...
     @Override
     public List<Post> findAll() {
+        em = emf.createEntityManager();
         List<Post> all = null;
         try {
 
