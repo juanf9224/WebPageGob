@@ -23,7 +23,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -40,7 +39,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "UserInfo.findByDepartmentID", query = "SELECT u.departmentID.department FROM UserInfo u "),
     @NamedQuery(name = "UserInfo.findByUserInfoId", query = "SELECT u FROM UserInfo u WHERE u.userInfoId = :userInfoId"),
     @NamedQuery(name = "UserInfo.findByName", query = "SELECT u FROM UserInfo u WHERE u.name = :name"),
-    @NamedQuery(name = "UserInfo.findByEmail", query = "SELECT u FROM UserInfo u WHERE u.age = :age"),
+    @NamedQuery(name = "UserInfo.findByLastname", query = "SELECT u FROM UserInfo u WHERE u.lastName = :lastName"),
+    @NamedQuery(name = "UserInfo.findByAge", query = "SELECT u FROM UserInfo u WHERE u.age = :age"),
     @NamedQuery(name = "UserInfo.findByDateCreated", query = "SELECT u FROM UserInfo u WHERE u.dateCreated = :dateCreated"),
     @NamedQuery(name = "UserInfo.findByLogin", query = "SELECT u FROM UserInfo u WHERE u.loginInfo1 = :login")})
 

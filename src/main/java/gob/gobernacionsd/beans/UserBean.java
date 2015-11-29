@@ -17,9 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
@@ -30,7 +30,7 @@ import org.primefaces.event.RowEditEvent;
  * @author juanf_000
  */
 @Named
-@RequestScoped
+@ViewScoped
 public class UserBean implements Serializable{
 
     private String name;
@@ -162,13 +162,12 @@ public class UserBean implements Serializable{
         ui.setDepartmentID(dept);
         ui.setName(name);
         ui.setLastName(lastName);
+        ui.setAge(age);
         ui.setLoginInfo1(li);  
         usb.create(ui);
-        FacesMessage msg = new FacesMessage("User created");
+        FacesMessage msg = new FacesMessage("Successful", "User with name:" + getName() + " successfully added.");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.getExternalContext().getFlash().setKeepMessages(true);
-        return "admin-welcome.xhtml?faces-redirect=true";
+        return "null";
         }catch(Exception e){
             e.toString();
             FacesMessage msg = new FacesMessage("User could not be created");
@@ -186,16 +185,19 @@ public class UserBean implements Serializable{
         Department d = new Department();
         
         li.setLoginInfoId(u.getLoginInfo1().getLoginInfoId());
-        li.setUsername(username);
-        
+        li.setEmail(email);
+        li.setUsername(username);        
         li.setPwd(pwd);
         d.setDepartmentId(u.getDepartmentID().getDepartmentId());
         d.setDepartment(department);
+        u.setName(name);
+        u.setLastName(lastName);
+        u.setAge(age);
         u.setLoginInfo1(li);
         u.setDepartmentID(d);
         usb.update(u);
         
-        FacesMessage msg = new FacesMessage("User Edited", ((UserInfo) event.getObject()).getName());
+        FacesMessage msg = new FacesMessage("User edited successfully", ((UserInfo) event.getObject()).getName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         }catch(Exception e){
             e.toString();
@@ -204,7 +206,7 @@ public class UserBean implements Serializable{
      
     //Cancel update on user...
     public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("User Edit Cancelled", ((UserInfo) event.getObject()).getName());
+        FacesMessage msg = new FacesMessage("User edit Cancelled", ((UserInfo) event.getObject()).getName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
@@ -218,7 +220,7 @@ public class UserBean implements Serializable{
             FacesContext.getCurrentInstance().addMessage(null, msg);
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getFlash().setKeepMessages(true);
-            return "listusers.xhtml?faces-redirect=true";
+            return "users-view.xhtml?faces-redirect=true";
         }catch(Exception e){
             e.toString();
             return null;
@@ -231,6 +233,7 @@ public class UserBean implements Serializable{
         options.put("draggable", false);
         options.put("resizable", false);
         options.put("width", 700);
+        options.put("contentHeight", 350);
 
         RequestContext.getCurrentInstance().openDialog("create-user", options, null);
     }

@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>Administration</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <link href="#{request.contextPath}/resources/css/simple.css" media="screen" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript">
+            $(window).load(function() {
+                $(".loader").fadeOut("slow");
+            });
+
+            function reload(){
+                setTimeout("window.location.reload(1)",5000);
+            }
+            </script>
+    </h:head>
+    <h:body>
+        
+        <form>
+            <br/>            
+            <p:button styleClass="input" value="Volver al panel de administracion" outcome="admin-app-main"/>
+            <br/>
+            <br/>
+        </form>
+        
+       <h:form id="form">
+   <p:growl id="msgs" showDetail="true"/>
+ 
+   <p:dataTable id="tickets1" var="user" value="#{userBean.all}" editable="true" style="margin-bottom:20px" rows="10"
+                widgetVar="usersTable" emptyMessage="No users found with given criteria" filteredValue="#{userBean.filteredUsers}"
+                paginator="true" selectionMode="single" rowKey="#{user.userInfoId}"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+       <f:facet name="header">
+           Tickets
+       </f:facet>
+       
+       <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Search all fields:" />
+                <p:inputText id="globalFilter" onkeyup="PF('usersTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+            </p:outputPanel>
+        </f:facet>
+ 
+       <p:ajax event="rowEdit" listener="#{userBean.onRowEdit}" update=":form:msgs" />
+       <p:ajax event="rowEditCancel" listener="#{userBean.onRowCancel}" update=":form:msgs" />
+ 
+       <p:column headerText="User Id" filterBy="userId" filterMatchMode="contains">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{user.userInfoId}" /></f:facet>
+               <f:facet name="input"><p:inputText id="modelInput" value="#{user.userInfoId}" style="width:100%"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Name" filterMatchMode="contains" filterBy="name">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{user.name}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{user.name}" style="width:100%" label="Year"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+       <p:column headerText="Lastname" filterMatchMode="contains" filterBy="lastname">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{user.lastName}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{user.lastName}" style="width:100%" label="lastName"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+       <p:column headerText="Age" filterMatchMode="contains" filterBy="age">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{user.age}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{user.age}" style="width:100%" label="age"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+       <p:column headerText="Email" style="width:250px;" filterMatchMode="contains" filterBy="email">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{user.loginInfo1.email}" /></f:facet>
+               <f:facet name="input"><h:inputTextarea value="#{user.loginInfo1.email}" /></f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+       <p:column headerText="Username" filterMatchMode="contains" filterBy="username">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{user.loginInfo1.username}"></h:outputText></f:facet>
+               <f:facet name="input"><p:inputText requiredMessage="this field cannot be empty" value="#{userBean.username}" style="width:100%" label="username" required="true" placeholder="#{user.loginInfo1.username}"></p:inputText></f:facet>
+           </p:cellEditor>           
+       </p:column>
+ 
+       <p:column headerText="Department" filterMatchMode="contains" filterBy="department">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{user.departmentID.department}" /></f:facet>
+               <f:facet name="input">
+                   <h:selectOneMenu value="#{userBean.department}" style="width:100%">
+                       <f:selectItems value="#{userBean.departmentList}" var="dept" itemLabel="#{dept.department}" itemValue="#{dept.department}" />
+                   </h:selectOneMenu>
+               </f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Edit" style="width:40px;">
+           <p:rowEditor />
+       </p:column>
+       
+       <p:column headerText="Delete">
+           <p:commandButton value="Delete" styleClass="input" icon="ui-icon-close" action="#{userBean.remove(user.userInfoId)}" update=":form:msgs"> 
+           <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+           </p:commandButton>
+       </p:column>
+   </p:dataTable>
+   
+   <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+        <p:button value="No" styleClass="ui-confirmdialog-no" icon="ui-icon-close" outcome="null"/>
+    </p:confirmDialog>
+ </h:form>
+    </h:body>
+</html>
+

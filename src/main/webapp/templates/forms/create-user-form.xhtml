@@ -11,115 +11,113 @@
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
-        
+
         <title>User creation form</title>
     </h:head>
     <h:body>
-            <h:form>
+        <h:form>
 
-                <p:growl id="growl" sticky="true" showDetail="true"/>
+            <p:growl id="growl" sticky="true" showDetail="true"/>
 
-                <p:wizard flowListener="#{userWizardBean.onFlowProcess}">
-                    <p:tab id="personal" title="Personal">
-                        <p:panel header="Personal Details">
-                            <p:messages />
-                            <p:tooltip showEffect="clip" hideEffect="explode" />
+            <p:wizard  showStepStatus="true">
+                <p:tab id="personal" title="Personal">
+                    <p:panel header="Personal Details">
+                        <p:messages showDetail="true" />
+                        <p:tooltip showEffect="clip" hideEffect="explode" hideDelay="150" />
+                        <h:panelGrid columns="2" columnClasses="label, value">
+
+                            <h:outputText value="Firstname: *" />
+                            <p:inputText title="Input your firstname here" value="#{userBean.name}" required="true" label="Firstname" autocomplete="true"/>
+
+                            <h:outputText value="Lastname: *" />
+                            <p:inputText value="#{userBean.lastName}" required="true" label="Lastname" autocomplete="true"/>
+
+                            <h:outputText value="Age: " />
+                            <p:inputText title="input your Age here" value="#{userBean.age}" label="age"/> 
+
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="login" title="Login information">
+                    <p:panel header="Login Details">
+                        <p:messages showDetail="true" />
+                        <h:panelGrid columns="2" columnClasses="label, value">
+
+                            <h:outputText value="Email: " />
+                            <p:inputText class="emailvalid" title="input your email here with the correct format" value="#{userBean.email}" autocomplete="true" />
+
+                            <h:outputText value="Username: " />
+                            <p:inputText title="input your username wich will be used to log in later here" value="#{userBean.username}" autocomplete="true"/>
+
+                            <h:outputText value="Password: " />
+                            <p:password value="#{userBean.pwd}" match="pwd2" id="pwd1" feedback="true"  required="true"/>
+
+                            <h:outputText value="Confirm password: " />
+                            <p:password id="pwd2" value="#{userBean.pwd}" required="true"/>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="department" title="Department">
+                    <p:panel header="Department Information">
+                        <p:messages />
+                        <h:panelGrid columns="2" columnClasses="label,value">
+                            <h:outputText value="Department: " />
+                            <p:selectOneMenu title="choose your department" value="#{userBean.department}" required="true" label="department"> 
+                                <f:selectItem itemLabel="Choose your department" itemValue="" />
+                                <f:selectItems value="#{userBean.departmentList}"  var="department" itemValue="#{department.department}" itemLabel="#{department.department}" />
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="confirm" title="Confirmation">
+                    <p:panel header="Confirmation">
+                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                
-                                <h:outputText value="Firstname: *" />
-                                <p:inputText title="Input your firstname here" value="#{userWizardBean.user.name}" required="true" label="Firstname"/>
 
-                                <h:outputText value="Lastname: *" />
-                                <p:inputText value="#{userWizardBean.user.lastName}" required="true" label="Lastname"/>
+                                <h:outputText value="Firstname: " />
+                                <h:outputText value="#{userBean.name}" styleClass="outputLabel"/>
+
+                                <h:outputText value="Lastname: " />
+                                <h:outputText value="#{userBean.lastName}" styleClass="outputLabel"/>
 
                                 <h:outputText value="Age: " />
-                                <p:inputText title="input your Age here" value="#{userWizardBean.user.age}" label="age"/> 
+                                <h:outputText value="#{userBean.age}"/>
 
-                                <h:outputText value="Skip to last: " />
-                                <h:selectBooleanCheckbox title="check to skip to confirmation tab when done with this tab" value="#{userWizardBean.skip}" />
-                                
                             </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
 
-                    <p:tab id="login" title="Login information">
-                        <p:panel header="Login Details">
-                            <p:messages />
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                
-                                <h:outputText value="Email: " />
-                                <p:inputText class="emailvalid" title="input your email here with the correct format" value="#{userWizardBean.user.email}" />
 
-                                
+                                <h:outputText value="Email: " />
+                                <h:outputText value="#{userBean.email}" styleClass="outputLabel"/>
 
                                 <h:outputText value="Username: " />
-                                <p:inputText title="input your username wich will be used to log in later here" value="#{userWizardBean.user.username}" />
+                                <h:outputText value="#{userBean.username}" styleClass="outputLabel"/>
 
                                 <h:outputText value="Password: " />
-                                <p:password value="#{userWizardBean.user.pwd}"  match="pwdConf" required="true" label="pwd"/>
+                                <h:outputText value="#{userBean.pwd}" styleClass="outputLabel"/>
 
-                                <h:outputText value="Confirm password: " />
-                                <p:password label="pwdConf" value="#{userWizardBean.user.pwd}" required="true"/>
-                                                                 
-                                <h:outputText value="Skip to last: " />
-                                <h:selectBooleanCheckbox title="" value="#{userWizardBean.skip}" />
                             </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
 
-                    <p:tab id="department" title="Department">
-                        <p:panel header="Department Information">
-                            <p:messages />
-                            <h:panelGrid columns="2" columnClasses="label,value">
+                            <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="Department: " />
-                                <p:selectOneMenu title="choose your department" value="#{userWizardBean.user.department}" required="true" label="department"> 
-                                    <f:selectItem itemLabel="Choose your department" itemValue="" />
-                                    <f:selectItems value="#{userWizardBean.user.departmentList}"  var="department" itemValue="#{department.department}" itemLabel="#{department.department}" />
-                                </p:selectOneMenu>
+                                <h:outputText value="#{userBean.department}" styleClass="outputLabel"/>
+
+
+
+                                <h:outputText />
+                                <h:outputText />
                             </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
+                        </h:panelGrid>
+                        <p:commandButton value="Submit" actionListener="#{userBean.createService}" update="growl" process="@this"/>
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
 
-                    <p:tab id="confirm" title="Confirmation">
-                        <p:panel header="Confirmation">
-                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
-                                <h:panelGrid columns="2" columnClasses="label, value">
-                                    
-                                    <h:outputText value="Firstname: " />
-                                    <h:outputText value="#{userWizardBean.user.name}" styleClass="outputLabel"/>
-
-                                    <h:outputText value="Lastname: " />
-                                    <h:outputText value="#{userWizardBean.user.lastName}" styleClass="outputLabel"/>
-
-                                    <h:outputText value="Age: " />
-                                    <h:outputText value="#{userWizardBean.user.age}"/>
-                                </h:panelGrid>
-
-                                <h:panelGrid columns="2" columnClasses="label, value">
-                                    
-                                    <h:outputText value="Email: " />
-                                    <h:outputText value="#{userWizardBean.user.email}" styleClass="outputLabel"/>
-
-                                    <h:outputText value="Username: " />
-                                    <h:outputText value="#{userWizardBean.user.username}" styleClass="outputLabel"/>
-
-                                </h:panelGrid>
-
-                                <h:panelGrid columns="2" columnClasses="label, value">
-                                    
-                                    <h:outputText value="Department: " />
-                                    <h:outputText value="#{userWizardBean.user.department}" styleClass="outputLabel"/>
-
-                                    <h:outputText />
-                                    <h:outputText />
-                                </h:panelGrid>
-                            </h:panelGrid>
-                            <p:commandButton value="Submit" actionListener="#{userWizardBean.save}" update="growl" process="@this"/>
-                        </p:panel>
-                    </p:tab>
-                </p:wizard>
-
-            </h:form>
+        </h:form>
     </h:body>
 </html>
 

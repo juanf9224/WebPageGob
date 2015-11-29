@@ -13,7 +13,6 @@ import javax.persistence.TypedQuery;
 import gob.gobernacionsd.dao.PostDAO;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 /**
@@ -21,9 +20,9 @@ import javax.transaction.Transactional;
  * @author juanf_000
  */
 public class PostDAOImpl implements PostDAO {
-    
+
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-    //@PersistenceContext(unitName="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+
     private EntityManager em;
 
     //Create new ticket...
@@ -66,7 +65,7 @@ public class PostDAOImpl implements PostDAO {
     //Look up in the db for the required ticket...
     @Override
     public Post retreive(Post p) {
-em = emf.createEntityManager();
+        em = emf.createEntityManager();
         try {
 
             Post pst = em.find(Post.class, p.getPostId());
@@ -132,7 +131,6 @@ em = emf.createEntityManager();
         }
 
     }
-
 
     //Test method to get the max id of an entity instance...
     private Long getMaxId(String select_maxtid_FROM_Ticket_t) {

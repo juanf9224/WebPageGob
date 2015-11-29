@@ -11,7 +11,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/login-form-style.css"/>
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
-        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/><script type="text/javascript">
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <script type="text/javascript">
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
@@ -27,20 +28,18 @@
         <div class="loader">
         </div>
         <center><div class="login-form-content">
-                <h:form>
-                    <p:growl id="growl" sticky="true" showDetail="true" />
+                <p:growl id="growl" sticky="true" showDetail="true" />
+                <h:form>                    
                     <p:panel header="Login Form">
                         <p:panelGrid columns="2"  styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
-                            <f:facet name="header">
-                                <center><p:outputLabel value="Login Form" /> </center>
-                            </f:facet>  
+                            
                             <h:outputLabel for="username" value="Username:" />
                             <p:inputText id="username" value="#{loginBean.username}" required="true"/>
 
                             <h:outputLabel for="password" value="Password:" />
                             <p:password id="password" value="#{loginBean.pwd}" required="true"/>
 
-                            <center><p:commandButton value="Login" type="submit" icon="ui-icon-arrowstop-1-e" actionListener="#{loginBean.validateUser}"/></center>
+                            <center><p:commandButton value="Login" styleClass="input" icon="ui-icon-arrowstop-1-e" action="#{loginBean.validateUser}" update="growl"/></center>
 
                         </p:panelGrid>
                     </p:panel>

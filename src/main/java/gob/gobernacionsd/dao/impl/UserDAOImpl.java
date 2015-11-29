@@ -11,6 +11,7 @@ import gob.gobernacionsd.entities.LoginInfo;
 import gob.gobernacionsd.entities.UserInfo;
 import java.util.Date;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -25,7 +26,7 @@ import javax.transaction.Transactional;
 public class UserDAOImpl implements UserDAO{
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-    //@PersistenceContext(unitName = "gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU")
+    
     private EntityManager em;
 
     @Transactional
@@ -38,6 +39,7 @@ public class UserDAOImpl implements UserDAO{
             long dept = findDept(t.getDepartmentID().getDepartment());
             Department department = em.find(Department.class, dept);
             ui.setName(t.getName());
+            ui.setLastName(t.getLastName());
             ui.setAge(t.getAge());
             ui.setDepartmentID(department);
             ui.setDateCreated(new Date());

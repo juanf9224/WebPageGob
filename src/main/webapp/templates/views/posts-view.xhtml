@@ -11,19 +11,22 @@
     <h:body>
         <ui:composition>
             <h:form> 
-                <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="10">
+                <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="5">
                     <f:facet name="header">
                         Scroll Down to Load More Posts
                     </f:facet>
 
                     <h:panelGrid columns="2">
+                        <p:graphicImage name="images/page-loader.gif" />
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText value="#{post.dateCreated}" style="font-weight: bold"/>
 
                                 <h:outputText value="#{post.title}" style="font-weight: bold"/>
 
                                 <h:outputText value="#{post.post}" style="font-weight: bold"/>
+                                
+                                <p:spacer height="20" />
+                                <p:separator />
 
                             </h:panelGrid>
                         </p:outputPanel>
