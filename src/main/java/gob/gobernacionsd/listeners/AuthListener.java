@@ -89,11 +89,6 @@ public class AuthListener implements PhaseListener {
     private boolean requestingSecureView(FacesContext context) {
         ExternalContext extContext = context.getExternalContext();       
         String path = extContext.getRequestPathInfo();
-        /*if(path.startsWith("/admin/") && !login.getRole().equals("admin") || login.getRole() == null){
-            return (!"/index.xhtml".equals(path) && !"/templates/forms/non-responsive-login-form.xhtml".equals(path) && !"/templates/forms/login-form.xhtml".equals(path));              
-        }else{
-        
-        }*/
         return (!"/index.xhtml".equals(path) && !"/templates/forms/non-responsive-login-form.xhtml".equals(path) && !"/templates/forms/login-form.xhtml".equals(path));              
     }
     
