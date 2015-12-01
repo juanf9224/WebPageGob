@@ -1,12 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Post Creation Form</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <ui:composition>
+            <h:form>
+                <p:growl id="msgs" showDetail="true"/>
+                <p:panel id="create-post-panel" header="Create a new post" toggleable="true">
+                    <p:panelGrid columns="1" layout="grid" style="width: 100%;">
+                        <p:outputLabel for="title"  value="Title:"/>
+                        <p:inputText id="title" title="Title of the post goes here." value="#{postBean.title}" required="true" requiredMessage="Title cannot be empty." size="100"/> 
+
+                        <p:outputLabel for="image"  value="Upload image:"/>
+                        <p:fileUpload value="#{postBean.image}" mode="simple" skinSimple="true" id="image" required="true" requiredMessage="upload an image for the post"/>
+                        
+                        <p:outputLabel for="post"  value="Post:"/>
+                        <p:editor id="post" height="600" width="600" widgetVar="postWidget" value="#{postBean.post}" required="true" requiredMessage="post cannot be empty" />
+                        <p:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+                        
+                        <p:outputLabel for="note"  value="Note:"/>
+                        <p:inputTextarea id="note" title="Note about the post or something else."  value="#{postBean.note}" autoResize="true" cols="80"/> 
+                        
+                        <p:commandButton value="Submit" ajax="false" actionListener="#{postBean.createPost}" update="msgs" />
+
+                    </p:panelGrid>
+                </p:panel>
+            </h:form>
+        </ui:composition>
     </h:body>
 </html>
 

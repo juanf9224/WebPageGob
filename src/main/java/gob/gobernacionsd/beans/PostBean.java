@@ -10,6 +10,10 @@ import gob.gobernacionsd.dao.impl.PostDAOImpl;
 import gob.gobernacionsd.entities.LoginInfo;
 import gob.gobernacionsd.entities.Post;
 import gob.gobernacionsd.servicebeans.PostServiceBean;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import org.primefaces.context.RequestContext;
 import java.io.Serializable;
 import java.util.Date;
@@ -22,7 +26,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -37,7 +44,8 @@ public class PostBean implements Serializable {
     private String title;
     private String post;
     private String note;
-    private byte[] image;
+    private UploadedFile image;
+    private String imagePath;
     private List<Post> posts;
     private List<Post> filteredPosts;
     private Post selectedPost; 
@@ -89,20 +97,28 @@ public class PostBean implements Serializable {
         this.post = post;
     }
 
+    public UploadedFile getImage() {
+        return image;
+    }
+
+    public void setImage(UploadedFile image) {
+        this.image = image;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    
     public String getNote() {
         return note;
     }
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 
     public List<Post> getPosts() {
@@ -133,24 +149,35 @@ public class PostBean implements Serializable {
     //Create Post...
     public String createPost(){
         try{
+            if(image != null){
+            String imageName = FilenameUtils.getName(image.getFileName());
+            InputStream input = image.getInputstream();
+            OutputStream output = new FileOutputStream(new File("resources/images/news-files/", imageName));
+            try{
+                IOUtils.copy(input, output);
+            }finally{
+                IOUtils.closeQuietly(input);
+                IOUtils.closeQuietly(output);
+            }
+            imagePath = "images/news-files/"+imageName;
+        }
         Post pst = new Post();
         LoginInfo li = new LoginInfo();
         
         li.setUsername(login.getUsername());
         pst.setTitle(title);
         pst.setPost(post);
+        pst.setImagePath(imagePath);
         pst.setNote(note);
-        pst.setImage(image);
         pst.setCreatedBy(li);
         pst.setDateCreated(new Date());
         tsb.createPost(pst);
-        note = null;
-        title = null;
-        post = null;
+        note = "";
+        title = "";
+        post = "";
+        imagePath = "";
         FacesMessage msg = new FacesMessage("Post created");
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.getExternalContext().getFlash().setKeepMessages(true);
         return "create-post";
         }catch(Exception e){
             e.toString();

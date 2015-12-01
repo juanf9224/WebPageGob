@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Post.findByPost", query = "SELECT p FROM Post p WHERE p.post = :post"),
     @NamedQuery(name = "Post.findByTitle", query = "SELECT p FROM Post p WHERE p.title = :title"),
     @NamedQuery(name = "Post.findByNote", query = "SELECT p FROM Post p WHERE p.note = :note"),
-    @NamedQuery(name = "Post.findByImage", query = "SELECT p FROM Post p WHERE p.image = :image"),
     @NamedQuery(name = "Post.findByDateCreated", query = "SELECT p FROM Post p WHERE p.dateCreated = :dateCreated")})
 public class Post implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -48,10 +47,10 @@ public class Post implements Serializable {
     private String title;
     @Column(name = "post")
     private String post;
+    @Column(name="image_path")
+    private String imagePath;
     @Column(name = "note")
     private String note;
-    @Column(name="image")
-    private byte[] image;
     @ManyToOne
     @JoinColumn(name="created_by")
     private LoginInfo createdBy;
@@ -66,12 +65,12 @@ public class Post implements Serializable {
         this.postId = PostId;
     }
 
-    public Post(Long PostId, String title, String post, String note, byte[] image, LoginInfo createdBy, Date dateCreated) {
+    public Post(Long PostId, String title, String post,String imagePath, String note, LoginInfo createdBy, Date dateCreated) {
         this.postId = PostId;
         this.title = title;
         this.post = post;
         this.note = note;
-        this.image = image;
+        this.imagePath = imagePath;
         this.createdBy = createdBy;
         this.dateCreated = dateCreated;
     }
@@ -99,22 +98,21 @@ public class Post implements Serializable {
     public void setPost(String post) {
         this.post = post;
     }
-    
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    
     public String getNote() {
         return note;
     }
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 
     public LoginInfo getCreatedBy() {

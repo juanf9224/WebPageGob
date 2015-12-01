@@ -36,8 +36,9 @@ public class PostDAOImpl implements PostDAO {
             LoginInfo li = em.find(LoginInfo.class, login);
             post.setDateCreated(p.getDateCreated());
             post.setTitle(p.getTitle());
+            post.setPost(p.getPost());
+            post.setImagePath(p.getImagePath());
             post.setNote(p.getNote());
-            post.setImage(p.getImage());
             post.setCreatedBy(li);
             tx.begin();
             em.persist(post);
@@ -65,7 +66,7 @@ public class PostDAOImpl implements PostDAO {
 
     }
 
-    //Look up in the db for the required ticket...
+    //Look up in the db for the required Post...
     @Override
     public Post retreive(Post p) {
         em = emf.createEntityManager();
@@ -81,45 +82,46 @@ public class PostDAOImpl implements PostDAO {
         }
     }
 
-    //Update method for the tickets...
+    //Update method for the Posts...
     @Override
     public Post update(Post p) {
         em = emf.createEntityManager();
         tx = em.getTransaction();
         try {
-            Post ticket = em.find(Post.class, p.getPostId());
+            Post post = em.find(Post.class, p.getPostId());
             tx.begin();
-            ticket.setTitle(p.getTitle());
-            ticket.setPost(p.getPost());
-            ticket.setNote(p.getNote());
+            post.setTitle(p.getTitle());
+            post.setPost(p.getPost());
+            post.setImagePath(p.getImagePath());
+            post.setNote(p.getNote());
             tx.commit();
-            return ticket;
+            return post;
         } catch (Exception e) {
             e.toString();
             return null;
         }
     }
 
-    //delete method for the tickets...
+    //delete method for the Posts...
     @Override
     public Post delete(Post t) {
         em = emf.createEntityManager();
         tx = em.getTransaction();
         try {
-            Post ticket = em.find(Post.class, t.getPostId());
+            Post post = em.find(Post.class, t.getPostId());
             
             tx.begin();
-            em.remove(ticket);
+            em.remove(post);
             tx.commit();
 
-            return ticket;
+            return post;
         } catch (Exception e) {
             e.toString();
             return null;
         }
     }
 
-    //find all tickets in order to show the in a datatable on the view page...
+    //find all Posts in order to show them in a datatable on the view page...
     @Override
     public List<Post> findAll() {
         em = emf.createEntityManager();
@@ -140,7 +142,7 @@ public class PostDAOImpl implements PostDAO {
     }
 
     //Test method to get the max id of an entity instance...
-    private Long getMaxId(String select_maxtid_FROM_Ticket_t) {
+    private Long getMaxId(String select_maxtid_FROM_Post_p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
