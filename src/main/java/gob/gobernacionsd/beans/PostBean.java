@@ -17,9 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
@@ -29,7 +29,7 @@ import org.primefaces.event.RowEditEvent;
  * @author juanf_000
  */
 @Named
-@ViewScoped
+@ApplicationScoped
 public class PostBean implements Serializable {
 
     @Inject PostServiceBean tsb;
@@ -37,6 +37,7 @@ public class PostBean implements Serializable {
     private String title;
     private String post;
     private String note;
+    private byte[] image;
     private List<Post> posts;
     private List<Post> filteredPosts;
     private Post selectedPost; 
@@ -96,6 +97,14 @@ public class PostBean implements Serializable {
         this.note = note;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     public List<Post> getPosts() {
         return posts;
     }
@@ -124,16 +133,17 @@ public class PostBean implements Serializable {
     //Create Post...
     public String createPost(){
         try{
-        Post tick = new Post();
+        Post pst = new Post();
         LoginInfo li = new LoginInfo();
         
         li.setUsername(login.getUsername());
-        tick.setTitle(title);
-        tick.setPost(post);
-        tick.setNote(note);
-        tick.setCreatedBy(li);
-        tick.setDateCreated(new Date());
-        tsb.createTicket(tick);
+        pst.setTitle(title);
+        pst.setPost(post);
+        pst.setNote(note);
+        pst.setImage(image);
+        pst.setCreatedBy(li);
+        pst.setDateCreated(new Date());
+        tsb.createPost(pst);
         note = null;
         title = null;
         post = null;
@@ -156,7 +166,7 @@ public class PostBean implements Serializable {
         
         try{
         Post t =(Post) event.getObject();
-        tsb.updateTicket(t);
+        tsb.updatePost(t);
         
         FacesMessage msg = new FacesMessage("Ticket Edited", ((Post) event.getObject()).getPostId().toString());
         FacesContext.getCurrentInstance().addMessage(null, msg);

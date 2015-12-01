@@ -38,7 +38,7 @@
    <p:dataTable id="users" var="user" value="#{userBean.all}" editable="true" reflow="true" style="margin-bottom:20px; font-size: 13px" rows="10"
                 widgetVar="usersTable" emptyMessage="No users found with given criteria" filteredValue="#{userBean.filteredUsers}"
                 paginator="true" selectionMode="single" rowKey="#{user.userInfoId}"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
                          rowsPerPageTemplate="5,10,15">
        <f:facet name="header">
            Users
@@ -53,6 +53,29 @@
  
        <p:ajax event="rowEdit" listener="#{userBean.onRowEdit}" update=":form:msgs" />
        <p:ajax event="rowEditCancel" listener="#{userBean.onRowCancel}" update=":form:msgs" />
+        
+       <f:facet name="{Exporters}">
+           
+            <h:commandLink>
+                <p:graphicImage name="images/excel-icon.png" width="24"/>
+                <p:dataExporter type="xls" target="users" fileName="users" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="images/pdf-icon.png" width="24"/>
+                <p:dataExporter type="pdf" target="users" fileName="users"/>
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="images/csv-icon.ico" width="24"/>
+                <p:dataExporter type="csv" target="users" fileName="users" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="images/xml-icon.png" width="24"/>
+                <p:dataExporter type="xml" target="users" fileName="users" />
+            </h:commandLink>
+        </f:facet>
  
        <p:column headerText="User Id" filterBy="userId" filterMatchMode="contains">
            <p:cellEditor>

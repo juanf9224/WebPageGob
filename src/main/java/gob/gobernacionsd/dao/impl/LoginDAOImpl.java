@@ -15,7 +15,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -23,8 +22,7 @@ import org.primefaces.context.RequestContext;
  */
 public class LoginDAOImpl implements LoginDAO {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-   
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
     private EntityManager em;
 
     @Override

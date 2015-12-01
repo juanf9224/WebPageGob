@@ -12,8 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import gob.gobernacionsd.dao.PostDAO;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.transaction.Transactional;
 
 /**
  *
@@ -21,15 +21,15 @@ import javax.transaction.Transactional;
  */
 public class PostDAOImpl implements PostDAO {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
-
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
     private EntityManager em;
+    private EntityTransaction tx;
 
     //Create new ticket...
-    @Transactional
     @Override
     public Post create(Post p) {
         em = emf.createEntityManager();
+        tx = em.getTransaction();
         try {
             Post post = new Post();
             long login = findUser(p.getCreatedBy().getUsername());
@@ -37,8 +37,11 @@ public class PostDAOImpl implements PostDAO {
             post.setDateCreated(p.getDateCreated());
             post.setTitle(p.getTitle());
             post.setNote(p.getNote());
+            post.setImage(p.getImage());
             post.setCreatedBy(li);
+            tx.begin();
             em.persist(post);
+            tx.commit();
             return post;
         } catch (Exception e) {
             e.toString();
@@ -79,15 +82,17 @@ public class PostDAOImpl implements PostDAO {
     }
 
     //Update method for the tickets...
-    @Transactional
     @Override
     public Post update(Post p) {
         em = emf.createEntityManager();
+        tx = em.getTransaction();
         try {
             Post ticket = em.find(Post.class, p.getPostId());
+            tx.begin();
             ticket.setTitle(p.getTitle());
+            ticket.setPost(p.getPost());
             ticket.setNote(p.getNote());
-
+            tx.commit();
             return ticket;
         } catch (Exception e) {
             e.toString();
@@ -96,14 +101,16 @@ public class PostDAOImpl implements PostDAO {
     }
 
     //delete method for the tickets...
-    @Transactional
     @Override
     public Post delete(Post t) {
         em = emf.createEntityManager();
+        tx = em.getTransaction();
         try {
             Post ticket = em.find(Post.class, t.getPostId());
-
+            
+            tx.begin();
             em.remove(ticket);
+            tx.commit();
 
             return ticket;
         } catch (Exception e) {

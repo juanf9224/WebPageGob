@@ -32,7 +32,7 @@ public class PostServiceBean implements Serializable{
         this.tdi = tdi;
     }
     
-    public Post createTicket(Post t){
+    public Post createPost(Post t){
         return tdi.create(t);
     }
     
@@ -40,7 +40,7 @@ public class PostServiceBean implements Serializable{
         return tdi.findAll();
     }
     
-    public Post updateTicket(Post t){
+    public Post updatePost(Post t){
         return tdi.update(t);
     } 
     
