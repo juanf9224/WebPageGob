@@ -18,3 +18,10 @@
               factory="org.jboss.weld.resources.ManagerObjectFactory"/>
     
 </Context>
+
+<Context antiJARLocking="true" path="/JNDI">
+    <Resource name="jdbc/gobernacion_sd" auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="root" password="uY0W41e8F7" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://mysql42608-env-7232639.whelastic.net/gobernacion_sd"/>
+</Context>

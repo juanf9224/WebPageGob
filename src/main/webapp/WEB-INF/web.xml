@@ -39,4 +39,11 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    
+    <resource-ref>
+        <description>MySQL Datasource Jelastic</description>
+        <res-ref-name>jdbc/gobernacion_sd</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
 </web-app>

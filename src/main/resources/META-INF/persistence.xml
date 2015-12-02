@@ -2,14 +2,15 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <non-jta-data-source>jdbc/gobernacion_sd</non-jta-data-source>
     <class>gob.gobernacionsd.entities.UserInfo</class>
     <class>gob.gobernacionsd.entities.LoginInfo</class>
     <class>gob.gobernacionsd.entities.Department</class>
     <class>gob.gobernacionsd.entities.Post</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gobernacion_sd?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql42608-env-7232639.whelastic.net/gobernacion_sd"/>
+      <property name="javax.persistence.jdbc.password" value="uY0W41e8F7"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
     </properties>
