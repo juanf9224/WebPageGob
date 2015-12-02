@@ -28,9 +28,10 @@
         </div>
 
            
-        <form>         
+        <h:form>         
             <p:button styleClass="input" value="Volver al panel" outcome="admin-app-main"/>
-        </form>
+            <p:commandButton styleClass="input" value="cerrar sesion" action="#{loginBean.logout}" />
+        </h:form>
         
        <h:form id="form">
    <p:growl id="msgs" showDetail="true"/>

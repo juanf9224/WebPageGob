@@ -15,6 +15,11 @@
         <title>User creation form</title>
     </h:head>
     <h:body>
+        <h:form>         
+            <p:button styleClass="input" value="Volver al panel" outcome="admin-app-main"/>
+            <p:commandButton styleClass="input" value="cerrar sesion" action="#{loginBean.logout}" />
+        </h:form>
+
         <h:form>
 
             <p:growl id="growl" sticky="true" showDetail="true"/>
@@ -22,7 +27,6 @@
             <p:wizard  showStepStatus="true">
                 <p:tab id="personal" title="Personal">
                     <p:panel header="Personal Details">
-                        <p:messages showDetail="true" />
                         <p:tooltip showEffect="clip" hideEffect="explode" hideDelay="150" />
                         <h:panelGrid columns="2" columnClasses="label, value">
 
@@ -41,7 +45,6 @@
 
                 <p:tab id="login" title="Login information">
                     <p:panel header="Login Details">
-                        <p:messages showDetail="true" />
                         <h:panelGrid columns="2" columnClasses="label, value">
 
                             <h:outputText value="Email: " />
@@ -62,7 +65,6 @@
 
                 <p:tab id="department" title="Department">
                     <p:panel header="Department Information">
-                        <p:messages />
                         <h:panelGrid columns="2" columnClasses="label,value">
                             <h:outputText value="Department: " />
                             <p:selectOneMenu title="choose your department" value="#{userBean.department}" required="true" label="department"> 
@@ -112,10 +114,10 @@
                                 <h:outputText />
                             </h:panelGrid>
                         </h:panelGrid>
-                        <p:commandButton value="Submit" actionListener="#{userBean.createService}" update="growl" process="@this"/>
-                        
+                        <p:commandButton value="Submit" action="#{userBean.createService}" update="growl" process="@this"/>
+
                     </p:panel>
-                 
+
                 </p:tab>
             </p:wizard>
 

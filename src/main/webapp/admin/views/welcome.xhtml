@@ -21,26 +21,28 @@
             function reload() {
                 setTimeout("window.location.reload(1)", 5000);
             }
-</script>
+        </script>
         <title>Management</title>
     </h:head>
 
     <h:body>
         <div class="loader">
-            
-        </div>
 
-            <h:form>
-                <center><p:panel header="Management" style="background: url('../../resources/images/mochaGrunge.png');border: none;" collapsed="true" toggleable="true" >
-                        <p:dock position="top" itemWidth="80" maxWidth="150">
+        </div>
+        <h:form>         
+            <p:commandButton styleClass="input" value="cerrar sesion" action="#{loginBean.logout}" />
+        </h:form>
+        <h:form>
+            <center><p:panel header="Management" style="background: url('../../resources/images/mochaGrunge.png');border: none;" collapsed="true" toggleable="true" >
+                    <p:dock position="top" itemWidth="80" maxWidth="150">
                         <p:menuitem value="Create user"  icon="/resources/images/add_users.png" actionListener="#{userBean.viewCreateCustomized}" />
                         <p:menuitem value="View users" icon="/resources/images/add_users.png" url="../views/users-view.xhtml" />
                         <p:menuitem value="Create post" icon="/resources/images/add_users.png" url="../views/create-post-view.xhtml" />
                         <p:menuitem value="Create user" icon="/resources/images/add_users.png" url="#" />
-                            </p:dock>
+                    </p:dock>
                 </p:panel>
-                    </center>
-            </h:form>
+            </center>
+        </h:form>
 
     </h:body>
 

@@ -166,8 +166,10 @@ public class UserBean implements Serializable{
         ui.setLoginInfo1(li);  
         usb.create(ui);
         FacesMessage msg = new FacesMessage("Successful", "User with name:" + getName() + " successfully added.");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        return "null";
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, msg);
+        context.getExternalContext().getFlash().setKeepMessages(true);
+        return "create-user";
         }catch(Exception e){
             e.toString();
             FacesMessage msg = new FacesMessage("User could not be created");

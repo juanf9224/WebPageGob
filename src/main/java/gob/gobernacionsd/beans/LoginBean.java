@@ -104,7 +104,7 @@ public class LoginBean implements Serializable {
         if (session != null) {
             session.invalidate();
         }
-        return "login";
+        return "non-responsive-login";
         
     }
     

@@ -9,6 +9,11 @@
     </h:head>
     <h:body>
         <ui:composition>
+            <h:form>         
+                <p:button styleClass="input" value="Volver al panel" outcome="admin-app-main"/>
+                <p:commandButton styleClass="input" value="cerrar sesion" action="#{loginBean.logout}" />
+            </h:form>
+
             <h:form>
                 <p:growl id="msgs" showDetail="true"/>
                 <p:panel id="create-post-panel" header="Create a new post" toggleable="true">
@@ -17,16 +22,16 @@
                         <p:inputText id="title" title="Title of the post goes here." value="#{postBean.title}" required="true" requiredMessage="Title cannot be empty." size="100"/> 
 
                         <p:outputLabel for="image"  value="Upload image:"/>
-                        <p:fileUpload value="#{postBean.image}" mode="simple" skinSimple="true" id="image" required="true" requiredMessage="upload an image for the post"/>
-                        
+                        <p:fileUpload fileUploadListener="#{postBean.HandleFileUpload}" mode="advanced" skinSimple="true"  dragDropSupport="true" sizeLimit="1500000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" id="image" required="true" requiredMessage="upload an image for the post"/>
+
                         <p:outputLabel for="post"  value="Post:"/>
                         <p:editor id="post" height="600" width="600" widgetVar="postWidget" value="#{postBean.post}" required="true" requiredMessage="post cannot be empty" />
-                        <p:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-                        
+                        <p:commandButton value="Clear" type="button" onclick="PF('postWidget').clear();" icon="ui-icon-close" />
+
                         <p:outputLabel for="note"  value="Note:"/>
                         <p:inputTextarea id="note" title="Note about the post or something else."  value="#{postBean.note}" autoResize="true" cols="80"/> 
-                        
-                        <p:commandButton value="Submit" ajax="false" actionListener="#{postBean.createPost}" update="msgs" />
+
+                        <p:commandButton value="Submit" actionListener="#{postBean.createPost}" update="msgs" />
 
                     </p:panelGrid>
                 </p:panel>
