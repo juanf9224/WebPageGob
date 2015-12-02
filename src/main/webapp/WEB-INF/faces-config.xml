@@ -22,7 +22,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>login</from-outcome>
-            <to-view-id>/templates/forms/login-form.xhtml</to-view-id>
+            <to-view-id>/templates/forms/non-responsive-login-form.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>

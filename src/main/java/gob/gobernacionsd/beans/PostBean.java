@@ -17,10 +17,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import org.primefaces.context.RequestContext;
 import java.io.Serializable;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +34,8 @@ import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.UploadedFile;
+import java.nio.file.Path;
+import javax.faces.context.ExternalContext;
 
 /**
  *
@@ -68,7 +68,7 @@ public class PostBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        System.out.print("Lista de directorios: ****************************************************************************************************************"+Arrays.toString(File.listRoots()) +"*****************************************************************************************************");
+        System.out.print("Lista de directorios: ****************************************************************************************************************" + Arrays.toString(File.listRoots()) + "*****************************************************************************************************");
         this.tsb = new PostServiceBean(new PostDAOImpl());
         this.posts = tsb.findAll();
     }
@@ -156,20 +156,27 @@ public class PostBean implements Serializable {
 
     public void HandleFileUpload(FileUploadEvent event) throws FileNotFoundException, IOException {
         this.image = event.getFile();
-        try{
-        if (image != null) {
-            String imageName = FilenameUtils.getName(image.getFileName());
-            InputStream input = image.getInputstream();
-            OutputStream output = new FileOutputStream(new File("C:\\resources/images/news-files/" + formatDate.format(date) + "/", imageName));
-            try {
-                IOUtils.copy(input, output);
-            } finally {
-                IOUtils.closeQuietly(input);
-                IOUtils.closeQuietly(output);
+        try {
+            if (image != null) {
+                ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();;
+                String directory = externalContext.getInitParameter("uploadDirectory") + "/uploads/news-files/" + formatDate.format(date) + "/";
+                String imageName = FilenameUtils.getName(image.getFileName());
+                InputStream input = image.getInputstream();
+                OutputStream output = new FileOutputStream(new File(directory, imageName));
+                try {
+                    IOUtils.copy(input, output);
+                } finally {
+                    IOUtils.closeQuietly(input);
+                    IOUtils.closeQuietly(output);
+                }
+
+                FacesMessage msg = new FacesMessage("Post created");
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, msg);
+
+                imagePath = externalContext.getInitParameter("uploadDirectory") + "/uploads/news-files/" + formatDate.format(date) + "/" + imageName;
             }
-            imagePath = "C:\\resources/images/news-files/" + formatDate.format(date) + "/" + imageName;
-        }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.toString();
         }
     }
@@ -194,7 +201,9 @@ public class PostBean implements Serializable {
             post = "";
             imagePath = "";
             FacesMessage msg = new FacesMessage("Post created");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, msg);
+            context.getExternalContext().getFlash().setKeepMessages(true);
             return "create-post";
         } catch (Exception e) {
             e.toString();
