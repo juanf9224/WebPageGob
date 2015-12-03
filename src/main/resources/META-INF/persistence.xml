@@ -2,7 +2,8 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="gobernacion_sd_unit" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:/comp/env/jdbc/localgobmysql</jta-data-source>
+    <jta-data-source>jdbc/localdbgobpcgob</jta-data-source>
+    <!-- <jta-data-source>jdbc/localdbgob</jta-data-source> -->
     <class>gob.gobernacionsd.entities.UserInfo</class>
     <class>gob.gobernacionsd.entities.LoginInfo</class>
     <class>gob.gobernacionsd.entities.Department</class>
