@@ -5,6 +5,22 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
+        <link href="#{request.contextPath}/resources/css/simple.css" media="screen" rel="stylesheet" type="text/css"/>
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $(".loader").fadeOut("slow");
+            });
+
+            function reload() {
+                setTimeout("window.location.reload(1)", 5000);
+            }
+        </script>
         <title>Post Creation Form</title>
     </h:head>
     <h:body>
@@ -15,16 +31,16 @@
 
             <h:form>
                 <p:growl id="msgs" showDetail="true"/>
-                <p:panel id="create-post-panel" header="Create a new post" toggleable="true">
-                    <p:panelGrid columns="1" layout="grid" style="width: 100%;">
+                <p:panel id="create-post-panel" header="Create a new post" toggleable="true" collapsed="true" style="background: url('../../resources/images/mochaGrunge.png');border: none;">
+                    <center><p:panelGrid columns="1" layout="grid" style="width: 100%;background: url('../../resources/images/mochaGrunge.png');border: none;">
                         <p:outputLabel for="title"  value="Title:"/>
                         <p:inputText id="title" title="Title of the post goes here." value="#{postBean.title}" required="true" requiredMessage="Title cannot be empty." size="100"/> 
 
                         <p:outputLabel for="image"  value="Upload image:"/>
-                        <p:fileUpload fileUploadListener="#{postBean.HandleFileUpload}" mode="advanced" skinSimple="true"  dragDropSupport="true" sizeLimit="1500000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" id="image" required="true" requiredMessage="upload an image for the post"/>
+                        <p:fileUpload fileUploadListener="#{postBean.HandleFileUpload}" mode="advanced" skinSimple="true"  dragDropSupport="true" sizeLimit="1500000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" id="image" required="true" requiredMessage="upload an image for the post" update="msgs"/>
 
                         <p:outputLabel for="post"  value="Post:"/>
-                        <p:editor id="post" height="600" width="600" widgetVar="postWidget" value="#{postBean.post}" required="true" requiredMessage="post cannot be empty" />
+                        <p:editor disabled="false" id="post" height="600" width="600" widgetVar="postWidget" value="#{postBean.post}" required="true" requiredMessage="post cannot be empty" />
                         <p:commandButton value="Clear" type="button" onclick="PF('postWidget').clear();" icon="ui-icon-close" />
 
                         <p:outputLabel for="note"  value="Note:"/>
@@ -32,8 +48,9 @@
 
                         <p:commandButton value="Submit" actionListener="#{postBean.createPost}" update="msgs" />
 
-                    </p:panelGrid>
+                        </p:panelGrid></center>
                 </p:panel>
+                
             </h:form>
     </h:body>
 </html>

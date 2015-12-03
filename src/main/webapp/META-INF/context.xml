@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/GobernacionStoDgo">
-    
-    <Resource auth="Container" 
-              driverClassName="com.mysql.jdbc.Driver" 
-              maxActive="20" 
-              maxIdle="10" 
-              maxWait="-1" 
-              name="gobernacion_sd" 
-              password="" 
-              type="javax.sql.DataSource" 
-              url="jdbc:mysql://localhost:3306/gobernacion_sd?zeroDateTimeBehavior=convertToNull" 
-              username="root"/>
-    
-    <Resource name="BeanManager" 
-              auth="Container"
-              type="javax.enterprise.inject.spi.BeanManager"
-              factory="org.jboss.weld.resources.ManagerObjectFactory"/>
-    
+  <Resource auth="Container" 
+            factory="org.jboss.weld.resources.ManagerObjectFactory" 
+            name="BeanManager" 
+            type="javax.enterprise.inject.spi.BeanManager"/>
 </Context>
-
-

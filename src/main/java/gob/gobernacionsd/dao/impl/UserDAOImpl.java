@@ -23,7 +23,7 @@ import javax.persistence.TypedQuery;
  */
 public class UserDAOImpl implements UserDAO {
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gob_GobernacionStoDgo_war_1.0-SNAPSHOTPU");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
     private EntityManager em;
     private EntityTransaction tx;
 

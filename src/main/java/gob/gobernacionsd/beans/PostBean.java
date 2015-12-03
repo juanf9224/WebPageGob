@@ -53,8 +53,6 @@ public class PostBean implements Serializable {
     private String post;
     private String note;
     private UploadedFile image;
-    private Date date = new Date();
-    private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
     private String imagePath;
     private List<Post> posts;
     private List<Post> filteredPosts;
@@ -68,7 +66,6 @@ public class PostBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        System.out.print("Lista de directorios: ****************************************************************************************************************" + Arrays.toString(File.listRoots()) + "*****************************************************************************************************");
         this.tsb = new PostServiceBean(new PostDAOImpl());
         this.posts = tsb.findAll();
     }
@@ -158,8 +155,8 @@ public class PostBean implements Serializable {
         this.image = event.getFile();
         try {
             if (image != null) {
-                ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();;
-                String directory = externalContext.getInitParameter("uploadDirectory") + "/uploads/news-files/" + formatDate.format(date) + "/";
+                ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+                String directory = externalContext.getInitParameter("uploadDirectory");
                 String imageName = FilenameUtils.getName(image.getFileName());
                 InputStream input = image.getInputstream();
                 OutputStream output = new FileOutputStream(new File(directory, imageName));
@@ -170,11 +167,11 @@ public class PostBean implements Serializable {
                     IOUtils.closeQuietly(output);
                 }
 
-                FacesMessage msg = new FacesMessage("Post created");
+                FacesMessage msg = new FacesMessage("Imagen cargada");
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, msg);
 
-                imagePath = externalContext.getInitParameter("uploadDirectory") + "/uploads/news-files/" + formatDate.format(date) + "/" + imageName;
+                imagePath = externalContext.getInitParameter("uploadDirectory")+ imageName;
             }
         } catch (Exception e) {
             e.toString();
@@ -254,7 +251,7 @@ public class PostBean implements Serializable {
 
     //Dialog to create a new Post...
     public void viewTicketCustomized() {
-        Map<String, Object> options = new HashMap<String, Object>();
+        Map<String, Object> options = new HashMap<>();
         options.put("modal", true);
         options.put("draggable", false);
         options.put("resizable", false);
