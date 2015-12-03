@@ -14,6 +14,7 @@ import gob.gobernacionsd.dao.PostDAO;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Transient;
 
 /**
  *
@@ -21,11 +22,15 @@ import javax.persistence.Persistence;
  */
 public class PostDAOImpl implements PostDAO {
 
+    @Transient
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
+    @Transient
     private EntityManager em;
+    @Transient
     private EntityTransaction tx;
 
     //Create new ticket...
+    @Transient
     @Override
     public Post create(Post p) {
         em = emf.createEntityManager();
@@ -52,6 +57,7 @@ public class PostDAOImpl implements PostDAO {
     }
 
     // find username in the db that match the received username from create method and get its corresponding id...
+    @Transient
     @Override
     public long findUser(String username) {
         em = emf.createEntityManager();
@@ -67,6 +73,7 @@ public class PostDAOImpl implements PostDAO {
     }
 
     //Look up in the db for the required Post...
+    @Transient
     @Override
     public Post retreive(Post p) {
         em = emf.createEntityManager();
@@ -81,8 +88,10 @@ public class PostDAOImpl implements PostDAO {
             return null;
         }
     }
+    
 
     //Update method for the Posts...
+    @Transient
     @Override
     public Post update(Post p) {
         em = emf.createEntityManager();
@@ -102,6 +111,7 @@ public class PostDAOImpl implements PostDAO {
         }
     }
 
+    @Transient
     //delete method for the Posts...
     @Override
     public Post delete(Post t) {
@@ -121,6 +131,7 @@ public class PostDAOImpl implements PostDAO {
         }
     }
 
+    @Transient
     //find all Posts in order to show them in a datatable on the view page...
     @Override
     public List<Post> findAll() {
@@ -141,6 +152,7 @@ public class PostDAOImpl implements PostDAO {
 
     }
 
+    @Transient
     //Test method to get the max id of an entity instance...
     private Long getMaxId(String select_maxtid_FROM_Post_p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

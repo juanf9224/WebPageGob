@@ -15,22 +15,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.Transient;
 
 /**
  *
  * @author juanf_000
  */
-public class LoginDAOImpl implements LoginDAO {
 
+public class LoginDAOImpl implements LoginDAO {
+    @Transient
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
+    @Transient
     private EntityManager em;
 
+    @Transient
     @Override
     public LoginInfo create(LoginInfo t) {
 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Transient
     @Override
     public LoginInfo retreive(LoginInfo t) {
         try {
@@ -46,6 +51,7 @@ public class LoginDAOImpl implements LoginDAO {
         }
     }
 
+    @Transient
     public String validateUser(LoginInfo li, String username, String pwd) {
         FacesContext context = FacesContext.getCurrentInstance();
         LoginInfo login = retreive(li);
@@ -82,16 +88,19 @@ public class LoginDAOImpl implements LoginDAO {
         }
     }
     
+    @Transient
     @Override
     public LoginInfo update(LoginInfo t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Transient
     @Override
     public LoginInfo delete(LoginInfo t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Transient
     @Override
     public List<LoginInfo> findAll() {
 

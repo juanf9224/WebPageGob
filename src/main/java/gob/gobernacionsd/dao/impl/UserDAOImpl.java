@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Transient;
 import javax.persistence.TypedQuery;
 
 /**
@@ -23,10 +24,14 @@ import javax.persistence.TypedQuery;
  */
 public class UserDAOImpl implements UserDAO {
 
+    @Transient
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
+    @Transient
     private EntityManager em;
+    @Transient
     private EntityTransaction tx;
 
+    @Transient
     @Override
     public UserInfo create(UserInfo t) {
         em = emf.createEntityManager();
@@ -54,6 +59,7 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    @Transient
     public long findDept(String department) {
         em = emf.createEntityManager();
         try {
@@ -67,12 +73,15 @@ public class UserDAOImpl implements UserDAO {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     }
+    
 
+    @Transient
     @Override
     public UserInfo retreive(UserInfo t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Transient
     @Override
     public UserInfo update(UserInfo t) {
         em = emf.createEntityManager();
@@ -99,6 +108,7 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    @Transient
     @Override
     public UserInfo delete(UserInfo t) {
         em = emf.createEntityManager();
@@ -116,6 +126,7 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    @Transient
     @Override
     public List<UserInfo> findAll() {
         em = emf.createEntityManager();
@@ -130,6 +141,7 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    @Transient
     @Override
     public List<Department> findDepartment() {
         em = emf.createEntityManager();
