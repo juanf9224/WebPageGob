@@ -17,8 +17,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import org.primefaces.context.RequestContext;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +32,6 @@ import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.UploadedFile;
-import java.nio.file.Path;
 import javax.faces.context.ExternalContext;
 
 /**
@@ -217,7 +214,7 @@ public class PostBean implements Serializable {
             Post t = (Post) event.getObject();
             tsb.updatePost(t);
 
-            FacesMessage msg = new FacesMessage("Ticket Edited", ((Post) event.getObject()).getPostId().toString());
+            FacesMessage msg = new FacesMessage("Post Edited", ((Post) event.getObject()).getPostId().toString());
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
             e.toString();

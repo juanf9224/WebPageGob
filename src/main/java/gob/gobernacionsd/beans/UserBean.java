@@ -35,7 +35,7 @@ public class UserBean implements Serializable{
 
     private String name;
     private String lastName;
-    private Integer age;
+    private int age;
     private String email;
     private String department;
     private String username;
@@ -101,11 +101,11 @@ public class UserBean implements Serializable{
         this.lastName = lastName;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

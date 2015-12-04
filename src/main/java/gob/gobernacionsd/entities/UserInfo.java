@@ -66,11 +66,8 @@ public class UserInfo implements Serializable {
     @Column(name = "last_name")
     private String lastName;
     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
     @Column(name = "age")
-    private Integer age;
+    private int age;
 
     @Basic(optional = false)
     @NotNull
@@ -140,11 +137,11 @@ public class UserInfo implements Serializable {
         this.lastName = lastName;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
     

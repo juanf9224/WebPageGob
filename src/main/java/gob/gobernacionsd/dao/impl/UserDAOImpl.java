@@ -50,6 +50,7 @@ public class UserDAOImpl implements UserDAO {
 
             tx.begin();
             em.persist(ui);
+            em.flush();
             tx.commit();
             return ui;
         } catch (Exception e) {
@@ -99,6 +100,7 @@ public class UserDAOImpl implements UserDAO {
             ui.setName(t.getName());
             ui.setLoginInfo1(li);
             ui.setDepartmentID(d);
+            em.flush();
             tx.commit();
             return ui;
 
@@ -117,6 +119,7 @@ public class UserDAOImpl implements UserDAO {
             UserInfo u = em.find(UserInfo.class, t.getUserInfoId());
             tx.begin();
             em.remove(u);
+            em.flush();
             tx.commit();
 
             return u;

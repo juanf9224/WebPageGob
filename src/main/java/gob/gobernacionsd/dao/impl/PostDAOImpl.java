@@ -47,6 +47,7 @@ public class PostDAOImpl implements PostDAO {
             post.setCreatedBy(li);
             tx.begin();
             em.persist(post);
+            em.flush();
             tx.commit();
             return post;
         } catch (Exception e) {
@@ -103,6 +104,7 @@ public class PostDAOImpl implements PostDAO {
             post.setPost(p.getPost());
             post.setImagePath(p.getImagePath());
             post.setNote(p.getNote());
+            em.flush();
             tx.commit();
             return post;
         } catch (Exception e) {
@@ -122,6 +124,7 @@ public class PostDAOImpl implements PostDAO {
             
             tx.begin();
             em.remove(post);
+            em.flush();
             tx.commit();
 
             return post;
