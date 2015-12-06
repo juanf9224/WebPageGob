@@ -22,19 +22,16 @@ import javax.persistence.Transient;
  */
 public class PostDAOImpl implements PostDAO {
 
-    @Transient
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
-    @Transient
-    private EntityManager em;
-    @Transient
-    private EntityTransaction tx;
+    private EntityManager em = emf.createEntityManager();
+    private EntityTransaction tx = em.getTransaction();
 
     //Create new ticket...
     @Transient
     @Override
     public Post create(Post p) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
+        
+        
         try {
             Post post = new Post();
             long login = findUser(p.getCreatedBy().getUsername());
@@ -61,7 +58,6 @@ public class PostDAOImpl implements PostDAO {
     @Transient
     @Override
     public long findUser(String username) {
-        em = emf.createEntityManager();
         try {
             long id = (long) em.createNamedQuery("LoginInfo.findByUsername").setParameter("username", username).getSingleResult();
 
@@ -74,10 +70,8 @@ public class PostDAOImpl implements PostDAO {
     }
 
     //Look up in the db for the required Post...
-    @Transient
     @Override
     public Post retreive(Post p) {
-        em = emf.createEntityManager();
         try {
 
             Post pst = em.find(Post.class, p.getPostId());
@@ -92,11 +86,8 @@ public class PostDAOImpl implements PostDAO {
     
 
     //Update method for the Posts...
-    @Transient
     @Override
     public Post update(Post p) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
             Post post = em.find(Post.class, p.getPostId());
             tx.begin();
@@ -104,7 +95,6 @@ public class PostDAOImpl implements PostDAO {
             post.setPost(p.getPost());
             post.setImagePath(p.getImagePath());
             post.setNote(p.getNote());
-            em.flush();
             tx.commit();
             return post;
         } catch (Exception e) {
@@ -113,12 +103,9 @@ public class PostDAOImpl implements PostDAO {
         }
     }
 
-    @Transient
     //delete method for the Posts...
     @Override
     public Post delete(Post t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
             Post post = em.find(Post.class, t.getPostId());
             
@@ -134,11 +121,9 @@ public class PostDAOImpl implements PostDAO {
         }
     }
 
-    @Transient
     //find all Posts in order to show them in a datatable on the view page...
     @Override
     public List<Post> findAll() {
-        em = emf.createEntityManager();
         List<Post> all = null;
         try {
 
@@ -155,7 +140,6 @@ public class PostDAOImpl implements PostDAO {
 
     }
 
-    @Transient
     //Test method to get the max id of an entity instance...
     private Long getMaxId(String select_maxtid_FROM_Post_p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

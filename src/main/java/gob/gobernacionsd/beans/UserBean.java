@@ -24,14 +24,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
 
-
 /**
  *
  * @author juanf_000
  */
 @Named
 @ViewScoped
-public class UserBean implements Serializable{
+public class UserBean implements Serializable {
 
     private String name;
     private String lastName;
@@ -43,21 +42,19 @@ public class UserBean implements Serializable{
     private List<Department> departmentList;
     private List<UserInfo> all;
     private List<UserInfo> filteredUsers;
-    @Inject UserServiceBean usb;
-    
-    
-    
+    @Inject
+    UserServiceBean usb;
+
     /**
      * Creates a new instance of UserBean
      */
-    
     @PostConstruct
-    public void init(){
+    public void init() {
         this.usb = new UserServiceBean(new UserDAOImpl());
         this.departmentList = usb.findDept();
         this.all = usb.findAll();
     }
-    
+
     public UserBean() {
     }
 
@@ -148,73 +145,59 @@ public class UserBean implements Serializable{
     public void setFilteredUsers(List<UserInfo> filteredUsers) {
         this.filteredUsers = filteredUsers;
     }
-    
-    public String createService(){
-        try{
-        UserInfo ui = new UserInfo();
-        LoginInfo li = new LoginInfo();
-        Department dept = new Department();
-        
-        li.setUsername(username);
-        li.setPwd(pwd);
-        li.setEmail(email);
-        dept.setDepartment(department);
-        ui.setDepartmentID(dept);
-        ui.setName(name);
-        ui.setLastName(lastName);
-        ui.setAge(age);
-        ui.setLoginInfo1(li);  
-        usb.create(ui);
-        FacesMessage msg = new FacesMessage("Successful", "User with name:" + getName() + " successfully added.");
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, msg);
-        context.getExternalContext().getFlash().setKeepMessages(true);
-        return "create-user";
-        }catch(Exception e){
+
+    public String createService() {
+        try {
+            UserInfo ui = new UserInfo();
+            LoginInfo li = new LoginInfo();
+            Department dept = new Department();
+
+            li.setUsername(username);
+            li.setPwd(pwd);
+            li.setEmail(email);
+            dept.setDepartment(department);
+            ui.setDepartmentID(dept);
+            ui.setName(name);
+            ui.setLastName(lastName);
+            ui.setAge(age);
+            ui.setLoginInfo1(li);
+            usb.create(ui);
+            FacesMessage msg = new FacesMessage("Successful", "User with name:" + getName() + " successfully added.");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, msg);
+            context.getExternalContext().getFlash().setKeepMessages(true);
+            return "create-user";
+        } catch (Exception e) {
             e.toString();
             FacesMessage msg = new FacesMessage("User could not be created");
             FacesContext.getCurrentInstance().addMessage(null, msg);
             return null;
         }
     }
-    
+
     //Update user...
     public void onRowEdit(RowEditEvent event) {
-        
-        try{
-        UserInfo u =(UserInfo) event.getObject();
-        LoginInfo li = new LoginInfo();
-        Department d = new Department();
-        
-        li.setLoginInfoId(u.getLoginInfo1().getLoginInfoId());
-        li.setEmail(email);
-        li.setUsername(username);        
-        li.setPwd(pwd);
-        d.setDepartmentId(u.getDepartmentID().getDepartmentId());
-        d.setDepartment(department);
-        u.setName(name);
-        u.setLastName(lastName);
-        u.setAge(age);
-        u.setLoginInfo1(li);
-        u.setDepartmentID(d);
-        usb.update(u);
-        
-        FacesMessage msg = new FacesMessage("User edited successfully", ((UserInfo) event.getObject()).getName());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-        }catch(Exception e){
+
+        try {
+            UserInfo u = (UserInfo) event.getObject();
+            usb.update(u);
+
+            FacesMessage msg = new FacesMessage("User edited successfully", ((UserInfo) event.getObject()).getName());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
             e.toString();
         }
     }
-     
+
     //Cancel update on user...
     public void onRowCancel(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("User edit Cancelled", ((UserInfo) event.getObject()).getName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
-    public String remove(long id){
-        try{
-            
+
+    public String remove(long id) {
+        try {
+
             UserInfo u = new UserInfo();
             u.setUserInfoId(id);
             usb.delete(u);
@@ -222,15 +205,15 @@ public class UserBean implements Serializable{
             FacesContext.getCurrentInstance().addMessage(null, msg);
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getFlash().setKeepMessages(true);
-            return "users-view.xhtml?faces-redirect=true";
-        }catch(Exception e){
+            return "users-view";
+        } catch (Exception e) {
             e.toString();
             return null;
         }
     }
 
     public void viewCreateCustomized() {
-        Map<String,Object> options = new HashMap<>();
+        Map<String, Object> options = new HashMap<>();
         options.put("modal", true);
         options.put("draggable", false);
         options.put("resizable", false);
@@ -239,6 +222,5 @@ public class UserBean implements Serializable{
 
         RequestContext.getCurrentInstance().openDialog("create-user", options, null);
     }
-    
-    
+
 }

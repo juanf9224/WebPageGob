@@ -10,19 +10,17 @@ import gob.gobernacionsd.entities.LoginInfo;
 import gob.gobernacionsd.entities.Post;
 import gob.gobernacionsd.servicebeans.PostServiceBean;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import org.primefaces.context.RequestContext;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -33,13 +31,14 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.UploadedFile;
 import javax.faces.context.ExternalContext;
+import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author juanf_000
  */
 @Named
-@ApplicationScoped
+@ViewScoped
 public class PostBean implements Serializable {
 
     @Inject
@@ -147,6 +146,8 @@ public class PostBean implements Serializable {
     public void setSelectedPost(Post selectedPost) {
         this.selectedPost = selectedPost;
     }
+    
+    
 
     public void HandleFileUpload(FileUploadEvent event) throws FileNotFoundException, IOException {
         this.image = event.getFile();
@@ -168,7 +169,7 @@ public class PostBean implements Serializable {
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, msg);
 
-                imagePath = externalContext.getInitParameter("uploadDirectory")+ imageName;
+                imagePath = imageName;
             }
         } catch (Exception e) {
             e.toString();
@@ -211,8 +212,8 @@ public class PostBean implements Serializable {
     public void onRowEdit(RowEditEvent event) {
 
         try {
-            Post t = (Post) event.getObject();
-            tsb.updatePost(t);
+            Post p = (Post) event.getObject();
+            tsb.updatePost(p);
 
             FacesMessage msg = new FacesMessage("Post Edited", ((Post) event.getObject()).getPostId().toString());
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -239,21 +240,10 @@ public class PostBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, msg);
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getFlash().setKeepMessages(true);
-            return "welcome.xhtml?faces-redirect=true";
+            return "post-management-view";
         } catch (Exception e) {
             e.toString();
             return null;
         }
-    }
-
-    //Dialog to create a new Post...
-    public void viewTicketCustomized() {
-        Map<String, Object> options = new HashMap<>();
-        options.put("modal", true);
-        options.put("draggable", false);
-        options.put("resizable", false);
-        options.put("contentHeight", 320);
-
-        RequestContext.getCurrentInstance().openDialog("createPost", options, null);
     }
 }

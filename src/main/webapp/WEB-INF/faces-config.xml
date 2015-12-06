@@ -16,13 +16,8 @@
 
     <navigation-rule>
         <navigation-case>
-            <from-outcome>non-responsive-login</from-outcome>
-            <to-view-id>/templates/forms/non-responsive-login-form.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>login</from-outcome>
-            <to-view-id>/templates/forms/non-responsive-login-form.xhtml</to-view-id>
+            <from-outcome>login-form</from-outcome>
+            <to-view-id>/templates/forms/login-form.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
@@ -38,6 +33,16 @@
         <navigation-case>
             <from-outcome>admin-app-main</from-outcome>
             <to-view-id>/admin/views/welcome.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>post-management-view</from-outcome>
+            <to-view-id>/admin/views/post-management-view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>users-view</from-outcome>
+            <to-view-id>/admin/views/users-view.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>

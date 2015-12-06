@@ -23,10 +23,8 @@ import javax.persistence.Transient;
  */
 
 public class LoginDAOImpl implements LoginDAO {
-    @Transient
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
-    @Transient
-    private EntityManager em;
+    private EntityManager em = emf.createEntityManager();
 
     @Transient
     @Override
@@ -39,7 +37,7 @@ public class LoginDAOImpl implements LoginDAO {
     @Override
     public LoginInfo retreive(LoginInfo t) {
         try {
-            em = emf.createEntityManager();
+            
 
              LoginInfo login = em.createNamedQuery("LoginInfo.findByUsernamePwdEmail", LoginInfo.class).setParameter("username", t.getUsername()).setParameter("pwd", t.getPwd()).getSingleResult();
 

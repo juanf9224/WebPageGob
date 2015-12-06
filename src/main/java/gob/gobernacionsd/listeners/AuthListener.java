@@ -24,7 +24,7 @@ import javax.inject.Inject;
 public class AuthListener implements PhaseListener {
 
     
-    private static final String USER_LOGIN_OUTCOME = "non-responsive-login";
+    private static final String USER_LOGIN_OUTCOME = "login-form";
     @Inject LoginBean login;
     
     @Override
@@ -89,7 +89,7 @@ public class AuthListener implements PhaseListener {
     private boolean requestingSecureView(FacesContext context) {
         ExternalContext extContext = context.getExternalContext();       
         String path = extContext.getRequestPathInfo();
-        return (!"/index.xhtml".equals(path) && !"/templates/forms/non-responsive-login-form.xhtml".equals(path) && !"/templates/forms/login-form.xhtml".equals(path));              
+        return (!"/index.xhtml".equals(path) && !"/templates/forms/login-form.xhtml".equals(path));              
     }
     
     

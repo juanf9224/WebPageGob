@@ -15,7 +15,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Transient;
 import javax.persistence.TypedQuery;
 
 /**
@@ -24,18 +23,13 @@ import javax.persistence.TypedQuery;
  */
 public class UserDAOImpl implements UserDAO {
 
-    @Transient
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
-    @Transient
-    private EntityManager em;
-    @Transient
-    private EntityTransaction tx;
+    private EntityManager em = emf.createEntityManager();
+    private EntityTransaction tx = em.getTransaction();
 
-    @Transient
     @Override
     public UserInfo create(UserInfo t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
+        
         try {
 
             UserInfo ui = new UserInfo();
@@ -60,9 +54,7 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
-    @Transient
     public long findDept(String department) {
-        em = emf.createEntityManager();
         try {
 
             long id = (long) em.createNamedQuery("Department.findByDepartment").setParameter("department", department).getSingleResult();
@@ -76,31 +68,20 @@ public class UserDAOImpl implements UserDAO {
     }
     
 
-    @Transient
     @Override
     public UserInfo retreive(UserInfo t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Transient
     @Override
-    public UserInfo update(UserInfo t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
+    public UserInfo update(UserInfo p) {
         try {
-
-            LoginInfo li = em.find(LoginInfo.class, t.getLoginInfo1().getLoginInfoId());
-            li.setUsername(t.getLoginInfo1().getUsername());
-            li.setPwd(t.getLoginInfo1().getPwd());
-            Department d = em.find(Department.class, t.getDepartmentID().getDepartmentId());
-            d.setDepartment(t.getDepartmentID().getDepartment());
-            UserInfo ui = em.find(UserInfo.class, li);
+            UserInfo ui = em.find(UserInfo.class, p.getUserInfoId());
             tx.begin();
-            ui.setAge(t.getAge());
-            ui.setName(t.getName());
-            ui.setLoginInfo1(li);
-            ui.setDepartmentID(d);
-            em.flush();
+            ui.setAge(p.getAge());
+            ui.setName(p.getName());
+            ui.setLoginInfo1(p.getLoginInfo1());
+            ui.setDepartmentID(p.getDepartmentID());
             tx.commit();
             return ui;
 
@@ -110,11 +91,8 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    @Transient
     @Override
     public UserInfo delete(UserInfo t) {
-        em = emf.createEntityManager();
-        tx = em.getTransaction();
         try {
             UserInfo u = em.find(UserInfo.class, t.getUserInfoId());
             tx.begin();
@@ -129,10 +107,8 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    @Transient
     @Override
     public List<UserInfo> findAll() {
-        em = emf.createEntityManager();
         try {
             List<UserInfo> all = null;
             TypedQuery<UserInfo> tq = em.createNamedQuery("UserInfo.findAll", UserInfo.class);
@@ -144,10 +120,8 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    @Transient
     @Override
     public List<Department> findDepartment() {
-        em = emf.createEntityManager();
         try {
             List<Department> findDept = null;
 

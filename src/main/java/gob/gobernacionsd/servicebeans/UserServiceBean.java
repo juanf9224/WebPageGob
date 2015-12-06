@@ -47,7 +47,7 @@ public class UserServiceBean implements Serializable{
     }
     
     public UserInfo update(UserInfo u){
-        return udi.update(null);
+        return udi.update(u);
     }
     
     public UserInfo delete(UserInfo u){

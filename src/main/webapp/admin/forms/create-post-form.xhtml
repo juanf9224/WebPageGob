@@ -37,7 +37,7 @@
                         <p:inputText id="title" title="Title of the post goes here." value="#{postBean.title}" required="true" requiredMessage="Title cannot be empty." size="100"/> 
 
                         <p:outputLabel for="image"  value="Upload image:"/>
-                        <p:fileUpload fileUploadListener="#{postBean.HandleFileUpload}" mode="advanced" skinSimple="true"  dragDropSupport="true" sizeLimit="1500000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" id="image" required="true" requiredMessage="upload an image for the post" update="msgs"/>
+                        <p:fileUpload fileUploadListener="#{postBean.HandleFileUpload}" mode="advanced" skinSimple="true"  dragDropSupport="true" sizeLimit="15000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" id="image" required="true" requiredMessage="upload an image for the post" update="msgs"/>
 
                         <p:outputLabel for="post"  value="Post:"/>
                         <p:editor disabled="false" id="post" height="600" width="600" widgetVar="postWidget" value="#{postBean.post}" required="true" requiredMessage="post cannot be empty" />
@@ -46,7 +46,7 @@
                         <p:outputLabel for="note"  value="Note:"/>
                         <p:inputTextarea id="note" title="Note about the post or something else."  value="#{postBean.note}" autoResize="true" cols="80"/> 
 
-                        <p:commandButton value="Submit" actionListener="#{postBean.createPost}" update="msgs" />
+                        <p:commandButton value="Submit" action="#{postBean.createPost}" update="msgs" />
 
                         </p:panelGrid></center>
                 </p:panel>

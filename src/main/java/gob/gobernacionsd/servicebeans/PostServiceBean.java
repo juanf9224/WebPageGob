@@ -32,21 +32,21 @@ public class PostServiceBean implements Serializable{
         this.tdi = tdi;
     }
     
-    public Post createPost(Post t){
-        return tdi.create(t);
+    public Post createPost(Post p){
+        return tdi.create(p);
     }
     
     public List<Post> findAll(){
         return tdi.findAll();
     }
     
-    public Post updatePost(Post t){
-        return tdi.update(t);
+    public Post updatePost(Post p){
+        return tdi.update(p);
     } 
     
-    public Post remove(Post t){
+    public Post remove(Post p){
         
-        return tdi.delete(t);
+        return tdi.delete(p);
         
     } 
     
