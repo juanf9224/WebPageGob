@@ -35,6 +35,10 @@
             <ui:insert name="header">
                 <ui:include src="templates/head/general-header.xhtml" />
             </ui:insert>
+            <p:galleria value="#{postBean.posts}" var="image" panelWidth="1000" panelHeight="400" showCaption="true" effectSpeed="1000" effect="explode">
+                <p:graphicImage value="/images/#{image.imagePath}" alt="imagen del post" title="#{image.title}" width="1000px" height="400"/>
+            </p:galleria>
+            <br/>
             <div id="left">
                 <ui:insert name="posts">
                     <ui:include src="templates/views/posts-view.xhtml"/>

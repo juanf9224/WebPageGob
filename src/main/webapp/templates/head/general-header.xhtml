@@ -13,32 +13,33 @@
     <h:body>
         <ui:composition>
             <div id="top" class="top">
-                <p:graphicImage name="images/header/banner-gobernacionsd.jpg" alt="logo-gobernacionsd" width="100%" height="300px"/>
-
+                <div id="header-logo">
+                    <p:commandLink action="app-main"> <p:graphicImage name="images/header/logo-gobernacionsd-small.jpg" alt="logo-gobernacionsd" height="100%"/></p:commandLink>
+                </div>
 
                 <ul class="nav nav-pills">
-                    <li role="presentation" class="active"><a href="index.xhtml">Home</a></li>
-                    <li role="presentation"><a href="views/noticias.xhtml">Noticias</a></li>
-                    <li role="presentation"><a href="views/sobre-notosotros.xhtml">Sobre nosotros</a></li>
-                    <li role="presentation"><a href="views/servicios.xhtml">Servicios</a></li>
+                    <li role="presentation" class="active"><p:commandLink value="Inicio" action="app-main" /></li>
+                    <li role="presentation"><p:commandLink value="Noticias" action="app-noticias" /></li>
+                    <li role="presentation"><p:commandLink value="Sobre Nosotros" action="app-sobre-nosotros" /></li>
+                    <li role="presentation"><p:commandLink value="Servicios" action="app-servicios" /></li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             Transparencia <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li role="presentation"><a href="views/recursos-humanos.xhtml">Recursos Humanos</a></li>
-                            <li role="presentation"><a href="views/nomina.xhtml">Nomina</a></li>
-                            <li role="presentation"><a href="views/organigrama.xhtml">Organigrama</a></li>                               
+                            <li role="presentation"><p:commandLink value="Recursos Humanos" action="app-recursos-humanos" /></li>
+                            <li role="presentation"><p:commandLink value="Nomina" action="app-nomina" /></li>
+                            <li role="presentation"><p:commandLink value="Organigrama" action="app-organigrama" /></li>                               
                         </ul>
                     </li>
-                    <li role="presentation"><a href="#">Contacto</a></li>
+                    <li role="presentation"><p:commandLink value="Contacto" action="app-contacto" /></li>
                     <div class="header-login-button">
                         <h:form>
                             <p:button styleClass="input" value="Admin Panel" outcome="admin-app-main" />
                         </h:form>
                     </div>
                 </ul>
-            </div><br/><br/>
+            </div><br/>
         </ui:composition>
 
 

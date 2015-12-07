@@ -21,6 +21,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -28,7 +29,6 @@ import javax.inject.Named;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.UploadedFile;
 import javax.faces.context.ExternalContext;
 import javax.faces.view.ViewScoped;
@@ -45,6 +45,9 @@ public class PostBean implements Serializable {
     PostServiceBean tsb;
     @Inject
     LoginBean login;
+    @Inject
+    PostModificationBean pmb;
+    private long id;
     private String title;
     private String post;
     private String note;
@@ -81,6 +84,14 @@ public class PostBean implements Serializable {
 
     public void setTsb(PostServiceBean tsb) {
         this.tsb = tsb;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -146,8 +157,6 @@ public class PostBean implements Serializable {
     public void setSelectedPost(Post selectedPost) {
         this.selectedPost = selectedPost;
     }
-    
-    
 
     public void HandleFileUpload(FileUploadEvent event) throws FileNotFoundException, IOException {
         this.image = event.getFile();
@@ -208,24 +217,8 @@ public class PostBean implements Serializable {
         }
     }
 
-    //Update Post...
-    public void onRowEdit(RowEditEvent event) {
-
-        try {
-            Post p = (Post) event.getObject();
-            tsb.updatePost(p);
-
-            FacesMessage msg = new FacesMessage("Post Edited", ((Post) event.getObject()).getPostId().toString());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        } catch (Exception e) {
-            e.toString();
-        }
-    }
-
-    //Cancel update on ticket...
-    public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Post) event.getObject()).getPostId().toString());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+    public void postEdit(long id){
+        pmb.postEdit(id);
     }
 
     //delete Post...
@@ -237,8 +230,8 @@ public class PostBean implements Serializable {
             t.setPostId(id);
             tsb.remove(t);
             FacesMessage msg = new FacesMessage("Post deleted");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
             FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, msg);
             context.getExternalContext().getFlash().setKeepMessages(true);
             return "post-management-view";
         } catch (Exception e) {

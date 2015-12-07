@@ -53,9 +53,6 @@
                     </p:outputPanel>
                 </f:facet>
 
-                <p:ajax event="rowEdit" listener="#{postBean.onRowEdit}" update=":form:msgs" />
-                <p:ajax event="rowEditCancel" listener="#{postBean.onRowCancel}" update=":form:msgs" />
-
                 <f:facet name="{Exporters}">
 
                     <h:commandLink>
@@ -80,57 +77,35 @@
                 </f:facet>
 
                 <p:column headerText="User Id" filterBy="id" filterMatchMode="contains">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{post.postId}" id="id"/></f:facet>
-                        <f:facet name="input"><p:inputText id="modelInput" value="#{post.postId}" style="width:100%" label="id"/></f:facet>
-                    </p:cellEditor>
+                        <h:outputText value="#{post.postId}" id="id"/>
                 </p:column>
 
                 <p:column headerText="Title" filterMatchMode="contains" filterBy="title">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{post.title}" id="title" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{post.title}" style="width:100%" label="title"/></f:facet>
-                    </p:cellEditor>
+                        <h:outputText value="#{post.title}" id="title" />
                 </p:column>
 
                 <p:column headerText="Image Path" filterMatchMode="contains" filterBy="imagePath">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{post.imagePath}" id="imagePath" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{post.imagePath}" style="width:100%" label="imagePath"/></f:facet>
-                    </p:cellEditor>
+                        <h:outputText value="#{post.imagePath}" id="imagePath" />
                 </p:column>
 
-                <p:column headerText="Post" style="width:280px;" filterMatchMode="contains" filterBy="post">
-                    <p:cellEditor>
-
-                        <f:facet name="output"><h:outputText value="#{post.post}" id="post" /></f:facet>
-                        <f:facet name="input"><p:inputTextarea value="#{post.post}"  label="post"/></f:facet>
-                    </p:cellEditor>
+                <p:column headerText="Post" style="width:250px;" filterMatchMode="contains" filterBy="post">
+                        <h:outputText value="#{post.post}" id="post" />
                 </p:column>
 
                 <p:column headerText="Note"  filterMatchMode="contains" filterBy="note">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{post.note}" id="note"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{post.note}" label="note" /></f:facet>
-                    </p:cellEditor>
+                        <h:outputText value="#{post.note}" id="note"/>
                 </p:column>
 
                 <p:column headerText="Date Created" filterMatchMode="contains" filterBy="dateCreated">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{post.dateCreated}" id="dateCreated"></h:outputText></f:facet>
-                        <f:facet name="input"><p:inputText requiredMessage="this field cannot be empty" value="#{post.dateCreated}" style="width:100%" label="username" required="true" placeholder="#{post.dateCreated}"><f:convertDateTime /></p:inputText></f:facet>
-                    </p:cellEditor>           
+                        <h:outputText value="#{post.dateCreated}" id="dateCreated"></h:outputText>        
                 </p:column>
 
                 <p:column headerText="Created by" filterMatchMode="contains" filterBy="createdBy">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{post.createdBy.username}" id="createdBy"></h:outputText></f:facet>
-                        <f:facet name="input"><p:inputText requiredMessage="this field cannot be empty" value="#{post.createdBy.username}" style="width:100%" label="username" required="true" placeholder="#{post.dateCreated}"></p:inputText></f:facet>
-                    </p:cellEditor>           
+                        <h:outputText value="#{post.createdBy.username}" id="createdBy"></h:outputText>     
                 </p:column>
 
-                <p:column headerText="Edit" style="width:40px;">
-                    <p:rowEditor />
+                <p:column headerText="Edit" >
+                    <p:commandButton  actionListener="#{postBean.postEdit(post.postId)}" value="Edit" styleClass="input" icon="ui-icon-pencil"/>
                 </p:column>
 
                 <p:column headerText="Delete">

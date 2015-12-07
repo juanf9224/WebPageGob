@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
+        <link href="#{request.contextPath}/resources/css/simple.css" media="screen" rel="stylesheet" type="text/css"/>
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $(".loader").fadeOut("slow");
+            });
+
+            function reload() {
+                setTimeout("window.location.reload(1)", 5000);
+            }
+        </script>
+        <title>Post Modification</title>
+    </h:head>
+    <h:body>
+        <h:form>         
+            <p:button styleClass="input" value="Volver al panel" outcome="admin-app-main"/>
+            <p:commandButton styleClass="input" value="cerrar sesion" action="#{loginBean.logout}" />
+        </h:form>
+
+        <h:form>
+            <p:panel id="create-post-panel" header="Create a new post" toggleable="true" collapsed="true" style="background: url('../../resources/images/mochaGrunge.png');border: none;">
+                <center><p:panelGrid columns="1" layout="grid" style="width: 100%;background: url('../../resources/images/mochaGrunge.png');border: none;">
+                        <p:inputText  value="#{postBean.id}" disabled="true"/>
+                        <br/>
+                        <p:outputLabel for="title"  value="Title:"/>
+                            <p:inputText id="title" title="Title of the post goes here." value="#{postBean.title}" required="true" requiredMessage="Title cannot be empty." size="100"/> 
+
+                            <p:outputLabel for="image"  value="Upload image:"/>
+                            <p:fileUpload fileUploadListener="#{postBean.HandleFileUpload}" mode="advanced" skinSimple="true"  dragDropSupport="true" sizeLimit="15000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" id="image" required="true" requiredMessage="upload an image for the post"/>
+
+                            <p:outputLabel for="post"  value="Post:"/>
+                            <p:editor disabled="false" id="post" height="600" width="600" value="#{postBean.post}" required="true" requiredMessage="post cannot be empty" />
+
+
+                            <p:outputLabel for="note"  value="Note:"/>
+                            <p:inputTextarea id="note" title="Note about the post or something else."  value="#{postBean.note}" autoResize="true" cols="80"/> 
+
+                            <p:commandButton value="Update" action="#{postBean.update}"/>
+
+                        </p:panelGrid></center>
+            </p:panel>
+
+        </h:form>
+    </h:body>
+</html>
+

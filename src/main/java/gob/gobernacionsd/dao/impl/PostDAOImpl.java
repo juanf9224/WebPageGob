@@ -84,6 +84,12 @@ public class PostDAOImpl implements PostDAO {
         }
     }
     
+    public Post find(long id){
+        
+        Post pst = em.find(Post.class, id);
+        return pst;
+    }
+    
 
     //Update method for the Posts...
     @Override

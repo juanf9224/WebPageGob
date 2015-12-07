@@ -50,4 +50,8 @@ public class PostServiceBean implements Serializable{
         
     } 
     
+    public Post find(long id){
+        return tdi.find(id);
+    }
+    
 }

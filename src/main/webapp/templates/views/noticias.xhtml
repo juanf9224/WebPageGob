@@ -1,12 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/simple.css" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $(".loader").fadeOut("slow");
+            });
+
+            function reload() {
+                setTimeout("window.location.reload(1)", 5000);
+            }
+
+        </script>
+        <title>Noticias</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <div>
+            <div class="loader">
+            </div>
+            <ui:insert name="header">
+                <ui:include src="../head/general-header.xhtml" />
+            </ui:insert>
+            <div id="left">
+                <ui:insert name="posts">
+                    <ui:include src="../views/posts-view.xhtml"/>
+                </ui:insert>
+            </div>
+        </div>
     </h:body>
 </html>
 

@@ -39,6 +39,10 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/templates/views/error-pages/page-not-found.xhtml</location>
+    </error-page>
     <resource-ref>
         <res-ref-name>jdbc/localdbgob</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>

@@ -7,3 +7,9 @@ body{
 .header-login-button{
     float:right; 
 }
+
+#header-logo{
+    background-color: #045491;
+    width: 100%;
+    height: 200px;
+}
