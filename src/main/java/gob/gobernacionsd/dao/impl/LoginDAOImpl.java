@@ -8,7 +8,9 @@ package gob.gobernacionsd.dao.impl;
 import static gob.gobernacionsd.beans.LoginBean.USER_SESSION_KEY;
 import gob.gobernacionsd.dao.LoginDAO;
 import gob.gobernacionsd.entities.LoginInfo;
+import java.io.Serializable;
 import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -21,8 +23,8 @@ import javax.persistence.Transient;
  *
  * @author juanf_000
  */
-
-public class LoginDAOImpl implements LoginDAO {
+@ApplicationScoped
+public class LoginDAOImpl implements LoginDAO, Serializable {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
     private EntityManager em = emf.createEntityManager();
 

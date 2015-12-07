@@ -20,38 +20,38 @@ import javax.inject.Named;
 @ApplicationScoped
 public class PostServiceBean implements Serializable{
 
-    PostDAOImpl tdi;
+    PostDAOImpl pdi;
     /**
      * Creates a new instance of TicketServiceBean
      */
     public PostServiceBean() {
     }
     
-    public PostServiceBean(PostDAOImpl tdi) {
+    public PostServiceBean(PostDAOImpl pdi) {
         
-        this.tdi = tdi;
+        this.pdi = pdi;
     }
     
     public Post createPost(Post p){
-        return tdi.create(p);
+        return pdi.create(p);
     }
     
     public List<Post> findAll(){
-        return tdi.findAll();
+        return pdi.findAll();
     }
     
     public Post updatePost(Post p){
-        return tdi.update(p);
+        return pdi.update(p);
     } 
     
     public Post remove(Post p){
         
-        return tdi.delete(p);
+        return pdi.delete(p);
         
     } 
     
     public Post find(long id){
-        return tdi.find(id);
+        return pdi.find(id);
     }
     
 }

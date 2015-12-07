@@ -43,7 +43,7 @@
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
                          rowsPerPageTemplate="5,10,15">
                 <f:facet name="header">
-                    Users
+                    <h2>Users (Click a user to update it)</h2>
                 </f:facet>
 
                 <f:facet name="header">
@@ -52,6 +52,8 @@
                         <p:inputText id="globalFilter" onkeyup="PF('usersTable').filter()" style="width:150px" placeholder="Enter keyword"/>
                     </p:outputPanel>
                 </f:facet>
+                
+                <p:ajax event="rowSelect" listener="#{postMB.onRowSelect}" onsuccess="post-edit"/>
 
                 <f:facet name="{Exporters}">
 
@@ -104,9 +106,9 @@
                         <h:outputText value="#{post.createdBy.username}" id="createdBy"></h:outputText>     
                 </p:column>
 
-                <p:column headerText="Edit" >
-                    <p:commandButton  actionListener="#{postBean.postEdit(post.postId)}" value="Edit" styleClass="input" icon="ui-icon-pencil"/>
-                </p:column>
+                <!--<p:column headerText="Edit" >
+                    <p:commandButton  actionListener="" value="Edit" styleClass="input" icon="ui-icon-pencil"/>
+                </p:column>-->
 
                 <p:column headerText="Delete">
                     <p:commandButton value="Delete" styleClass="input" icon="ui-icon-close" action="#{postBean.remove(post.postId)}" update=":form:msgs"> 

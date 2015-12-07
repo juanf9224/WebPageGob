@@ -10,18 +10,15 @@ import gob.gobernacionsd.entities.LoginInfo;
 import gob.gobernacionsd.entities.Post;
 import gob.gobernacionsd.servicebeans.PostServiceBean;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -42,7 +39,7 @@ import javax.faces.view.ViewScoped;
 public class PostBean implements Serializable {
 
     @Inject
-    PostServiceBean tsb;
+    PostServiceBean psb;
     @Inject
     LoginBean login;
     @Inject
@@ -58,15 +55,15 @@ public class PostBean implements Serializable {
     private Post selectedPost;
 
     /**
-     * Creates a new instance of TicketBean...
+     * Creates a new instance of PostBean...
      */
     public PostBean() {
     }
 
     @PostConstruct
     public void init() {
-        this.tsb = new PostServiceBean(new PostDAOImpl());
-        this.posts = tsb.findAll();
+        this.psb = new PostServiceBean(new PostDAOImpl());
+        this.posts = psb.findAll();
     }
 
     //getters setters...
@@ -78,12 +75,12 @@ public class PostBean implements Serializable {
         this.login = login;
     }
 
-    public PostServiceBean getTsb() {
-        return tsb;
+    public PostServiceBean getPsb() {
+        return psb;
     }
 
-    public void setTsb(PostServiceBean tsb) {
-        this.tsb = tsb;
+    public void setTsb(PostServiceBean psb) {
+        this.psb = psb;
     }
 
     public long getId() {
@@ -199,7 +196,7 @@ public class PostBean implements Serializable {
             pst.setNote(note);
             pst.setCreatedBy(li);
             pst.setDateCreated(new Date());
-            tsb.createPost(pst);
+            psb.createPost(pst);
             note = "";
             title = "";
             post = "";
@@ -217,9 +214,9 @@ public class PostBean implements Serializable {
         }
     }
 
-    public void postEdit(long id){
+    /*public void postEdit(long id){
         pmb.postEdit(id);
-    }
+    }*/
 
     //delete Post...
     public String remove(long id) {
@@ -228,7 +225,7 @@ public class PostBean implements Serializable {
             Post t = new Post();
 
             t.setPostId(id);
-            tsb.remove(t);
+            psb.remove(t);
             FacesMessage msg = new FacesMessage("Post deleted");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, msg);

@@ -59,41 +59,49 @@
     
     
     <navigation-rule> 
+        <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>app-noticias</from-outcome>
-            <to-view-id>templates/views/noticias.xhtml</to-view-id>
+            <to-view-id>/templates/views/noticias.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>app-sobre-nosotros</from-outcome>
-            <to-view-id>templates/views/sobre-nosotros.xhtml</to-view-id>
+            <to-view-id>/templates/views/sobre-nosotros.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>app-servicios</from-outcome>
-            <to-view-id>templates/views/servicios.xhtml</to-view-id>
+            <to-view-id>/templates/views/servicios.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>app-recursos-humanos</from-outcome>
-            <to-view-id>templates/views/recursos-humanos.xhtml</to-view-id>
+            <to-view-id>/templates/views/recursos-humanos.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>app-organigrama</from-outcome>
-            <to-view-id>templates/views/organigrama.xhtml</to-view-id>
+            <to-view-id>/templates/views/organigrama.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>app-nomina</from-outcome>
-            <to-view-id>templates/views/nomina.xhtml</to-view-id>
+            <to-view-id>/templates/views/nomina.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>app-contacto</from-outcome>
-            <to-view-id>templates/views/contacto.xhtml</to-view-id>
+            <to-view-id>/templates/views/contacto.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/admin/views/post-management-view.xhtml</from-view-id>
+        <navinavigation-case>
+            <from-outcome>post-edit</from-outcome>
+            <to-view-id>/admin/forms/post-edit</to-view-id>
+        </navinavigation-case>
     </navigation-rule>
     
 </faces-config>

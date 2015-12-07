@@ -5,28 +5,33 @@
  */
 package gob.gobernacionsd.beans;
 
+import gob.gobernacionsd.dao.impl.PostDAOImpl;
 import gob.gobernacionsd.entities.Post;
 import gob.gobernacionsd.servicebeans.PostServiceBean;
 import java.io.Serializable;
-import javax.enterprise.context.ApplicationScoped;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.UploadedFile;
 
 /**
  *
  * @author JBG INC
  */
-@Named
-@ApplicationScoped
+@Named("postMB")
+@SessionScoped
 public class PostModificationBean implements Serializable{
     
     @Inject
-    PostServiceBean tsb;
+    PostServiceBean psb;
     @Inject
     LoginBean login;
+    @Inject 
+    private Post p;
     private long id;
     private String title;
     private String post;
@@ -37,13 +42,25 @@ public class PostModificationBean implements Serializable{
     public PostModificationBean(){
         
     }
-
-    public PostServiceBean getTsb() {
-        return tsb;
+    @PostConstruct
+    public void init() {
+        this.psb = new PostServiceBean(new PostDAOImpl());
     }
 
-    public void setTsb(PostServiceBean tsb) {
-        this.tsb = tsb;
+    public PostServiceBean getPsb() {
+        return psb;
+    }
+
+    public void setPsb(PostServiceBean psb) {
+        this.psb = psb;
+    }
+
+    public Post getP() {
+        return p;
+    }
+
+    public void setP(Post p) {
+        this.p = p;
     }
 
     public LoginBean getLogin() {
@@ -102,23 +119,17 @@ public class PostModificationBean implements Serializable{
         this.imagePath = imagePath;
     }
     
-    public String postEdit(long id) {
+    public void onRowSelect(SelectEvent event) {
         try {
-            tsb.find(id);
-            title = tsb.find(id).getTitle();
-            post = tsb.find(id).getPost();
-            note = tsb.find(id).getNote();
-            imagePath = tsb.find(id).getImagePath();
-            this.id = id;
-
-            return "post-edit?faces-redirect=true";
+            this.p = (Post) event.getObject();
+            String url = "page-edit.xhtml";
+            FacesContext.getCurrentInstance().getExternalContext().redirect(url);
         } catch (Exception e) {
             e.toString();
             FacesMessage msg = new FacesMessage("Could not retreive the specified post");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, msg);
             context.getExternalContext().getFlash().setKeepMessages(true);
-            return "posts-management-view";
         }
 
     }
@@ -126,16 +137,21 @@ public class PostModificationBean implements Serializable{
     
     //Update Post...
     public void update() {
-        Post p = new Post();
         
-
-        p.setPostId(id);
-        p.setTitle(title);
-        p.setPost(post);
-        p.setImagePath(imagePath);
-        p.setNote(note);
-
-        tsb.updatePost(p);
+        try {
+            psb.updatePost(p);
+            FacesMessage msg = new FacesMessage("Post updated successfully!");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, msg);
+            context.getExternalContext().getFlash().setKeepMessages(true);
+            
+        } catch (Exception e) {
+            e.toString();
+            FacesMessage msg = new FacesMessage("Could not retreive the specified post.");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, msg);
+            context.getExternalContext().getFlash().setKeepMessages(true);
+        }
     }
     
 }

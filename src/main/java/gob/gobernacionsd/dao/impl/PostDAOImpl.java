@@ -11,23 +11,24 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import gob.gobernacionsd.dao.PostDAO;
+import java.io.Serializable;
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Transient;
 
 /**
  *
  * @author juanf_000
  */
-public class PostDAOImpl implements PostDAO {
+@ApplicationScoped
+public class PostDAOImpl implements PostDAO, Serializable {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
     private EntityManager em = emf.createEntityManager();
     private EntityTransaction tx = em.getTransaction();
 
     //Create new ticket...
-    @Transient
     @Override
     public Post create(Post p) {
         
@@ -55,7 +56,6 @@ public class PostDAOImpl implements PostDAO {
     }
 
     // find username in the db that match the received username from create method and get its corresponding id...
-    @Transient
     @Override
     public long findUser(String username) {
         try {

@@ -31,22 +31,22 @@
         <h:form>
             <p:panel id="create-post-panel" header="Create a new post" toggleable="true" collapsed="true" style="background: url('../../resources/images/mochaGrunge.png');border: none;">
                 <center><p:panelGrid columns="1" layout="grid" style="width: 100%;background: url('../../resources/images/mochaGrunge.png');border: none;">
-                        <p:inputText  value="#{postBean.id}" disabled="true"/>
+                        <p:inputText  value="#{postMB.p.postId}" disabled="true"/>
                         <br/>
                         <p:outputLabel for="title"  value="Title:"/>
-                            <p:inputText id="title" title="Title of the post goes here." value="#{postBean.title}" required="true" requiredMessage="Title cannot be empty." size="100"/> 
+                        <p:inputText id="title" title="Title of the post goes here." value="#{postMB.p.title}" required="true" requiredMessage="Title cannot be empty." size="100"/> 
 
                             <p:outputLabel for="image"  value="Upload image:"/>
                             <p:fileUpload fileUploadListener="#{postBean.HandleFileUpload}" mode="advanced" skinSimple="true"  dragDropSupport="true" sizeLimit="15000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" id="image" required="true" requiredMessage="upload an image for the post"/>
 
                             <p:outputLabel for="post"  value="Post:"/>
-                            <p:editor disabled="false" id="post" height="600" width="600" value="#{postBean.post}" required="true" requiredMessage="post cannot be empty" />
+                            <p:editor disabled="false" id="post" height="600" width="600" value="#{postMB.p.post}" required="true" requiredMessage="post cannot be empty" />
 
 
                             <p:outputLabel for="note"  value="Note:"/>
-                            <p:inputTextarea id="note" title="Note about the post or something else."  value="#{postBean.note}" autoResize="true" cols="80"/> 
+                            <p:inputTextarea id="note" title="Note about the post or something else."  value="#{postMB.p.note}" autoResize="true" cols="80"/> 
 
-                            <p:commandButton value="Update" action="#{postBean.update}"/>
+                            <p:commandButton value="Update" actionListener="#{postMB.update}"/>
 
                         </p:panelGrid></center>
             </p:panel>
