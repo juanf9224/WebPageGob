@@ -10,7 +10,9 @@ import gob.gobernacionsd.entities.Post;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.Transient;
 
 /**
  *
@@ -20,7 +22,7 @@ import javax.inject.Named;
 @ApplicationScoped
 public class PostServiceBean implements Serializable{
 
-    PostDAOImpl pdi;
+    @Inject @Transient PostDAOImpl pdi;
     /**
      * Creates a new instance of TicketServiceBean
      */

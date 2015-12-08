@@ -15,6 +15,7 @@
     </application>
 
     <navigation-rule>
+        <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>login-form</from-outcome>
             <to-view-id>/templates/forms/login-form.xhtml</to-view-id>
@@ -53,6 +54,24 @@
         <navigation-case>
             <from-outcome>create-user</from-outcome>
             <to-view-id>/admin/forms/create-user-form.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>read-post-view</from-outcome>
+            <to-view-id>/templates/views/post-read-view.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/templates/views/noticias.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>read-post-view</from-outcome>
+            <to-view-id>/templates/views/post-read-view.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>

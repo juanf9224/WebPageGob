@@ -89,7 +89,7 @@ public class AuthListener implements PhaseListener {
     private boolean requestingSecureView(FacesContext context) {
         ExternalContext extContext = context.getExternalContext();       
         String path = extContext.getRequestPathInfo();
-        return (!"/index.xhtml".equals(path) && !"/templates/forms/login-form.xhtml".equals(path) && !"/templates/views/contacto.xhtml".equals(path) && !"/templates/views/sobre-nosotros.xhtml".equals(path) && !"/templates/views/recursos-humanos.xhtml".equals(path) && !"/templates/views/noticias.xhtml".equals(path) && !"/templates/views/servicios.xhtml".equals(path) && !"/templates/views/nomina.xhtml".equals(path) && !"/templates/views/organigrama.xhtml".equals(path));              
+        return (!"/index.xhtml".equals(path) && !"/templates/forms/login-form.xhtml".equals(path) && !"/templates/views/contacto.xhtml".equals(path) && !"/templates/views/sobre-nosotros.xhtml".equals(path) && !"/templates/views/recursos-humanos.xhtml".equals(path) && !"/templates/views/noticias.xhtml".equals(path) && !"/templates/views/servicios.xhtml".equals(path) && !"/templates/views/nomina.xhtml".equals(path) && !"/templates/views/organigrama.xhtml".equals(path) && !"/templates/views/post-read-view.xhtml".equals(path) && !"/page-not-found-404.xhtml".equals(path));              
     }
     
     

@@ -11,11 +11,9 @@
     </h:head>
     <h:body>
         <ui:composition>
-            <!-- <p:galleria value="" var="image" panelWidth="500" panelHeight="313" showCaption="true">
-                 <p:graphicImage name="" alt="Image Description for " title=""/>
-             </p:galleria> -->
-            
-
+            <h:form>
+            <p:growl id="msg" for="readPost" />
+            </h:form>
             <h:form> 
                 <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="5">
                     <f:facet name="header">
@@ -32,6 +30,9 @@
 
 
                                 <h:outputText value="#{of:abbreviate(post.post, 400)}" escape="false" />
+                                <p:spacer height="7"/>
+                                
+                                <h:commandLink id="readPost" value="Leer mas..." action="#{postMB.readPost(post.postId)}" style="color: #036fab;" />
 
                                 <p:spacer height="20" />
                                 <p:separator />

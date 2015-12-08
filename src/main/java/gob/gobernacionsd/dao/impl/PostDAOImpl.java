@@ -11,7 +11,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import gob.gobernacionsd.dao.PostDAO;
-import java.io.Serializable;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -22,7 +21,7 @@ import javax.persistence.Persistence;
  * @author juanf_000
  */
 @ApplicationScoped
-public class PostDAOImpl implements PostDAO, Serializable {
+public class PostDAOImpl implements PostDAO{
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
     private EntityManager em = emf.createEntityManager();

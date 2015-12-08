@@ -11,6 +11,7 @@ import java.io.Serializable;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.Transient;
 
 /**
  *
@@ -20,7 +21,7 @@ import javax.inject.Named;
 @ApplicationScoped
 public class LoginServiceBean implements Serializable{
     
-    @Inject LoginDAOImpl ldi;
+    @Inject @Transient LoginDAOImpl ldi;
     /**
      * Creates a new instance of LoginServiceBean
      */

@@ -8,7 +8,6 @@ package gob.gobernacionsd.dao.impl;
 import gob.gobernacionsd.dao.UserDAO;
 import gob.gobernacionsd.entities.Department;
 import gob.gobernacionsd.entities.UserInfo;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
@@ -23,7 +22,7 @@ import javax.persistence.TypedQuery;
  * @author juanf_000
  */
 @ApplicationScoped
-public class UserDAOImpl implements UserDAO, Serializable{
+public class UserDAOImpl implements UserDAO{
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("gobernacion_sd_unit");
     private EntityManager em = emf.createEntityManager();

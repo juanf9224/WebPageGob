@@ -24,24 +24,19 @@ import org.primefaces.model.UploadedFile;
  */
 @Named("postMB")
 @SessionScoped
-public class PostModificationBean implements Serializable{
-    
+public class PostModificationBean implements Serializable {
+
     @Inject
     PostServiceBean psb;
     @Inject
     LoginBean login;
-    @Inject 
+    @Inject
     private Post p;
-    private long id;
-    private String title;
-    private String post;
-    private String note;
-    private UploadedFile image;
-    private String imagePath;
-    
-    public PostModificationBean(){
-        
+
+    public PostModificationBean() {
+
     }
+
     @PostConstruct
     public void init() {
         this.psb = new PostServiceBean(new PostDAOImpl());
@@ -71,87 +66,55 @@ public class PostModificationBean implements Serializable{
         this.login = login;
     }
 
-    public long getId() {
-        return id;
+    public String readPost(long id) {
+        try {
+            this.p = psb.find(id);
+            return "read-post-view";
+
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage("Could not open the post!");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, msg);
+            context.getExternalContext().getFlash().setKeepMessages(true);
+            return "";
+        }
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getPost() {
-        return post;
-    }
-
-    public void setPost(String post) {
-        this.post = post;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public UploadedFile getImage() {
-        return image;
-    }
-
-    public void setImage(UploadedFile image) {
-        this.image = image;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-    
     public void onRowSelect(SelectEvent event) {
         try {
             this.p = (Post) event.getObject();
-            String url = "page-edit.xhtml";
+            String url = "../forms/post-edit.xhtml";
             FacesContext.getCurrentInstance().getExternalContext().redirect(url);
         } catch (Exception e) {
-            e.toString();
             FacesMessage msg = new FacesMessage("Could not retreive the specified post");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, msg);
             context.getExternalContext().getFlash().setKeepMessages(true);
+            e.toString();
+
         }
 
     }
-    
-    
+
     //Update Post...
-    public void update() {
-        
+    public String update() {
+
         try {
             psb.updatePost(p);
             FacesMessage msg = new FacesMessage("Post updated successfully!");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, msg);
             context.getExternalContext().getFlash().setKeepMessages(true);
-            
+            return "post-management-view";
+
         } catch (Exception e) {
             e.toString();
             FacesMessage msg = new FacesMessage("Could not retreive the specified post.");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, msg);
             context.getExternalContext().getFlash().setKeepMessages(true);
+            return "";
         }
     }
-    
+
 }

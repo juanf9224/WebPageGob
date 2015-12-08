@@ -11,7 +11,9 @@ import gob.gobernacionsd.entities.UserInfo;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.Transient;
 
 /**
  *
@@ -21,7 +23,7 @@ import javax.inject.Named;
 @ApplicationScoped
 public class UserServiceBean implements Serializable{
 
-    UserDAOImpl udi;
+    @Inject @Transient UserDAOImpl udi;
     /**
      * Creates a new instance of UserServiceBean
      */
