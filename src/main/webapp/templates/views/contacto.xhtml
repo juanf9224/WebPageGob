@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,6 +12,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/simple.css" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/contact-style.css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
         <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
         <script type="text/javascript">
@@ -26,12 +28,28 @@
         <title>welcome</title>
     </h:head>
     <h:body>
-        <div>
             <div class="loader">
             </div>
             <ui:insert name="header">
                 <ui:include src="../head/general-header.xhtml" />
             </ui:insert>
+        <div id="contact-form-content" >
+            <h:form>
+                <p:growl autoUpdate="true" id="msg" />
+                <center> <p:panel header="Formulario de contacto"  >
+                
+                <p:panelGrid columns="1" layout="grid">
+                    <p:graphicImage name="images/contact/contact-icon.jpg" alt="icono de contacto" />
+                    <p:outputLabel for="name" value="Nombre: " />
+                    <p:inputText id="name" autocomplete="true" value="" required="true" requiredMessage="Nombre no puede ir vacio."><span class="glyphicon glyphicon-user" style="margin-right: 5px;width:"></span></p:inputText> 
+                    <p:outputLabel for="email" value="Email: " />
+                    <p:inputText id="email" autocomplete="true" value="" required="true" requiredMessage="Email no puede ir vacio."><span class="glyphicon glyphicon-envelope" style="margin-right: 5px;"></span></p:inputText>
+                    <p:outputLabel for="message" value="Mensaje: " />
+                    <p:inputTextarea id="message" value="" required="true" requiredMessage="El mensaje no puede ir vacio." autoResize="false"><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span></p:inputTextarea>
+                                   <p:commandButton actionListener="#{mailBean.send}" icon="ui-icon-mail-closed" value="Enviar" />
+                </p:panelGrid>
+                    </p:panel></center>
+            </h:form>
         </div>
     </h:body>
 </html>
