@@ -1,6 +1,18 @@
 .ui-panel-content{
+    background: url('../images/mochaGrunge.png') !important;
+    border: none !important;
 }
 
 .ui-panelgrid-content{
-    background: url('../../resources/images/contact/contact-background.jpg') !important;
+    background: url('../images/contact/contact-background-image.jpg') !important;
+}
+
+.contact-form-content{
+    display:block;
+    border:none;
+}
+
+.ui-widget-content{
+    border: none !important;
+    background: none;
 }
