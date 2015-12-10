@@ -8,7 +8,7 @@
     </resource-ref>
     <resource-ref>
         <res-ref-name>jdbc/localdbgob</res-ref-name>
-        <jndi-name>jdbc/localdbgob</jndi-name>
+        <jndi-name>localdbgob</jndi-name>
     </resource-ref>
     <class-loader delegate="true"/>
     <jsp-config>
