@@ -43,7 +43,7 @@ public class ImageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String filename = request.getPathInfo().substring(1);
-        File file = new File("/uploads/news-files", filename);
+        File file = new File("/opt/shared/glassfish/domains/domain1/applications/uploads/posts-files/", filename);
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");
