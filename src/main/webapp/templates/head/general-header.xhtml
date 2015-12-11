@@ -34,42 +34,43 @@
                         <a href="http://www.googleplus.com" target="_BLANK" title="Siguenos en google plus"><p:graphicImage name="images/social/google-plus-icon.png" width="40" height="40" /></a>
                     </div>
                 </div>
-                
+
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-pills-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
 
-                <div class="collapse navbar-collapse" id="bs-pills-navbar-collapse-1">
-                    <ul class="nav nav-pills head-menu">
-                        <li role="presentation" class="active"><p:commandLink value="Inicio" action="app-main" /></li>
-                        <li role="presentation"><p:commandLink value="Noticias" action="app-noticias" /></li>
-                        <li role="presentation"><p:commandLink value="Sobre Nosotros" action="app-sobre-nosotros" /></li>
-                        <li role="presentation"><p:commandLink value="Servicios" action="app-servicios" /></li>
-                        <li role="presentation" class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                Transparencia <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li role="presentation"><p:commandLink value="Recursos Humanos" action="app-recursos-humanos" /></li>
-                                <li role="presentation"><p:commandLink value="Nomina" action="app-nomina" /></li>
-                                <li role="presentation"><p:commandLink value="Organigrama" action="app-organigrama" /></li>                               
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-pills-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>  
+
+                        <div class="collapse navbar-collapse" id="bs-pills-navbar-collapse-1">
+                            <ul class="nav nav-pills head-menu">
+                                <li role="presentation" class="active"><p:commandLink value="Inicio" action="app-main" /></li>
+                                <li role="presentation"><p:commandLink value="Noticias" action="app-noticias" /></li>
+                                <li role="presentation"><p:commandLink value="Sobre Nosotros" action="app-sobre-nosotros" /></li>
+                                <li role="presentation"><p:commandLink value="Servicios" action="app-servicios" /></li>
+                                <li role="presentation" class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Transparencia <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li role="presentation"><p:commandLink value="Recursos Humanos" action="app-recursos-humanos" /></li>
+                                        <li role="presentation"><p:commandLink value="Nomina" action="app-nomina" /></li>
+                                        <li role="presentation"><p:commandLink value="Organigrama" action="app-organigrama" /></li>                               
+                                    </ul>
+                                </li>
+                                <li role="presentation"><p:commandLink value="Contacto" action="app-contacto" /></li>                        
                             </ul>
-                        </li>
-                        <li role="presentation"><p:commandLink value="Contacto" action="app-contacto" /></li>                        
-                    </ul>
-                </div></div>
+                        </div></div>
                 </nav><div class="header-login-button">
-                            <h:form>
-                                <p:button styleClass="input" value="Admin Panel" outcome="admin-app-main" />
-                            </h:form>
-                        </div>
+                    <h:form>
+                        <p:button styleClass="input" value="Admin Panel" outcome="admin-app-main" />
+                    </h:form>
+                </div>
             </div><br/>
         </ui:composition>
 
