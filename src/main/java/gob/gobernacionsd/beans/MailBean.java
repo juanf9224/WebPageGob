@@ -5,7 +5,6 @@
  */
 package gob.gobernacionsd.beans;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Properties;
 import javax.faces.application.FacesMessage;
@@ -101,13 +100,13 @@ public class MailBean implements Serializable{
                 return true;
 
             } catch (MessagingException e) {
-                FacesMessage msg = new FacesMessage("Error enviando el mensaje.");
+                FacesMessage msg = new FacesMessage("Error enviando el mensaje. [1]");
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, msg);
                 throw new RuntimeException(e);
             }
         } catch (RuntimeException e) {
-            FacesMessage msg = new FacesMessage("Error enviando el mensaje.");
+            FacesMessage msg = new FacesMessage("Error enviando el mensaje. [2]");
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, msg);
             e.toString();
