@@ -15,7 +15,7 @@
             <p:growl id="msg" for="readPost" />
             </h:form>
             <h:form> 
-                <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="5" lazy="true">
+                <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="5">
                     <f:facet name="header">
                         Scroll Down to Load More Posts
                     </f:facet>
