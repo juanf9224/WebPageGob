@@ -23,7 +23,7 @@
                     <p:panelGrid columns="2" layout="grid">
                         <h:graphicImage value="/images/#{post.imagePath}" width="250" height="150" />
                         <p:outputPanel layout="block">
-                            <p:panelGrid columns="2" layout="grid">
+                            <h:panelGrid columns="2" cellpadding="15" rules="groups">
 
                                 <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 25px;"/>
                                 <p:spacer height="7"/>
@@ -37,7 +37,7 @@
                                 <p:spacer height="20" />
                                 <p:separator />
 
-                            </p:panelGrid>
+                            </h:panelGrid>
                         </p:outputPanel>
                     </p:panelGrid>
                 </p:dataScroller>
