@@ -27,9 +27,9 @@ import javax.mail.internet.MimeMessage;
 @ViewScoped
 public class MailBean implements Serializable{
 
-    private static String name;
-    private static String fromEmail;
-    private static String messageFromVisitor;
+    private String name;
+    private String fromEmail;
+    private String messageFromVisitor;
 
     public MailBean() {
 
@@ -40,7 +40,7 @@ public class MailBean implements Serializable{
     }
 
     public void setName(String name) {
-        MailBean.name = name;
+        this.name = name;
     }
 
     public String getfromEmail() {
@@ -48,7 +48,7 @@ public class MailBean implements Serializable{
     }
 
     public void setfromEmail(String fromEmail) {
-        MailBean.fromEmail = fromEmail;
+        this.fromEmail = fromEmail;
     }
 
     public String getMessageFromVisitor() {
@@ -56,10 +56,10 @@ public class MailBean implements Serializable{
     }
 
     public void setMessageFromVisitor(String messageFromVisitor) {
-        MailBean.messageFromVisitor = messageFromVisitor;
+        this.messageFromVisitor = messageFromVisitor;
     }
 
-    public static boolean send() {
+    public boolean send() {
         try {
             final String username = "camellomobusi4@gmail.com";
             final String password = "Soylaclave";
