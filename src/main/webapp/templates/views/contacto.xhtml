@@ -44,7 +44,7 @@
                     <p:outputLabel for="name" value="Nombre: " />
                     <p:inputText id="name" autocomplete="true" value="#{mailBean.name}" size="30" required="true" requiredMessage="Nombre no puede ir vacio." placeholder="fa fa-"><p:watermark for="name" value="Nombre y apellido" /><span class="glyphicon glyphicon-user" style="margin-right: 5px;width:"></span></p:inputText> 
                     <p:outputLabel for="email" value="Email: " />
-                    <p:inputText id="email" autocomplete="true" value="#{mailBean.fromEmail}" size="30" required="true" requiredMessage="Email no puede ir vacio."><p:watermark for="email" value="Direccion de correo electronico" /><span class="glyphicon glyphicon-envelope" style="margin-right: 5px;"></span></p:inputText>
+                    <p:inputText id="email" autocomplete="true" value="#{mailBean.getfromEmail}" size="30" required="true" requiredMessage="Email no puede ir vacio."><p:watermark for="email" value="Direccion de correo electronico" /><span class="glyphicon glyphicon-envelope" style="margin-right: 5px;"></span></p:inputText>
                     <p:outputLabel for="message" value="Mensaje: " />
                     <p:inputTextarea id="message" value="#{mailBean.messageFromVisitor}" required="true" requiredMessage="El mensaje no puede ir vacio." autoResize="false" cols="30"><p:watermark for="message" value="Mensaje..." /><span class="glyphicon glyphicon-comment" style="margin-right: 5px;"></span></p:inputTextarea>
                     <p:commandButton actionListener="#{mailBean.send}" icon="fa fa-send" value="Enviar"></p:commandButton>
