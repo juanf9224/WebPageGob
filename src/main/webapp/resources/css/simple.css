@@ -17,3 +17,14 @@ body{
 .social-icons{
     float:right;
 }
+
+.ui-galleria-panel-wrapper{
+    width:100%;
+    height:400px;
+}
+
+/*@media screen and (min-width: 480px){
+.ui-galleria-panel-wrapper{
+    width:  
+}
+}*/
