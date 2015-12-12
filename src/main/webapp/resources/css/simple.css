@@ -16,6 +16,10 @@ body{
     float:right;
 }
 
+.ui-galleria{
+    width:100% !important;
+}
+
 /*@media screen and (min-width: 480px){
 .ui-galleria-panel-wrapper{
     width:  
