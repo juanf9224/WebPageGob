@@ -21,9 +21,8 @@
                     </f:facet>
 
                     <p:panelGrid columns="2" layout="grid">
-                        
-                        <p:outputPanel layout="block">
-                            <h:graphicImage value="/images/#{post.imagePath}" width="250" height="150" />
+                        <h:graphicImage value="/images/#{post.imagePath}" width="250" height="150" />
+                        <p:outputPanel>                            
                             <h:panelGrid columns="2" cellpadding="5">
 
                                 <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 25px;"/>
