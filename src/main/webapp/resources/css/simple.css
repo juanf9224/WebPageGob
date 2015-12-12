@@ -25,6 +25,12 @@ body{
 .ui-galleria-panel .ui-helper-hidden{
     width:100% !important;
 }
+@media screen and (max-width: 600px){
+    .ui-galleria-panel .ui-helper-hidden{
+    width:280px !important;
+    height:150px !important; 
+}
+}
 
 .ui-galleria-caption{
     width:100% !important;
