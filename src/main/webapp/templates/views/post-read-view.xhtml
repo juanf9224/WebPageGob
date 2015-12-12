@@ -35,7 +35,7 @@
                 <ui:include src="../head/general-header.xhtml" />
             </ui:insert>
             
-           <center> <p:panelGrid columns="1"  layout="grid" >
+            <center> <p:panelGrid columns="1"  layout="grid" style="border: none !important;">
                 <p:outputLabel value="#{postMB.p.title}" escape="false" style="font-size: 35px;" />
                 <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />
                 <h:outputText id="date-created" value="Fecha de creacion: #{postMB.p.dateCreated}"> 
