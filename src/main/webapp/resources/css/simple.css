@@ -20,8 +20,22 @@ body{
     width:100% !important;
 }
 
-@media screen and (max-width: 480px){
+/*@media screen and (max-width: 480px){
 .ui-galleria-panel-wrapper{
     width:  280px;
 }
+}*/
+
+#post-read-image{
+    width: 600px;
+    height: 400px;
 }
+
+@media screen and (max-width: 600px){
+    #post-read-image{
+        width: 280px;
+        height: 150px;
+    }
+}
+
+    
