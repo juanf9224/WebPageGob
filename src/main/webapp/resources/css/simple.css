@@ -20,6 +20,10 @@ body{
     width:100% !important;
 }
 
+.ui-galleria image{
+    width:100% !important;
+}
+
 /*@media screen and (max-width: 480px){
 .ui-galleria-panel-wrapper{
     width:  280px;
