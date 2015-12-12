@@ -15,7 +15,7 @@
         <ui:composition>
             <center>
             
-                <p:galleria value="#{postBean.posts}" var="image" showCaption="true" effectSpeed="1000" effect="slide" >
+                <p:galleria value="#{postBean.posts}" var="image" showCaption="true" effectSpeed="1000" effect="slide" style="width:100% !important;height:400px !important; " >
                 <p:graphicImage value="/images/#{image.imagePath}" alt="imagen del post" title="#{image.title}" width="100%" height="400"/>                
             </p:galleria>
             
