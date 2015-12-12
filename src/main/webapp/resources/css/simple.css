@@ -19,8 +19,8 @@ body{
 }
 
 .ui-galleria-panel-wrapper ul{
-    width:100%;
-    height:400px;
+    width:100% !important;
+    height:400px !important;
 }
 
 /*@media screen and (min-width: 480px){
