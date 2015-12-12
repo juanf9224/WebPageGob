@@ -22,7 +22,7 @@ body{
     width:100% !important;
 }
 
-.ui-galleria-panel{
+.ui-galleria-panel .ui-helper-hidden{
     width:100% !important;
 }
 
