@@ -22,7 +22,11 @@ body{
     width:100% !important;
 }
 
-.ui-galleria image{
+.ui-galleria-panel{
+    width:100% !important;
+}
+
+.ui-galleria-caption{
     width:100% !important;
 }
 
