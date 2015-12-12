@@ -14,11 +14,13 @@
 
         <ui:composition>
             <center>
-            <p:panelGrid columns="1" layout="grid">
+            
             <p:galleria value="#{postBean.posts}" var="image" showCaption="true" effectSpeed="1000" effect="slide" >
+                <p:panelGrid columns="1" layout="grid">
                 <p:graphicImage value="/images/#{image.imagePath}" alt="imagen del post" title="#{image.title}" width="1000px" height="400"/>
+                </p:panelGrid>
             </p:galleria>
-            </p:panelGrid>
+            
             </center>
         </ui:composition>
 
