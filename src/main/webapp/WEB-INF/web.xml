@@ -25,7 +25,7 @@
     
     <context-param>
         <param-name>uploadDirectory</param-name>
-        <param-value>/opt/shared/glassfish/domains/domain1/applications/uploads/posts-files</param-value>
+        <param-value>C:/uploads/news-files/</param-value>
     </context-param>
     
     <filter>
