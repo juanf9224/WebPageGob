@@ -195,6 +195,10 @@ public class PostBean implements Serializable {
 
                 BufferedImage resizeImageJpg = resizeImage(originalImage, type, width, height);
                 ImageIO.write(resizeImageJpg, "jpg", new File(directory, previewName));
+                
+                msg = new FacesMessage("Preview cargado");
+                context = FacesContext.getCurrentInstance();
+                context.addMessage(null, msg);
 
                 imagePath = imageName;
             }
