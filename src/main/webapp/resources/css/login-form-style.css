@@ -8,3 +8,11 @@ body{
     margin-top:25%;
 }
 
+@media screen and(min-width: 480px){
+    .login-form-content{
+        color: #dddddd;
+        padding: 5px;
+        margin-top:25%;
+        width: 400px;
+    }
+}
