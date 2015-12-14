@@ -15,12 +15,12 @@
             <p:growl id="msg" for="readPost" />
             </h:form>
             <h:form> 
-                <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="5">
+                <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="5" rows="10">
                     <f:facet name="header">
                         Scroll Down to Load More Posts
                     </f:facet>
 
-                    <p:panelGrid columns="2" layout="grid">
+                    <p:panelGrid columns="2" layout="grid" style="width:70%;">
                         <h:graphicImage value="/images/#{post.previewName}" width="280" height="200"/>
                         <p:outputPanel>                            
                             <h:panelGrid columns="2" cellpadding="5">
