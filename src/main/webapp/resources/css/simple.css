@@ -40,6 +40,11 @@ body{
     width:100% !important;
 }
 
+.ui-galleria-nav-next .ui-icon .ui-icon-circle-triangle-e{
+    width: 40px;
+    height:40px;
+}
+
 /*@media screen and (max-width: 480px){
 .ui-galleria-panel-wrapper{
     width:  280px;
