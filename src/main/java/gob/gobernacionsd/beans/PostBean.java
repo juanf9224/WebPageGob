@@ -176,43 +176,44 @@ public class PostBean implements Serializable {
                 String imageName = FilenameUtils.getName(image.getFileName());
                 InputStream input = image.getInputstream();
                 OutputStream output = new FileOutputStream(new File(directory, imageName));
-                
-                
-                //Image Resizing
-                int width = 280;
-                int height = 200;
-                previewName = "preview"+ imageName;
-                BufferedImage originalImage = ImageIO.read(new File(directory, imageName));
-		int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
-			
-		BufferedImage resizeImageJpg = resizeImage(originalImage, type, width, height);
-		ImageIO.write(resizeImageJpg, "jpg", new File(directory, previewName)); 
-                
                 try {
                     IOUtils.copy(input, output);
                 } finally {
                     IOUtils.closeQuietly(input);
                     IOUtils.closeQuietly(output);
                 }
-
                 FacesMessage msg = new FacesMessage("Imagen cargada");
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, msg);
 
+                //Image Resizing
+                int width = 280;
+                int height = 200;
+                previewName = "preview" + imageName;
+                BufferedImage originalImage = ImageIO.read(new File(directory, imageName));
+                int type = originalImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
+
+                BufferedImage resizeImageJpg = resizeImage(originalImage, type, width, height);
+                ImageIO.write(resizeImageJpg, "jpg", new File(directory, previewName));
+
                 imagePath = imageName;
             }
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage("Error al cargar imagen" + e.toString());
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, msg);
             e.toString();
         }
+
     }
-    
-    private BufferedImage resizeImage(BufferedImage originalImage, int type,int width,int height){
-	BufferedImage resizedImage = new BufferedImage(width, height, type);
-	Graphics2D g = resizedImage.createGraphics();
-	g.drawImage(originalImage, 0, 0, width, width, null);
-	g.dispose();
-		
-	return resizedImage;
+
+    private BufferedImage resizeImage(BufferedImage originalImage, int type, int width, int height) {
+        BufferedImage resizedImage = new BufferedImage(width, height, type);
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(originalImage, 0, 0, width, width, null);
+        g.dispose();
+
+        return resizedImage;
     }
 
     //Create Post...
@@ -251,7 +252,6 @@ public class PostBean implements Serializable {
     /*public void postEdit(long id){
         pmb.postEdit(id);
     }*/
-
     //delete Post...
     public String remove(long id) {
         try {
