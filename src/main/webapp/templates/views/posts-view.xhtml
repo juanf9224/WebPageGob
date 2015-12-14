@@ -20,7 +20,7 @@
                         Scroll Down to Load More Posts
                     </f:facet>
 
-                    <p:panelGrid columns="2" layout="grid" style="width:70%;">
+                    <center><p:panelGrid columns="2" layout="grid" style="width:70%;">
                         <h:graphicImage value="/images/#{post.previewName}" width="280" height="200"/>
                         <p:outputPanel>                            
                             <h:panelGrid columns="2" cellpadding="5">
@@ -35,7 +35,7 @@
                                 <h:commandLink id="readPost" value="Leer mas..." action="#{postMB.readPost(post.postId)}" style="color: #036fab;" />
                             </h:panelGrid>
                         </p:outputPanel>
-                    </p:panelGrid>
+                        </p:panelGrid></center>
                 </p:dataScroller>
             </h:form>
         </ui:composition>
