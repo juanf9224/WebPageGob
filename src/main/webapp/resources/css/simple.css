@@ -1,7 +1,7 @@
 body{
     background: url('../images/mochaGrunge.png');
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 5% !important;
+    margin-right: 5% !important;
 }
 
 .header-login-button{
