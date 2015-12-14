@@ -40,6 +40,7 @@ public class PostDAOImpl implements PostDAO{
             post.setTitle(p.getTitle());
             post.setPost(p.getPost());
             post.setImagePath(p.getImagePath());
+            post.setPreviewName(p.getPreviewName());
             post.setNote(p.getNote());
             post.setCreatedBy(li);
             tx.begin();

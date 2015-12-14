@@ -49,6 +49,8 @@ public class Post implements Serializable {
     private String post;
     @Column(name="image_path")
     private String imagePath;
+    @Column(name="preview_name")
+    private String previewName;
     @Column(name = "note")
     private String note;
     @ManyToOne
@@ -65,12 +67,13 @@ public class Post implements Serializable {
         this.postId = PostId;
     }
 
-    public Post(Long PostId, String title, String post,String imagePath, String note, LoginInfo createdBy, Date dateCreated) {
+    public Post(Long PostId, String title, String post,String imagePath,String previewName, String note, LoginInfo createdBy, Date dateCreated) {
         this.postId = PostId;
         this.title = title;
         this.post = post;
         this.note = note;
         this.imagePath = imagePath;
+        this.previewName = previewName;
         this.createdBy = createdBy;
         this.dateCreated = dateCreated;
     }
@@ -105,6 +108,14 @@ public class Post implements Serializable {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public String getPreviewName() {
+        return previewName;
+    }
+
+    public void setPreviewName(String previewName) {
+        this.previewName = previewName;
     }
     
     public String getNote() {

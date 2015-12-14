@@ -9,6 +9,8 @@ import gob.gobernacionsd.dao.impl.PostDAOImpl;
 import gob.gobernacionsd.entities.LoginInfo;
 import gob.gobernacionsd.entities.Post;
 import gob.gobernacionsd.servicebeans.PostServiceBean;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -29,6 +31,7 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import javax.faces.context.ExternalContext;
 import javax.faces.view.ViewScoped;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -50,6 +53,7 @@ public class PostBean implements Serializable {
     private String note;
     private UploadedFile image;
     private String imagePath;
+    private String previewName;
     private List<Post> posts;
     private List<Post> filteredPosts;
     private Post selectedPost;
@@ -123,6 +127,14 @@ public class PostBean implements Serializable {
         this.imagePath = imagePath;
     }
 
+    public String getPreviewName() {
+        return previewName;
+    }
+
+    public void setPreviewName(String previewName) {
+        this.previewName = previewName;
+    }
+
     public String getNote() {
         return note;
     }
@@ -164,6 +176,18 @@ public class PostBean implements Serializable {
                 String imageName = FilenameUtils.getName(image.getFileName());
                 InputStream input = image.getInputstream();
                 OutputStream output = new FileOutputStream(new File(directory, imageName));
+                
+                
+                //Image Resizing
+                int width = 280;
+                int height = 200;
+                previewName = "preview"+ imageName;
+                BufferedImage originalImage = ImageIO.read(new File(directory, imageName));
+		int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
+			
+		BufferedImage resizeImageJpg = resizeImage(originalImage, type, width, height);
+		ImageIO.write(resizeImageJpg, "jpg", new File(directory, previewName)); 
+                
                 try {
                     IOUtils.copy(input, output);
                 } finally {
@@ -181,6 +205,15 @@ public class PostBean implements Serializable {
             e.toString();
         }
     }
+    
+    private BufferedImage resizeImage(BufferedImage originalImage, int type,int width,int height){
+	BufferedImage resizedImage = new BufferedImage(width, height, type);
+	Graphics2D g = resizedImage.createGraphics();
+	g.drawImage(originalImage, 0, 0, width, width, null);
+	g.dispose();
+		
+	return resizedImage;
+    }
 
     //Create Post...
     public String createPost() {
@@ -193,6 +226,7 @@ public class PostBean implements Serializable {
             pst.setTitle(title);
             pst.setPost(post);
             pst.setImagePath(imagePath);
+            pst.setPreviewName(previewName);
             pst.setNote(note);
             pst.setCreatedBy(li);
             pst.setDateCreated(new Date());
