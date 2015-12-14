@@ -31,7 +31,7 @@
                 <p:growl id="growl" sticky="true" showDetail="true" />
                 <h:form>                    
                     <p:panel header="Login Form">
-                        <p:panelGrid columns="2"  styleClass="ui-panelgrid-blank" columnClasses="ui-grid-col-4,ui-grid-col-8">
+                        <p:panelGrid columns="2"  layout="grid">
                             
                             <h:outputLabel for="username" value="Username:" />
                             <p:inputText id="username" value="#{loginBean.username}" required="true"/>
