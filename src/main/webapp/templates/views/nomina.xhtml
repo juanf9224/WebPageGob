@@ -44,14 +44,18 @@
                 <f:facet name="header">
                     <h1>Nomina</h1>
                 </f:facet>
-                
+                <p:column headerText="Mes">
                 <h:outputText value="Diciembre" />
-                
+                </p:column>
+                <p:column headerText="Año">
                 <h:outputText value="2015" />
+                </p:column>
                 
+                <p:column headerText="Documento">
             <p:commandLink value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                 <h:graphicImage value="images/pdf-icon.png" width="24" />
             </p:commandLink>
+                </p:column>
             </p:panelGrid>
         </h:form>
 
