@@ -44,13 +44,10 @@
         <h:form>
             <p:panelGrid layout="grid" columns="3">
                 <f:facet name="header">
-                    <p:row>
                         <p:column colspan="2">Mes</p:column>
                         <p:column colspan="2">año</p:column>
                         <p:column colspan="2">documento</p:column>
-                    </p:row>
                 </f:facet>
-                <p:row>
                 <p:column colspan="2">
                 <h:outputText value="Diciembre" />
                 </p:column>
@@ -63,9 +60,8 @@
             <p:commandLink value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                 <h:graphicImage value="images/pdf-icon.png" width="24" />
                 <p:fileDownload value="#{fileDownloadBean.file}" />                
-            </p:commandLink>                    
+            </p:commandLink>
                 </p:column>
-                </p:row>
             </p:panelGrid>
         </h:form>
 
