@@ -56,6 +56,10 @@
             <to-view-id>/admin/forms/create-user-form.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/page-not-found-404.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
     <navigation-rule>
@@ -122,5 +126,4 @@
             <to-view-id>/admin/forms/post-edit</to-view-id>
         </navinavigation-case>
     </navigation-rule>
-    
 </faces-config>
