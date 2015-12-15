@@ -1,44 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Production</param-value>
     </context-param>
-    
     <context-param>
         <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
         <param-value>true</param-value>
     </context-param>
-    
     <context-param>
         <param-name>primefaces.FONT_AWESOME</param-name>
         <param-value>true</param-value>
     </context-param>
-    
-   
-    
     <context-param>
         <param-name> primfaces.UPLOADER</param-name>
         <param-value>commons</param-value>
     </context-param>
-    
     <context-param>
         <param-name>uploadDirectory</param-name>
         <param-value>/opt/shared/glassfish/domains/domain1/applications/uploads/posts-files</param-value>
     </context-param>
-    
     <filter>
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <filter-class>
             org.primefaces.webapp.filter.FileUploadFilter
         </filter-class>
-    </filter>    
-    <filter-mapping>
-        <filter-name>PrimeFaces FileUpload Filter</filter-name>
-        <servlet-name>Faces Servlet</servlet-name>
-    </filter-mapping>
-    
+    </filter>
     <filter>
         <filter-name>gzipResponseFilter</filter-name>
         <filter-class>org.omnifaces.filter.GzipResponseFilter</filter-class>
@@ -49,44 +36,53 @@
         </init-param>
     </filter>
     <filter-mapping>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
         <filter-name>gzipResponseFilter</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    
+    <filter>
+        <filter-name>cache2days</filter-name>
+        <filter-class>org.omnifaces.filter.CacheControlFilter</filter-class>
+        <init-param>
+            <param-name>expires</param-name>
+            <param-value>2d</param-value>
+        </init-param>
+    </filter>
     <filter-mapping>
-        <filter-name>CacheFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <filter-name>cache2days</filter-name>
+        <url-pattern>*.pdf</url-pattern>
+        <url-pattern>*.zip</url-pattern>
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>*.gif</url-pattern>
     </filter-mapping>
-    
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
-    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
-    
     <resource-ref>
         <res-ref-name>jdbc/localdbgob</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
-    
     <resource-ref>
         <description>Local bd for GobernacionSD</description>
         <res-ref-name>jdbc/localdbgobpcgob</res-ref-name>

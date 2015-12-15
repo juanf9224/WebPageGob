@@ -5,6 +5,7 @@
  */
 package gob.gobernacionsd.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Properties;
 import javax.faces.application.FacesMessage;
@@ -25,7 +26,7 @@ import javax.mail.internet.MimeMessage;
  */
 @Named
 @ViewScoped
-public class MailBean implements Serializable{
+public class MailBean implements Serializable {
 
     private String name;
     private String fromEmail;
@@ -59,7 +60,7 @@ public class MailBean implements Serializable{
         this.messageFromVisitor = messageFromVisitor;
     }
 
-    public boolean send() {
+    public boolean send() throws IOException {
         try {
             final String username = "camellomobusi4@gmail.com";
             final String password = "Soylaclave";
@@ -92,11 +93,13 @@ public class MailBean implements Serializable{
                 FacesMessage msg = new FacesMessage("Mensaje enviado satisfactoriamente!");
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, msg);
-                
+                context.getExternalContext().getFlash().setKeepMessages(true);
+
                 name = null;
                 fromEmail = null;
                 messageFromVisitor = null;
-                
+                String url = "contacto.xhtml";
+                FacesContext.getCurrentInstance().getExternalContext().redirect(url);
                 return true;
 
             } catch (MessagingException e) {
@@ -107,8 +110,8 @@ public class MailBean implements Serializable{
             }
         } catch (RuntimeException e) {
             FacesMessage msg = new FacesMessage("Error enviando el mensaje. [2]");
-                FacesContext context = FacesContext.getCurrentInstance();
-                context.addMessage(null, msg);
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, msg);
             e.toString();
             return false;
         }
