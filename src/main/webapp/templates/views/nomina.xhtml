@@ -52,7 +52,8 @@
                 </p:column>
                 
                 <p:column headerText="Documento">
-            <p:commandLink value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+            <p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                <p:fileDownload value="#{fileDownloadBean.file}" />
                 <h:graphicImage value="images/pdf-icon.png" width="24" />
             </p:commandLink>
                 </p:column>
