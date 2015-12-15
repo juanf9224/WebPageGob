@@ -38,23 +38,23 @@
         <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
             <p:graphicImage name="images/loading-bar.gif" />
         </p:dialog>
-        
+
 
         <h1 style="color:white;font-family: sans-serif">Nomina</h1>
         <h:form>
             <p:panelGrid layout="grid" columns="3" style="border: 1px solid grey;">
                 <p:column headerText="Mes">
-                <h:outputText value="Diciembre" />
+                    <h:outputText value="Diciembre" />
                 </p:column>
                 <p:column headerText="Año">
-                <h:outputText value="2015" />
+                    <h:outputText value="2015" />
                 </p:column>
-                
+
                 <p:column headerText="Documento">
-            <p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                <p:fileDownload value="#{fileDownloadBean.file}" />
-                <p:graphicImage name="images/pdf-icon.png" width="24" value="nomina.pdf" />
-            </p:commandLink>
+                    <p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                        <p:fileDownload value="#{fileDownloadBean.file}" />
+                        <p:graphicImage name="images/pdf-icon.png" width="24" value="nomina.pdf" />
+                    </p:commandLink>
                 </p:column>
             </p:panelGrid>
         </h:form>
@@ -68,6 +68,9 @@
                 PF('statusDialog').hide();
             }
         </script>
+        <ui:insert name="footer">
+            <ui:include src="templates/bottom/general-footer.xhtml"/>
+        </ui:insert>
 
     </h:body>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
