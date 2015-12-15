@@ -42,8 +42,8 @@
 
         <h:form>
             <p:commandLink value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                <p:fileDownload value="#{fileDownloadBean.file}" />
                 <p:graphicImage name="images/pdf-icon.png" width="24" />
+                <p:fileDownload value="#{fileDownloadBean.file}" />                
             </p:commandLink>
         </h:form>
 
