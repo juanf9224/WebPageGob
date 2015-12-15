@@ -38,15 +38,11 @@
         <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
             <p:graphicImage name="images/loading-bar.gif" />
         </p:dialog>
-        
-        <h1>Nomina:</h1>
 
         <h:form>
-            <p:panelGrid layout="grid" columns="3">
+            <p:panelGrid layout="grid" columns="3" style="border: 1px solid grey;">
                 <f:facet name="header">
-                        <p:outputLabel value="Mes" />
-                        <p:outputLabel value="Año" />
-                        <p:outputLabel value="Documento" />
+                    <h1>Nomina</h1>
                 </f:facet>
                 
                 <h:outputText value="Diciembre" />
@@ -55,7 +51,6 @@
                 
             <p:commandLink value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                 <h:graphicImage value="images/pdf-icon.png" width="24" />
-                <p:fileDownload value="#{fileDownloadBean.file}" />                
             </p:commandLink>
             </p:panelGrid>
         </h:form>
