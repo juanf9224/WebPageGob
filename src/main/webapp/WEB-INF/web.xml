@@ -61,6 +61,7 @@
         <url-pattern>*.png</url-pattern>
         <url-pattern>*.gif</url-pattern>
     </filter-mapping>
+    
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
