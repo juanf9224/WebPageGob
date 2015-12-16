@@ -27,38 +27,38 @@
         <title>welcome</title>
     </h:head>
     <h:body>
-        <div>
+
+        <div class="page-wrap">
+
             <div class="loader">
             </div>
             <ui:insert name="header">
                 <ui:include src="../head/general-header.xhtml" />
             </ui:insert>
-        <div class="page-wrap">
 
-        <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
-            <p:graphicImage name="images/loading-bar.gif" />
-        </p:dialog>
+            <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+                <p:graphicImage name="images/loading-bar.gif" />
+            </p:dialog>
 
 
-        <h1 style="color:white;font-family: sans-serif">Nomina</h1>
-        <h:form>
-            <p:panelGrid layout="grid" columns="3" style="border: 1px solid grey;">
-                <p:column headerText="Mes">
-                    <h:outputText value="Diciembre" />
-                </p:column>
-                <p:column headerText="Año">
-                    <h:outputText value="2015" />
-                </p:column>
+            <h1 style="color:white;font-family: sans-serif">Nomina</h1>
+            <h:form>
+                <p:panelGrid layout="grid" columns="3" style="border: 1px solid grey;">
+                    <p:column headerText="Mes">
+                        <h:outputText value="Diciembre" />
+                    </p:column>
+                    <p:column headerText="Año">
+                        <h:outputText value="2015" />
+                    </p:column>
 
-                <p:column headerText="Documento">
-                    <p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                        <p:fileDownload value="#{fileDownloadBean.file}" />
-                        <p:graphicImage name="images/pdf-icon.png" width="24" value="nomina.pdf" />
-                    </p:commandLink>
-                </p:column>
-            </p:panelGrid>
-        </h:form>
-        </div>
+                    <p:column headerText="Documento">
+                        <p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                            <p:fileDownload value="#{fileDownloadBean.file}" />
+                            <p:graphicImage name="images/pdf-icon.png" width="24" value="nomina.pdf" />
+                        </p:commandLink>
+                    </p:column>
+                </p:panelGrid>
+            </h:form>
         </div>
         <script type="text/javascript">
             function start() {

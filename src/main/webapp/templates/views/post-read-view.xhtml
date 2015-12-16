@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/simple.css" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
-        
+
         <script type="text/javascript">
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
@@ -27,34 +27,34 @@
         <title>#{postMB.p.title}</title>
     </h:head>
     <h:body>
-        <div>
+
+        <div class="page-wrap">
+
             <div class="loader">
             </div>
             <ui:insert name="header">
                 <ui:include src="../head/general-header.xhtml" />
             </ui:insert>
-            <div class="page-wrap">
             <center> <p:panelGrid columns="1"  layout="grid" style="border: none !important;">
-                <p:outputLabel value="#{postMB.p.title}" escape="false" style="font-size: 35px;" />
-                <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />
-                <h:outputText id="date-created" value="Fecha de creacion: #{postMB.p.dateCreated}"> 
-                    <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
-                </h:outputText>
-                <p:spacer />
-                <p:graphicImage value="/images/#{postMB.p.imagePath}" id="post-read-image" alt="imagen del post"/>
-                <p:spacer />
-                <h:outputText value="#{postMB.p.post}" escape="false" />
-                
-            </p:panelGrid></center>
-            </div>
-            <ui:insert name="footer">
-                <ui:include src="../bottom/general-footer.xhtml"/>
-            </ui:insert>
-                
-            
+                    <p:outputLabel value="#{postMB.p.title}" escape="false" style="font-size: 35px;" />
+                    <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />
+                    <h:outputText id="date-created" value="Fecha de creacion: #{postMB.p.dateCreated}"> 
+                        <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <p:spacer />
+                    <p:graphicImage value="/images/#{postMB.p.imagePath}" id="post-read-image" alt="imagen del post"/>
+                    <p:spacer />
+                    <h:outputText value="#{postMB.p.post}" escape="false" />
+
+                </p:panelGrid></center>
         </div>
+        <ui:insert name="footer">
+            <ui:include src="../bottom/general-footer.xhtml"/>
+        </ui:insert>
+
+
     </h:body>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
 </html>
 
