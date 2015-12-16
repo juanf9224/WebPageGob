@@ -31,9 +31,9 @@ body{
 }
 @media screen and (max-width: 600px){
     .ui-galleria-frame-active{
-    width:280px !important;
-    height:150px !important; 
-}
+        width:280px !important;
+        height:150px !important; 
+    }
 }
 
 .ui-galleria-caption{
@@ -63,8 +63,18 @@ body{
     }
 }
 
-    
-#footer{
-    position: absolute;
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -220px; 
+}
+
+.page-wrap:after{
+    content: "";
+    display: block;
+}
+
+
+#footer, .page-wrap:after{
     height: 220px;
 }
