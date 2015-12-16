@@ -1,3 +1,6 @@
+html, body{
+    height: 100%;
+}
 body{
     background: url('../images/mochaGrunge.png');
     margin-left: 5% !important;
