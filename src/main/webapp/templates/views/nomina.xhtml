@@ -33,7 +33,7 @@
             <ui:insert name="header">
                 <ui:include src="../head/general-header.xhtml" />
             </ui:insert>
-        </div>
+        <div class="page-wrap">
 
         <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
             <p:graphicImage name="images/loading-bar.gif" />
@@ -58,7 +58,8 @@
                 </p:column>
             </p:panelGrid>
         </h:form>
-
+        </div>
+        </div>
         <script type="text/javascript">
             function start() {
                 PF('statusDialog').show();
