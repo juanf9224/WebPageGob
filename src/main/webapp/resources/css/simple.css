@@ -90,6 +90,16 @@ body{
     display: block;
 }
 
+.posts-link{
+    color: black;
+    text-decoration: none;
+}
+
+.posts-link:hover{
+    
+    text-decoration: underline;
+}
+
 
 #footer, .page-wrap:after{
     height: 220px;

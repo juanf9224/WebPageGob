@@ -24,11 +24,11 @@
                     </f:facet>
 
                     <center><p:panelGrid columns="2" layout="grid">
-                            <h:graphicImage value="/images/#{post.previewName}" width="280" height="200"/>
+                            <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:graphicImage value="/images/#{post.previewName}" width="280" height="200"/></p:commandLink>
                             <p:outputPanel>                            
                                 <h:panelGrid columns="2" cellpadding="5">
 
-                                    <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 25px;"/>
+                                    <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:outputText value="#{post.title}" style="font-weight: bold; font-size: 25px;"/></p:commandLink>
                                     <p:spacer height="7"/>
 
 
