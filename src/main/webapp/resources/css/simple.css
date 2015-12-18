@@ -3,7 +3,11 @@ html, body{
 }
 body{
     background: url('../images/mochaGrunge.png');
+    font-family: IntroRegular,'Trebuchet MS',Arial,Helvetica,sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
 }
+
 
 .header-login-button{
     float:right; 
@@ -57,7 +61,7 @@ body{
     height: 400px;
 }
 
-@media screen and (max-width: 600px){
+@media screen and(max-width: 600px){
     #post-read-image{
         width: 280px;
         height: 150px;
@@ -74,10 +78,11 @@ body{
 
 @media screen and(max-width: 480px){
     .page-wrap {
-    min-height: 100%;
-    /* equal to footer height */
-    margin-bottom: -220px; 
-}
+        min-height: 100%;
+        margin: 0 !important;
+        /* equal to footer height */
+        margin-bottom: -220px; 
+    }
 }
 
 .page-wrap:after{
