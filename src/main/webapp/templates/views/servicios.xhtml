@@ -25,12 +25,13 @@
         <title>welcome</title>
     </h:head>
     <h:body>
+        <ui:insert name="header">
+            <ui:include src="../head/general-header.xhtml" />
+        </ui:insert>
         <div class="page-wrap">
             <div class="loader">
             </div>
-            <ui:insert name="header">
-                <ui:include src="../head/general-header.xhtml" />
-            </ui:insert>
+
         </div>
         <ui:insert name="footer">
             <ui:include src="../bottom/general-footer.xhtml"/>

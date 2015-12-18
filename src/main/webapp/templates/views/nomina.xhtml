@@ -29,13 +29,16 @@
     </h:head>
     <h:body>
 
+
+        <ui:insert name="header">
+            <ui:include src="../head/general-header.xhtml" />
+        </ui:insert>
+        
         <div class="page-wrap">
 
             <div class="loader">
             </div>
-            <ui:insert name="header">
-                <ui:include src="../head/general-header.xhtml" />
-            </ui:insert>
+
 
             <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
                 <p:graphicImage name="images/loading-bar.gif" />

@@ -29,13 +29,14 @@
     </h:head>
     <h:body>
 
+        <ui:insert name="header">
+            <ui:include src="../head/general-header.xhtml" />
+        </ui:insert>
         <div class="page-wrap">
 
             <div class="loader">
             </div>
-            <ui:insert name="header">
-                <ui:include src="../head/general-header.xhtml" />
-            </ui:insert>
+
             <center> <p:panelGrid columns="1"  layout="grid" style="border: none !important;">
                     <p:outputLabel value="#{postMB.p.title}" escape="false" style="font-size: 35px;" />
                     <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />

@@ -29,12 +29,15 @@
     </h:head>
     <h:body>
 
+
+        <ui:insert name="header">
+            <ui:include src="../head/general-header.xhtml" />
+        </ui:insert>
+
         <div class="page-wrap">
             <div class="loader">
             </div>
-            <ui:insert name="header">
-                <ui:include src="../head/general-header.xhtml" />
-            </ui:insert>
+
             <ui:insert name="content">
                 <ui:include src="../forms/contact-form.xhtml" />
             </ui:insert>
