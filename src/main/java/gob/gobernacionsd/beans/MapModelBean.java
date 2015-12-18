@@ -26,7 +26,7 @@ public class MapModelBean implements Serializable{
         simpleModel = new DefaultMapModel();
           
         //Shared coordinates
-        LatLng coord1 = new LatLng(18.487391, -69.829329);
+        LatLng coord1 = new LatLng(18.487990, -69.829620);
           
         //Basic marker
         simpleModel.addOverlay(new Marker(coord1, "Gobernacion provincial de Santo domingo"));
