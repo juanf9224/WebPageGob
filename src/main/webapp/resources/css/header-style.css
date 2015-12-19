@@ -2,12 +2,8 @@
     background-color: #045491 !important;
 }
 @media screen and (max-width: 480px){
-.social-icons{
- display: block;
- float:right;
-}
 .social-icons img{
-    width:25px;
-    height:25px;
+    width:30px;
+    height:30px;
 }
 }

@@ -68,9 +68,9 @@ body{
     }
 }
 
-.info-gobernacion p li{
+.info-gobernacion p{
     
-    text-justify: distribute; 
+    text-align: justify; 
     list-style-type: decimal;
     list-style-position: outside;
 }
