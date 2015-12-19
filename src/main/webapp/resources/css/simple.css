@@ -68,7 +68,7 @@ body{
     }
 }
 
-.info-gobernacion p, li{
+.info-gobernacion p li{
     
     text-justify: distribute; 
     list-style-type: decimal;
