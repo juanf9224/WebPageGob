@@ -23,6 +23,13 @@ body{
     float:right;
 }
 
+@media screen and (max-width: 480px){
+.social-icons img{
+    width:30px;
+    height:30px;
+}
+}
+
 .ui-galleria{
     width:100% !important;
 }
@@ -67,6 +74,8 @@ body{
         height: 150px;
     }
 }
+
+
 
 .info-gobernacion p{
     
