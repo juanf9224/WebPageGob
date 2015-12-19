@@ -89,8 +89,14 @@ body{
 .info-gobernacion p{
     
     text-align: justify; 
-    list-style-type: decimal;
     list-style-position: outside;
+}
+
+
+/* ************************************** SERVICIOS STYLE ****************************************** */
+
+.servicios-publicos-content p{
+    text-align: justify; 
 }
 
 
