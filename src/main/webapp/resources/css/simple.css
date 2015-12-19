@@ -68,6 +68,15 @@ body{
     }
 }
 
+.info-gobernacion p, li{
+    
+    text-justify: distribute; 
+    list-style-type: decimal;
+    list-style-position: outside;
+}
+
+
+
 .page-wrap {
     min-height: 100%;
     margin-left: 5% !important;
