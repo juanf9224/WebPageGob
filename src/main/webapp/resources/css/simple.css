@@ -61,7 +61,7 @@ body{
     height: 400px;
 }
 
-@media screen and(max-width: 600px){
+@media screen and (max-width: 480px){
     #post-read-image{
         width: 280px;
         height: 150px;
@@ -76,7 +76,7 @@ body{
     margin-bottom: -220px; 
 }
 
-@media screen and(max-width: 480px){
+@media screen and (max-width: 480px){
     .page-wrap {
         min-height: 100%;
         margin: 0 !important;
