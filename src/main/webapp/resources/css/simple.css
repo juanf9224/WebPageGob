@@ -135,6 +135,7 @@ body{
 .right-side-content{
     clear:both;
     float:right;
+    border:1px solid red;
 }
 
 
