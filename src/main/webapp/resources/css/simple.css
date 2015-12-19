@@ -8,6 +8,7 @@ body{
     line-height: 1.42857143 !important;
 }
 
+/* ************************************** HEADER STYLE ****************************************** */
 
 .header-login-button{
     float:right; 
@@ -30,6 +31,7 @@ body{
 }
 }
 
+/* ************************************** GALLERIA STYLE ****************************************** */
 .ui-galleria{
     width:100% !important;
 }
@@ -57,12 +59,7 @@ body{
     height:40px;
 }
 
-/*@media screen and (max-width: 480px){
-.ui-galleria-panel-wrapper{
-    width:  280px;
-}
-}*/
-
+/* ************************************** POSTS STYLE ****************************************** */
 #post-read-image{
     width: 600px;
     height: 400px;
@@ -76,6 +73,18 @@ body{
 }
 
 
+.posts-link{
+    color: black;
+    text-decoration: none;
+}
+
+.posts-link:hover{
+    
+    text-decoration: underline;
+}
+
+
+/* ************************************** SOBRE NOSOTROS STYLE ****************************************** */
 
 .info-gobernacion p{
     
@@ -85,6 +94,7 @@ body{
 }
 
 
+/* ************************************** CONTAINER STYLE ****************************************** */
 
 .page-wrap {
     min-height: 100%;
@@ -113,15 +123,8 @@ body{
     display: block;
 }
 
-.posts-link{
-    color: black;
-    text-decoration: none;
-}
+/* ************************************** FOOTER STYLE ****************************************** */
 
-.posts-link:hover{
-    
-    text-decoration: underline;
-}
 
 
 #footer, .page-wrap:after{
