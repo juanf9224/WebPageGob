@@ -1,5 +1,5 @@
-.ui-panel-content{
-    background: url('../images/mochaGrunge.png') !important;
+#footer .ui-panel-content{
+    /* background: url('../images/mochaGrunge.png') !important; */
     border: none !important;
 }
 

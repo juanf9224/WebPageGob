@@ -3,8 +3,8 @@ html, body{
 }
 body{
     background: url('../images/mochaGrunge.png');
-    font-family: IntroRegular,'Trebuchet MS',Arial,Helvetica,sans-serif !important;
-    font-size: 14px !important;
+    font-family: "Proxima Nova Regular","Segoe UI",Roboto,"Droid Sans","Helvetica Neue",Arial,sans-serif !important;
+    font-size: 15px !important;
     line-height: 1.42857143 !important;
 }
 
@@ -61,7 +61,7 @@ body{
     height: 400px;
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 600px){
     #post-read-image{
         width: 280px;
         height: 150px;
@@ -76,13 +76,18 @@ body{
     margin-bottom: -220px; 
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 600px){
     .page-wrap {
         min-height: 100%;
-        margin: 0 !important;
+        margin-left: 0% !important;
+        margin-right: 0% !important;
         /* equal to footer height */
         margin-bottom: -220px; 
     }
+}
+
+.ui-panelgrid .ui-grid-responsive .ui-grid-row{
+    border: none !important;
 }
 
 .page-wrap:after{
@@ -103,4 +108,12 @@ body{
 
 #footer, .page-wrap:after{
     height: 220px;
+}
+
+#footer .ui-panel-content{
+    background-color: #AFAFAF !important; color: aliceblue;width:100%;
+}
+
+#footer a:hover{
+    text-decoration: underline;
 }

@@ -1,5 +1,8 @@
 body{
     background: url("../images/congruent_outline.png");
+    font-family: "Proxima Nova Regular","Segoe UI",Roboto,"Droid Sans","Helvetica Neue",Arial,sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.42857143 !important;
 }
 
 .login-form-content{
