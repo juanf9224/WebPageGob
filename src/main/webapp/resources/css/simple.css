@@ -131,7 +131,9 @@ body{
 
 
 /* ************************************** CONTAINER STYLE ****************************************** */
-
+.left-side-content{
+    float:left;
+}
 .right-side-content{
     clear:both;
     float:right;

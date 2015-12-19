@@ -45,14 +45,16 @@
         <div class="page-wrap">
             <div class="loader">
             </div>   
-            <ui:insert name="plugins">
-                <ui:include src="templates/plugins/right-side-content.xhtml" />
-            </ui:insert>
-            <ui:insert name="galleria">
-                <ui:include src="templates/views/galeria-view.xhtml" />
-            </ui:insert>
-            <br/>
-            <div id="left">
+            <div class="right-side-content">
+                <ui:insert name="plugins">
+                    <ui:include src="templates/plugins/right-side-content.xhtml" />
+                </ui:insert>
+            </div>
+            <div class="left-side-content">
+                <ui:insert name="galleria">
+                    <ui:include src="templates/views/galeria-view.xhtml" />
+                </ui:insert>
+                <br/>
                 <ui:insert name="posts">
                     <ui:include src="templates/views/posts-view.xhtml"/>
                 </ui:insert>
