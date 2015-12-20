@@ -77,7 +77,8 @@
 
                 <p:tab id="confirm" title="Confirmation">
                     <p:panel header="Confirmation">
-                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                        <iframe scrolling="auto" name="confirmationScroll">
+                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid" style="width:100%;">
                             <h:panelGrid columns="2" columnClasses="label, value">
 
                                 <h:outputText value="Firstname: " />
@@ -114,6 +115,7 @@
                                 <h:outputText />
                             </h:panelGrid>
                         </h:panelGrid>
+                        </iframe>
                         <p:commandButton value="Submit" action="#{userBean.createService}" update="growl" process="@this"/>
 
                     </p:panel>
