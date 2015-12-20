@@ -29,6 +29,10 @@ body{
     width:30px;
     height:30px;
 }
+
+.social-icons b{
+    font-size:12px;
+}
 }
 
 /* ************************************** GALLERIA STYLE ****************************************** */
