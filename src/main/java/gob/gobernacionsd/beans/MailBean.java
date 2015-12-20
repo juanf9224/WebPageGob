@@ -84,7 +84,7 @@ public class MailBean implements Serializable {
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(fromEmail));
                 message.setRecipients(Message.RecipientType.TO,
-                        InternetAddress.parse("jfernandez@gobernacionsd.gob.do"));
+                        InternetAddress.parse("juanfh.24.6@gmail.com"));
                 message.setSubject(name);
                 message.setText(messageFromVisitor);
 
