@@ -21,7 +21,7 @@ body{
 }
 
 .social-tab{    
-    float:right;
+    right:0px;
     position:fixed;
     z-index: 9999;
 }
