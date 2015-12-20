@@ -20,6 +20,23 @@ body{
     height: 200px;
 }
 
+.social-tab{    
+    float:right;
+    position:fixed;
+    z-index: 9999;
+}
+
+.social-tab ul{
+    border:none;
+}
+
+@media screen and (max-width: 480px){
+.social-tab img{
+    width:30px;
+    height:30px;
+}
+}
+
 .social-icons{
     float:right;
 }
