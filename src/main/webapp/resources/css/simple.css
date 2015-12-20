@@ -30,6 +30,16 @@ body{
     border:none;
 }
 
+.social-tab img:hover{
+  width:60px; 
+}
+
+.social-tab img{
+  -webkit-transaction: width 1s;
+  -moz-transation: width 1s;
+  transition:width 1s;
+}
+
 @media screen and (max-width: 480px){
 .social-tab img{
     width:30px;
