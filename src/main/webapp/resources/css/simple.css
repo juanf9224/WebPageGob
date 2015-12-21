@@ -184,8 +184,8 @@ body{
     border-radius: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
-    -webkit-transaction: width 1s;
-    -moz-transation: width 1s;
+    -webkit-transition: width 0.5s;
+    -moz-transition: width 0.5s;
     transition:width 0.5s;
 }
 
