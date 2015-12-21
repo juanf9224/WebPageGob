@@ -149,6 +149,10 @@ body{
     width:100%;
 }
 
+.interest-links-style .ui-panel .ui-panel-content{
+    padding:1px !important;
+}
+
 @media screen and (max-width: 600px){
     .right-side-content{
         visibility: hidden;
