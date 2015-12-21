@@ -17,9 +17,6 @@
             </h:form>
             <h:form> 
                 <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="5" rows="10">
-                    <f:facet name="header">
-                        Scroll Down to Load More Posts
-                    </f:facet>
                     <f:facet name="loader">
                         <p:commandButton type="button" value="Ver más..." icon="ui-icon-circle-triangle-s"/>
                     </f:facet>
