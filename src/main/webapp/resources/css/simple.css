@@ -134,6 +134,7 @@ body{
 }
 
 .right-side-content{
+    padding: 0px;
     width:28%;
     margin-left:2%;
     float:right;
