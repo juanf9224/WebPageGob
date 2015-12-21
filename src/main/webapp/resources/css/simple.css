@@ -142,6 +142,8 @@ body{
 
 .interest-links-style{
     margin-bottom: 3%;
+    background-color: #ffffff;
+    padding: 1px;
 }
 
 .interest-links-style img{
@@ -164,8 +166,8 @@ body{
 
 @media screen and (max-width: 600px){
     .left-side-content{
-    width:100%;    
-}
+        width:100%;    
+    }
 }
 
 .social-tab{    
