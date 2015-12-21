@@ -16,7 +16,7 @@
             <div class="galleria-view-style">
             <center>
             
-                <p:galleria value="#{postBean.posts}" var="image" showCaption="true" effectSpeed="1000" effect="explode" panelWidth="1024" panelHeight="400" >
+                <p:galleria value="#{postBean.posts}" var="image" showCaption="true" effectSpeed="1000" effect="slide" panelWidth="1024" panelHeight="400" >
                 <p:graphicImage value="/images/#{image.imagePath}" alt="#{of:abbreviate(image.post, 100)}" title="#{image.title}" width="100%" height="400"/>                
             </p:galleria>
             
