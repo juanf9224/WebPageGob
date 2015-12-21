@@ -20,32 +20,11 @@ body{
     height: 200px;
 }
 
-.social-tab{    
-    right:0px;
-    position:fixed;
-    z-index: 9999;
-}
-
-.social-tab ul{
-    border:none;
-}
-
-.social-tab img:hover{
-  width:60px; 
-  height:50px;
-}
-
-.social-tab img{
-  -webkit-transaction: width 1s;
-  -moz-transation: width 1s;
-  transition:width 1s;
-}
-
 @media screen and (max-width: 480px){
-.social-tab img{
-    width:30px;
-    height:30px;
-}
+    .social-tab img{
+        width:30px;
+        height:30px;
+    }
 }
 
 .social-icons{
@@ -53,17 +32,34 @@ body{
 }
 
 @media screen and (max-width: 480px){
-.social-icons img{
-    width:30px;
-    height:30px;
-}
+    .social-icons img{
+        width:30px;
+        height:30px;
+    }
 
-.social-icons b{
-    font-size:12px;
-}
+    .social-icons b{
+        font-size:12px;
+    }
 }
 
 /* ************************************** GALLERIA STYLE ****************************************** */
+.galleria-view-style{
+    width: 80%;    
+}
+
+.post-view-style{
+    width: 80%;
+}
+
+@media screen and (max-width: 500px){
+    .galleria-view-style{
+        width: 100%;    
+    }
+    .post-view-style{
+        width: 100%;
+    }
+
+}
 .ui-galleria{
     width:100% !important;
 }
@@ -111,7 +107,7 @@ body{
 }
 
 .posts-link:hover{
-    
+
     text-decoration: underline;
 }
 
@@ -119,7 +115,7 @@ body{
 /* ************************************** SOBRE NOSOTROS STYLE ****************************************** */
 
 .info-gobernacion p{
-    
+
     text-align: justify; 
     list-style-position: outside;
 }
@@ -161,15 +157,39 @@ body{
     display: block;
 }
 
-
-/* ************************************** CONTAINER STYLE ****************************************** */
-.left-side-content{
-    float:left;
-}
 .right-side-content{
-    clear:both;
+    width:20%;
     float:right;
     border:1px solid red;
+}
+
+@media screen and (max-width: 500px){
+    .right-side-content{
+        visibility: hidden;
+        z-index: -9999;
+    }
+
+}
+
+.social-tab{    
+    right:0px;
+    position:fixed;
+    z-index: 9999;
+}
+
+.social-tab ul{
+    border:none;
+}
+
+.social-tab img:hover{
+    width:60px; 
+}
+
+.social-tab img{
+    border-radius: 0px;
+    -webkit-transaction: width 1s;
+    -moz-transation: width 1s;
+    transition:width 0.5s;
 }
 
 
