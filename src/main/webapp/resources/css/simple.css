@@ -170,6 +170,11 @@ body{
         visibility: hidden;
         z-index: -9999;
     }
+    
+    fb-page fb_iframe_widget{
+        visibility: hidden;
+        z-index: -9999;
+    }
 
 }
 
