@@ -2,7 +2,8 @@ html, body{
     height: 100%;
 }
 body{
-    background: url('../images/mochaGrunge.png');
+    background-color: #e7e7e7;
+    /*background: url('../images/mochaGrunge.png');*/
     font-family: 'Raleway', sans-serif !important;
     font-size: 15px !important;
     line-height: 1.42857143 !important;
@@ -212,6 +213,8 @@ body{
 
 #footer, .page-wrap:after{
     height: 220px;
+    display: inline-block;
+    width: 100%;
 }
 
 #footer .ui-panel-content{
