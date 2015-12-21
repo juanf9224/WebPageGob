@@ -164,6 +164,7 @@ body{
     .right-side-content{
         visibility: hidden;
         z-index: -9999;
+        height:0px;
     }
 
     .fb-page{
