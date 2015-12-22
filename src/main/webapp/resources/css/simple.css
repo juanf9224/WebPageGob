@@ -77,13 +77,12 @@ body{
     width:100% !important;
 }
 
-.ui-galleria-nav-next .ui-icon .ui-icon-circle-triangle-e{
-    width: 40px;
-    height:40px;
-}
-
 .galleria-view-style .ui-galleria-panel{
     width:100%;
+}
+
+.galleria-view-style .ui-galleria-panel-wrapper{
+    width:100% !important;
 }
 
 .galleria-view-style li{
@@ -110,6 +109,7 @@ body{
 
 
 .posts-link{
+    float: left;
     color: black;
     text-decoration: none;
 }
