@@ -37,6 +37,17 @@ body{
     }
 }
 
+.header-logo-title{
+    color: #fff;
+}
+
+@media screen and (max-width: 480px){
+    .header-logo-title{
+        visibility: hidden;
+        z-index: -9999;
+    }
+}
+
 /* ************************************** GALLERIA STYLE ****************************************** */
 
 .ui-galleria{
