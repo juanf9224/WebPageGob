@@ -117,6 +117,13 @@ body{
     list-style-position: outside;
 }
 
+.info-gobernacion .ui-widget-header{
+    background: darkseagreen !important;
+    font-size: 2em;
+    color: white;
+    box-shadow: 8px 5px 10px #888;
+}
+
 
 /* ************************************** SERVICIOS STYLE ****************************************** */
 
@@ -124,6 +131,21 @@ body{
     text-align: justify; 
 }
 
+.servicios-publicos-content .ui-widget-header{
+    background: darkseagreen !important;
+    font-size: 2em;
+    color: white;
+    box-shadow: 8px 5px 10px #888;
+}
+
+/* ************************************** CONTACT FORM ********************************************* */
+
+.contact-form-content .ui-widget-header{
+    background: darkseagreen !important;
+    font-size: 2em;
+    color: white;
+    box-shadow: 8px 5px 10px #888;
+}
 
 /* ************************************** CONTAINER STYLE ****************************************** */
 
