@@ -5,7 +5,7 @@ html, body{
     line-height: 1.42857143 !important;
 }
 body{
-    background: url('../images/mochaGrunge.png');
+    /*background: url('../images/mochaGrunge.png');*/
     font-family: 'Raleway', sans-serif !important;
     font-size: 16px !important;
     line-height: 1.42857143 !important;
@@ -94,6 +94,20 @@ body{
     padding:0px;
 }
 
+.ui-data-scroller .ui-widget-content{
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+}
+
+.ui-datascroller-header .ui-widget-header{
+    background-color: darkseagreen !important;
+    color: aliceblue;
+    font-size: 2em !important;
+    font-weight: bold !important;
+}
+
+
 
 /* ************************************** SOBRE NOSOTROS STYLE ****************************************** */
 
@@ -118,7 +132,7 @@ body{
     margin-left: 5% !important;
     margin-right: 5% !important;
     /* equal to footer height */
-    margin-bottom: -220px; 
+    margin-bottom: -200px; 
 }
 
 @media screen and (max-width: 600px){
@@ -127,7 +141,7 @@ body{
         margin-left: 0% !important;
         margin-right: 0% !important;
         /* equal to footer height */
-        margin-bottom: -220px; 
+        margin-bottom: -200px; 
     }
 }
 
@@ -225,7 +239,7 @@ body{
 
 
 #footer, .page-wrap:after{
-    height: 220px;
+    height: 200px;
     display: inline-block;
     width: 100%;
 }
@@ -238,11 +252,16 @@ body{
 
 #footer .ui-widget-content{
     border:none !important;
-    background: none; 
+    background: #045491; 
+    color: #fff;
 }
 
 #footer a:hover{
     text-decoration: underline;
+}
+
+#footer a{
+    color: thistle;
 }
 
 /* *************************************** Primefaces Styles ********************************* */
