@@ -101,6 +101,11 @@ body{
         width: 280px;
         height: 150px;
     }
+    
+    .post-view-style img{
+        width:100%;
+        padding: 10px
+    }
 }
 
 
