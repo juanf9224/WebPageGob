@@ -25,11 +25,13 @@
                     </f:facet>
 
                     <center><p:panelGrid columns="2" layout="grid">
-                            <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:graphicImage value="/images/#{post.previewName}" width="280" height="200"/></p:commandLink>
+                            <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink>
                             <p:outputPanel>                            
-                                <h:panelGrid columns="2" cellpadding="5">
-
-                                    <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:outputText value="#{post.title}" style="font-weight: bold; font-size: 25px;"/></p:commandLink>
+                                <h:panelGrid columns="1" cellpadding="5">
+                                    <p:column>
+                                    <div class="img-position-post"><p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink></div>
+                                    <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:outputText value="#{post.title}" style="font-weight: bold; font-size: 18px;"/></p:commandLink>
+                                    
                                     <p:spacer height="7"/>
 
 
@@ -37,6 +39,7 @@
                                     <p:spacer height="7"/>
 
                                     <h:commandLink id="readPost" value="Leer mas..." action="#{postMB.readPost(post.postId)}" style="color: #036fab;" />
+                                    </p:column>
                                 </h:panelGrid>
                             </p:outputPanel>
                         </p:panelGrid></center>
