@@ -223,8 +223,7 @@ img-position-post{
     padding: 1px;
 }
 
-.interest-links-style img{
-    border-radius: 0px;
+.interest-links-style img, table{
     width:100%;
 }
 
