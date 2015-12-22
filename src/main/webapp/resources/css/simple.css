@@ -94,17 +94,17 @@ body{
     padding:0px;
 }
 
-.post-view-style .ui-data-scroller .ui-widget-content{
+.post-view-style .ui-widget-content{
     border-left: none !important;
     border-right: none !important;
     border-bottom: none !important;
 }
 
-.post-view-style .ui-data-scroller .ui-datascroller-header .ui-widget-header{
-    background-color: darkseagreen !important;
-    color: aliceblue;
-    font-size: 2em !important;
-    font-weight: bold !important;
+.post-view-style .ui-widget-header{
+    background: darkseagreen !important;
+    font-size: 2em;
+    color: white;
+    box-shadow: 8px 5px 10px #888;
 }
 
 
@@ -258,10 +258,11 @@ body{
 
 #footer a:hover{
     text-decoration: underline;
+    color: thistle;
 }
 
 #footer a{
-    color: thistle;
+    color: #fff;
 }
 
 /* *************************************** Primefaces Styles ********************************* */
