@@ -1,51 +1,52 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:of="http://omnifaces.org/functions">
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:of="http://omnifaces.org/functions">
     <h:head>
         <title>Posts</title>
     </h:head>
     <h:body>
         <ui:composition>
             <div class="post-view-style">
-            <h:form>
-                <p:growl id="msg" for="readPost" />
-            </h:form>
-            <h:form> 
-                <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="3" rows="3">
-                    <f:facet name="header">
-                        Noticias
-                    </f:facet>
-                    <f:facet name="loader">
-                        <p:commandButton type="button" value="Ver más..." icon="ui-icon-circle-triangle-s"/>
-                    </f:facet>
+                <h:form>
+                    <p:growl id="msg" for="readPost" />
+                </h:form>
+                <h:form> 
+                    <p:dataScroller value="#{postBean.posts}" var="post" chunkSize="3" rows="3">
+                        <f:facet name="header">
+                            Noticias
+                        </f:facet>
+                        <f:facet name="loader">
+                            <p:commandButton type="button" value="Ver más..." icon="ui-icon-circle-triangle-s"/>
+                        </f:facet>
 
-                    <center><p:panelGrid columns="2" layout="grid">
-                            
-                            <p:outputPanel>                            
-                                <h:panelGrid columns="1" cellpadding="5">
-                                    <p:column>
-                                    <div class="img-position-post"><p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink></div>
-                                    <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:outputText value="#{post.title}" style="font-weight: bold; font-size: 18px;"/></p:commandLink>
-                                    <br/>
-                                    <p:spacer height="7"/>
+                        <center><p:panelGrid columns="2" layout="grid">
 
+                                <p:outputPanel>                            
+                                    <h:panelGrid columns="1" cellpadding="5">
+                                        <p:column>
+                                            <div class="img-position-post"><p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink></div>
+                                            <div>
+                                                <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 18px;"/></p:commandLink>
+                                                <br/>
+                                                <p:spacer height="7"/>
+                                                
+                                                <h:outputText value="#{of:abbreviate(post.post, 400)}" escape="false" />
+                                                <br/>
+                                                <p:spacer height="7"/>
 
-                                    <h:outputText value="#{of:abbreviate(post.post, 400)}" escape="false" />
-                                    <br/>
-                                    <p:spacer height="7"/>
-
-                                    <h:commandLink id="readPost" value="Leer mas..." action="#{postMB.readPost(post.postId)}" style="color: #036fab;" />
-                                    </p:column>
-                                </h:panelGrid>
-                            </p:outputPanel>
-                        </p:panelGrid></center>
-                </p:dataScroller>
-            </h:form>
+                                                <h:commandLink id="readPost" value="Leer mas..." action="#{postMB.readPost(post.postId)}" style="color: #036fab;" />
+                                            </div>
+                                        </p:column>
+                                    </h:panelGrid>
+                                </p:outputPanel>
+                            </p:panelGrid></center>
+                    </p:dataScroller>
+                </h:form>
             </div>
         </ui:composition>
     </h:body>
