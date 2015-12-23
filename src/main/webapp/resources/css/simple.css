@@ -72,8 +72,8 @@ body{
 }
 @media screen and (max-width: 600px){
     .galleria-view-style li{
-    width:100% !important;
-}
+        width:100% !important;
+    }
 }
 
 .ui-galleria-caption{
@@ -105,7 +105,7 @@ body{
         width: 280px;
         height: 150px;
     }
-    
+
     .post-view-style img{
         width:100%;
         padding: 10px
@@ -150,11 +150,12 @@ body{
 
 img-position-post{
     float:left;
-    margin-right: 5px;
+    width:30%;
 }
 
 .post-prev-text{
-    float:left;
+    width: 70%;
+    float: left;
 }
 
 
