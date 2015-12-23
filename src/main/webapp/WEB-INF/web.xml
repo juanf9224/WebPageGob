@@ -61,12 +61,10 @@
         <url-pattern>*.png</url-pattern>
         <url-pattern>*.gif</url-pattern>
     </filter-mapping>
-    
-    <mime-mapping>  
-        <extension>woff2</extension>  
-        <mime-type>application/x-font-woff2</mime-type>  
+    <mime-mapping>
+        <extension>woff2</extension>
+        <mime-type>application/x-font-woff2</mime-type>
     </mime-mapping>
-    
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -84,6 +82,10 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/faces/page-not-found-404.xhtml</location>
+    </error-page>
     <resource-ref>
         <res-ref-name>jdbc/localdbgob</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
