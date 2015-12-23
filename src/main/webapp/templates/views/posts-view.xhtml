@@ -31,7 +31,7 @@
                                         <p:column>
                                             <div class="img-position-post"><p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink></div>
                                             <div class="post-prev-text">
-                                                <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 18px;"/></p:commandLink>
+                                               <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link"> <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 18px;"/></p:commandLink>
                                                 <br/>
                                                 <p:spacer height="7"/>
                                                 
