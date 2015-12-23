@@ -1,6 +1,24 @@
+html, body{
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.42857143 !important;
+}
+
+body{
+    background-color:#059;
+}
 #robot{
     margin: 0 auto;
     width: 280px;
     height: 210px;
     margin-top: 40px;
 }
+
+.error-message{
+    width:70%;
+    box-shadow: 8px 10px 8px #888;
+    text-align: center;
+
+}
+
+
