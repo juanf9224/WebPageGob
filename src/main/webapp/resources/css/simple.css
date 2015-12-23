@@ -165,6 +165,7 @@ body{
 }
 .post-view-style .ui-panelgrid-cell{
     width:100%;
+    margin-bottom: 3%;
     box-shadow: 8px 8px 10px #888;
 }
 
