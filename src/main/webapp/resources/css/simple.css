@@ -192,7 +192,7 @@ body{
 }
 
 .info-gobernacion .ui-widget-header{
-    background: darkseagreen !important;
+    background: #38c;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
@@ -206,7 +206,7 @@ body{
 }
 
 .servicios-publicos-content .ui-widget-header{
-    background: darkseagreen !important;
+    background: #38c;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
@@ -214,8 +214,8 @@ body{
 
 /* ************************************** CONTACT FORM ********************************************* */
 
-.contact-form-content .ui-widget-header{
-    background: darkseagreen !important;
+#contact-form-content .ui-widget-header{
+    background: #38c;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
