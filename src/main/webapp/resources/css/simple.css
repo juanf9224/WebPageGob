@@ -92,6 +92,18 @@ body{
     width:100% !important;
 }
 
+.youtube-gallery{
+    width:100%;
+    height:300px;
+    border:1px solid gray;
+    box-shadow: 10px 10px 12px #888;
+}
+
+.youtube-gallery iframe{
+    width:100%;
+    height:300px;
+}
+
 
 
 /* ************************************** POSTS STYLE ****************************************** */
@@ -153,16 +165,19 @@ body{
 }
 .post-view-style .ui-panelgrid-cell{
     width:100%;
+    box-shadow: 8px 8px 10px #888;
 }
 
-img-position-post{
+.img-position-post{
     float:left;
-    width:30%;
+    width:27%;
+    margin-right: 3%;
 }
 
 .post-prev-text{
     width: 70%;
     float: left;
+    margin-bottom: 3%;
 }
 
 
