@@ -60,11 +60,12 @@
                     </p:column>
 
                     <p:column headerText="Documento">
-                        <p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" value="nomina.pdf">
-                            <p:fileDownload value="#{fileDownloadBean.file}" />                            
+                        <p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                            <p:fileDownload value="#{fileDownloadBean.file}" /> 
+                            <span class="glyphicon glyphicon-download-alt"></span>
                         </p:commandLink>
                         <p:graphicImage name="images/pdf-icon.png" width="24" />
-                        <span class="glyphicon glyphicon-download-alt"></span>
+                        
                     </p:column>
                 </p:panelGrid>
                 </p:panel>
