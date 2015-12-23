@@ -10,9 +10,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/bootstrap.min.css" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/simple.css" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
 
@@ -45,13 +44,13 @@
             </div>
 
 
+            <div class="nomina-content-style">
             <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
                 <p:graphicImage name="images/loading-bar.gif" />
             </p:dialog>
-
-
-            <h1 style="color: #444;background-color:darkseagreen;box-shadow:6px 5px 5px #888;">Nomina</h1>
+            
             <h:form>
+                <p:panel header="Nomina">
                 <p:panelGrid layout="grid" columns="3" style="border: 1px solid grey;">
                     <p:column headerText="Mes">
                         <h:outputText value="Diciembre" />
@@ -68,6 +67,7 @@
                         <span class="glyphicon glyphicon-download-alt"></span>
                     </p:column>
                 </p:panelGrid>
+                </p:panel>
             </h:form>
         </div>
         <script type="text/javascript">
@@ -79,6 +79,7 @@
                 PF('statusDialog').hide();
             }
         </script>
+        </div>
         <br />
             <br />
         <ui:insert name="footer">

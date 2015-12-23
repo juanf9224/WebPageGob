@@ -212,6 +212,15 @@ body{
     box-shadow: 8px 5px 10px #888;
 }
 
+/* ************************************** NOMINA STYLE *************************************************** */
+
+.nomina-content-style .ui-widget-header{
+    background: #38c;
+    font-size: 2em;
+    color: white;
+    box-shadow: 8px 5px 10px #888;
+}
+
 /* ************************************** CONTACT FORM ********************************************* */
 
 #contact-form-content .ui-widget-header{
