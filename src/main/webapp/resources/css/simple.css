@@ -110,6 +110,13 @@ body{
         width:100%;
         padding: 10px
     }
+    
+    .post-prev-text{
+    width: 100%;
+    float: left;
+    text-align: justify;
+}
+    
 }
 
 .post-view-style{
