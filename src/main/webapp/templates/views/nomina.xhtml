@@ -45,44 +45,58 @@
 
 
             <div class="nomina-content-style">
-            <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
-                <p:graphicImage name="images/loading-bar.gif" />
-            </p:dialog>
-            
-            <h:form>
-                <p:panel header="Nomina">
-                <p:panelGrid layout="grid" columns="3" style="border: 1px solid grey;">
-                    <p:column headerText="Mes">
-                        <h:outputText value="Diciembre" />
-                    </p:column>
-                    <p:column headerText="Año">
-                        <h:outputText value="2015" />
-                    </p:column>
+                <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+                    <p:graphicImage name="images/loading-bar.gif" />
+                </p:dialog>
 
-                    <p:column headerText="Descargar">
-                        <p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                            <p:fileDownload value="#{fileDownloadBean.file}" /> 
-                            <span class="glyphicon glyphicon-download-alt"></span>
-                        </p:commandLink>
-                        <p:graphicImage name="images/pdf-icon.png" width="24" />
-                        
-                    </p:column>
-                </p:panelGrid>
-                </p:panel>
-            </h:form>
-        </div>
-        <script type="text/javascript">
-            function start() {
-                PF('statusDialog').show();
-            }
+                <h:form>
+                    <p:panel header="Nomina">
+                        <p:panelGrid layout="grid" columns="3" style="border: 1px solid grey;">
+                            <f:facet name="header">
 
-            function stop() {
-                PF('statusDialog').hide();
-            }
-        </script>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <h:outputText value="mes" />
+                                    </p:column>
+                                    <p:column colspan="2">
+                                        <h:outputText value="año" />
+                                    </p:column>
+
+                                    <p:column colspan="2">
+                                        <h:outputText value="Tipo de archivo" />
+                                    </p:column>
+
+                                    <p:column colspan="2">
+                                        <h:outputText value="Descargar" />
+                                    </p:column>
+                                </p:row>
+                            </f:facet>
+
+                            <p:row>
+                                <p:column><h:outputText value="diciembre" /></p:column>
+                                <p:column><h:outputText value="2015" /></p:column>
+                                <p:column><p:graphicImage name="images/pdf-icon.png" width="24" /></p:column>
+                                <p:column><p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                        <p:fileDownload value="#{fileDownloadBean.file}" /> 
+                                        <span class="glyphicon glyphicon-download-alt"></span>
+                                    </p:commandLink></p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </p:panel>
+                </h:form>
+            </div>
+            <script type="text/javascript">
+                function start() {
+                    PF('statusDialog').show();
+                }
+
+                function stop() {
+                    PF('statusDialog').hide();
+                }
+            </script>
         </div>
         <br />
-            <br />
+        <br />
         <ui:insert name="footer">
             <ui:include src="../bottom/general-footer.xhtml"/>
         </ui:insert>
