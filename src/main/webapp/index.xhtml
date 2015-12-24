@@ -24,6 +24,26 @@
                 setTimeout("window.location.reload(1)", 5000);
             }
 
+            $(document).ready(function () {
+
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 100) {
+                        $('.scrollup').fadeIn();
+                    } else {
+                        $('.scrollup').fadeOut();
+                    }
+                });
+
+                $('.scrollup').click(function () {
+                    $("html, body").animate({
+                        scrollTop: 0
+                    }, 600);
+                    return false;
+                });
+
+            });
+            }
+
         </script>
         <title>welcome</title>
     </h:head>
@@ -66,7 +86,7 @@
             <ui:include src="templates/bottom/general-footer.xhtml"/>
         </ui:insert>
 
-
+        <a href="#" class="scrollup"><span class="glyphicon glyphicon-eject"></span></a>
 
     </h:body>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
