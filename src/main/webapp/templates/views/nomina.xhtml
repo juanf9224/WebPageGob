@@ -10,6 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/bootstrap.min.css" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/simple.css" />
@@ -51,7 +52,6 @@
 
                 <h:form>
                     <p:panel header="Nomina">
-                        <p:panelGrid layout="grid" columns="3" style="border: 1px solid grey;">
                             <table class="nomina-content-table">
                                 <tr>
                                     <th>Mes</th>
@@ -69,15 +69,9 @@
                                     </p:commandLink></td>
                                 </tr>
                             </table>
-                        </p:panelGrid>
                     </p:panel>
                 </h:form>
-            </div>
-            
-            <br />
-        <br />
-        </div>
-        <script type="text/javascript">
+                <script type="text/javascript">
                 function start() {
                     PF('statusDialog').show();
                 }
@@ -86,6 +80,12 @@
                     PF('statusDialog').hide();
                 }
             </script>
+            </div>
+            
+            <br />
+        <br />
+        </div>
+        
         <ui:insert name="footer">
             <ui:include src="../bottom/general-footer.xhtml"/>
         </ui:insert>
