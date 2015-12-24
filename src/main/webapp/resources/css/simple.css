@@ -237,6 +237,25 @@ body{
     box-shadow: 8px 5px 10px #888;
 }
 
+.nomina-content-style .ui-panelgrid-cell{
+    width:100%;
+    border:none;
+}
+
+.nomina-content-style .nomina-content-table{
+    padding: 5px;
+}
+
+.nomina-content-table th{
+    border-right: 1px solid grey;
+    text-align: center;
+}
+
+.nomina-content-table td{
+    text-align: center;
+    border-right: 1px solid grey;
+}
+
 /* ************************************** CONTACT FORM ********************************************* */
 
 #contact-form-content .ui-widget-header{
