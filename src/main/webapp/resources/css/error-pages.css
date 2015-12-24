@@ -16,8 +16,9 @@ body{
 
 .error-message{
     width:70%;
-    box-shadow: 8px 10px 8px #888;
+    box-shadow: 8px 10px 8px #268;
     text-align: center;
+    color: #fff;
 
 }
 

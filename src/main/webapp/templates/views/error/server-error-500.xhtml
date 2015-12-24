@@ -4,17 +4,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Error 404</title>
+        <title>Server Error 500</title>
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/error-pages.css"/>
     </h:head>
     <h:body>
-        <div id="robot">
+         <div id="robot">
             <p:graphicImage name="images/error-pages/error-404-robot.png" />            
         </div>
         <center><div class="error-message">
-        <h1>404</h1>
-        <h1>PAGE NOT FOUND</h1>
-        <p>The page you are looking for either doesn't exist or is not here anymore. <a href="#{request.contextPath}">Click here</a> to go back to the home page.</p>
+        <h1>500</h1>
+        <h1>SERVER ERROR</h1>
+        <p>there was an error while loading the page, sorry :'( . <a href="#{request.contextPath}">Click here</a> to go back to the home page.</p>
             </div></center>
     </h:body>
 </html>
