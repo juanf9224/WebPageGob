@@ -84,7 +84,11 @@
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>
-        <location>/faces/page-not-found-404.xhtml</location>
+        <location>/faces/templates/views/error/page-not-found-404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/faces/templates/views/error/server-error-500.xhtml</location>
     </error-page>
     <resource-ref>
         <res-ref-name>jdbc/localdbgob</res-ref-name>
