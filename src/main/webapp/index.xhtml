@@ -39,28 +39,29 @@
         <div class="page-wrap">
             <div class="loader">
             </div> 
-            
+
             <ui:insert name="right-side-content">
                 <ui:include src="templates/plugins/right-side-content.xhtml" />
             </ui:insert>
-            
+
             <div class="left-side-content">
-            <ui:insert name="galleria">
-                <ui:include src="templates/views/galeria-view.xhtml" />
-            </ui:insert>
-            <br/>
-            <ui:insert name="youtube-gallery">
-                <ui:include src="templates/views/youtube-gallery.xhtml" />
-            </ui:insert>
-            <br/>
-            <ui:insert name="posts">
-                <ui:include src="templates/views/posts-view.xhtml"/>
-            </ui:insert>
+                <ui:insert name="galleria">
+                    <ui:include src="templates/views/galeria-view.xhtml" />
+                </ui:insert>
+                <br/>
+                <ui:insert name="youtube-gallery">
+                    <ui:include src="templates/views/youtube-gallery.xhtml" />
+                </ui:insert>
+                <br/>
+                <ui:insert name="posts">
+                    <ui:include src="templates/views/posts-view.xhtml"/>
+                </ui:insert>
             </div>
-            <br />
-            <br />
-            <p:spacer height="30" />
         </div>
+
+        <br />
+        <br />
+
         <ui:insert name="footer">
             <ui:include src="templates/bottom/general-footer.xhtml"/>
         </ui:insert>
