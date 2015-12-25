@@ -29,7 +29,7 @@
                                 <p:outputPanel>                            
                                     <h:panelGrid columns="1" cellpadding="5">
                                         <p:column>
-                                            <div class="img-position-post"><p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link" target="_BLANK"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink></div>
+                                            <div class="img-position-post"><center><p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link" target="_BLANK"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink></center></div>
                                             <div class="post-prev-text">
                                                 <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link" target="_BLANK"> <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 18px;"/></p:commandLink>
                                                 <br/>
