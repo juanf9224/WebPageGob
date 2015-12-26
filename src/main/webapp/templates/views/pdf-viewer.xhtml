@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
     </h:head>
     <h:body>
-        <p:media value="#{request.contextPath}/resources/files/#{request.getParameter(pdf)}?pfdrid_c=true" player="pdf" height="100%" width="100%" >
+        <p:media value="resources/files/#{request.getParameter(pdf)}?pfdrid_c=true" player="pdf" height="100%" width="100%" >
             Your browser can't display pdf, <p:commandLink action="app-nomina" value="Volver" />
         </p:media>
     </h:body>
