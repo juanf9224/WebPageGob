@@ -14,14 +14,29 @@
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
         <script type="text/javascript">
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 50) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+                // scroll body to 0px on click
+                $('#back-to-top').click(function () {
+                    $('#back-to-top').tooltip('hide');
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
+                $('#back-to-top').tooltip('show');
+            });
+
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
-
-            function reload() {
-                setTimeout("window.location.reload(1)", 5000);
-            }
-
         </script>
         <title>welcome</title>
     </h:head>
@@ -29,7 +44,7 @@
         <ui:insert name="header">
             <ui:include src="../head/general-header.xhtml" />
         </ui:insert>
-        
+
         <ui:insert name="social-tab">
             <ui:include src="../views/social-tab/social-tab.xhtml" />
         </ui:insert>
@@ -48,37 +63,40 @@
                         <br />
                         <h2>Misión</h2>
                         <p>
-                        Servir como ente de coordinación de las diferentes agencias e instituciones vinculadas al Gobierno Central en la Provincia, promoviendo el exitoso desenvolvimiento de la agenda gubernamental en esta demarcación territorial, y auspiciando la implementación exitosa de programas puntuales que proyecten favorablemente la imagen de la Administración. Asimismo, servir de medio de interlocución entre las entidades que representan a las fuerzas vivas de la comunidad y el Gobierno Central, sosteniendo una relación constructiva, fluida y respetuosa con los actores sociales relevantes de la Provincia de Santo Domingo.
+                            Servir como ente de coordinación de las diferentes agencias e instituciones vinculadas al Gobierno Central en la Provincia, promoviendo el exitoso desenvolvimiento de la agenda gubernamental en esta demarcación territorial, y auspiciando la implementación exitosa de programas puntuales que proyecten favorablemente la imagen de la Administración. Asimismo, servir de medio de interlocución entre las entidades que representan a las fuerzas vivas de la comunidad y el Gobierno Central, sosteniendo una relación constructiva, fluida y respetuosa con los actores sociales relevantes de la Provincia de Santo Domingo.
                         </p>
                         <br/>
                         <h2>Visión</h2>
                         <p>
-                        Convertir a la institución en una instancia efectiva de representación del Poder Ejecutivo en cuanto a la armonización e implementación de las políticas públicas trazadas por el Gobierno Central, incentivando la ejecución de programas y acciones que contribuyan a robustecer la imagen de la Administración, al tiempo que mantiene un elevado nivel de credibilidad frente a la comunidad.
+                            Convertir a la institución en una instancia efectiva de representación del Poder Ejecutivo en cuanto a la armonización e implementación de las políticas públicas trazadas por el Gobierno Central, incentivando la ejecución de programas y acciones que contribuyan a robustecer la imagen de la Administración, al tiempo que mantiene un elevado nivel de credibilidad frente a la comunidad.
                         </p>
                         <br/>
                         <h2>Valores:</h2>
                         <blockquote>
-                        <ul>
-                            <li>Entusiasmo. Mediante el estímulo constante de iniciativas que motiven un ejercicio dinámico y eficiente en el funcionamiento de las instituciones del Gobierno Central, accederemos a desempeñar un rol de principalía en la implementación de la agenda de la Administración, y contribuiremos a robustecer la imagen del Poder Ejecutivo en esta demarcación territorial.</li>
-                            <br/>
-                            <li>Apertura. Al sostener una relación productiva, fundada en el diálogo sincero y constante, con los diversos actores que desempeñan roles de representación en nuestra sociedad, reivindicamos el carácter incluyente y plural de la actual gestión gubernativa, al tiempo que reafirmamos el compromiso de la Administración con la consolidación de nuestro sistema democrático.</li>
-                            <br/>
-                            <li>Disciplina. La implementación ordenada y metódica de los programas concebidos por la institución para reforzar la aplicación de las políticas trazadas por la Administración permitirá generar un entorno adecuado para el exitoso desenvolvimiento de la agenda gubernamental en la Provincia de Santo Domingo.</li>
-                            <br/>
-                            <li>Sensibilidad. Debemos identificar y promover la solución progresiva de los diversos problemas que aquejan a las comunidades de nuestra demarcación territorial, sirviendo de canal de información y  acompañamiento para la superación de tales malestares sociales.</li>
-                        </ul>
+                            <ul>
+                                <li>Entusiasmo. Mediante el estímulo constante de iniciativas que motiven un ejercicio dinámico y eficiente en el funcionamiento de las instituciones del Gobierno Central, accederemos a desempeñar un rol de principalía en la implementación de la agenda de la Administración, y contribuiremos a robustecer la imagen del Poder Ejecutivo en esta demarcación territorial.</li>
+                                <br/>
+                                <li>Apertura. Al sostener una relación productiva, fundada en el diálogo sincero y constante, con los diversos actores que desempeñan roles de representación en nuestra sociedad, reivindicamos el carácter incluyente y plural de la actual gestión gubernativa, al tiempo que reafirmamos el compromiso de la Administración con la consolidación de nuestro sistema democrático.</li>
+                                <br/>
+                                <li>Disciplina. La implementación ordenada y metódica de los programas concebidos por la institución para reforzar la aplicación de las políticas trazadas por la Administración permitirá generar un entorno adecuado para el exitoso desenvolvimiento de la agenda gubernamental en la Provincia de Santo Domingo.</li>
+                                <br/>
+                                <li>Sensibilidad. Debemos identificar y promover la solución progresiva de los diversos problemas que aquejan a las comunidades de nuestra demarcación territorial, sirviendo de canal de información y  acompañamiento para la superación de tales malestares sociales.</li>
+                            </ul>
                         </blockquote>
-                        
+
                     </p:panel> 
                 </div>
             </section>
 
         </div>
-        <br />
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
+           role="button" title="Back to Top" data-toggle="tooltip" data-placement="top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
             <br />
-        <ui:insert name="footer">
-            <ui:include src="../bottom/general-footer.xhtml"/>
-        </ui:insert>
+            <br />
+            <ui:insert name="footer">
+                <ui:include src="../bottom/general-footer.xhtml"/>
+            </ui:insert>
 
     </h:body>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>

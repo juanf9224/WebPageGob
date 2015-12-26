@@ -17,14 +17,29 @@
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
 
         <script type="text/javascript">
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 50) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+                // scroll body to 0px on click
+                $('#back-to-top').click(function () {
+                    $('#back-to-top').tooltip('hide');
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
+                $('#back-to-top').tooltip('show');
+            });
+
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
-
-            function reload() {
-                setTimeout("window.location.reload(1)", 5000);
-            }
-
         </script>
         <title>#{postMB.p.title}</title>
     </h:head>
@@ -43,23 +58,26 @@
             <div class="loader">
             </div>
             <div class="post-read-style">
-            <center> <p:panelGrid columns="1"  layout="grid" style="border: none !important;">
-                    <p:outputLabel value="#{postMB.p.title}" escape="false" style="font-size: 35px;" />
-                    <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />
-                    <h:outputText id="date-created" value="Fecha de creacion: #{postMB.p.dateCreated}"> 
-                        <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
-                    </h:outputText>
-                    <p:spacer />
-                    <p:graphicImage value="/images/#{postMB.p.imagePath}" id="post-read-image" alt="imagen del post"/>
-                    <p:spacer />
-                    <h:outputText value="#{postMB.p.post}" escape="false" />
+                <center> <p:panelGrid columns="1"  layout="grid" style="border: none !important;">
+                        <p:outputLabel value="#{postMB.p.title}" escape="false" style="font-size: 35px;" />
+                        <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />
+                        <h:outputText id="date-created" value="Fecha de creacion: #{postMB.p.dateCreated}"> 
+                            <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <p:spacer />
+                        <p:graphicImage value="/images/#{postMB.p.imagePath}" id="post-read-image" alt="imagen del post"/>
+                        <p:spacer />
+                        <h:outputText value="#{postMB.p.post}" escape="false" />
 
-                </p:panelGrid></center>
+                    </p:panelGrid></center>
             </div>
         </div>
-        <ui:insert name="footer">
-            <ui:include src="../bottom/general-footer.xhtml"/>
-        </ui:insert>
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
+           role="button" title="Back to Top" data-toggle="tooltip" data-placement="top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+            <ui:insert name="footer">
+                <ui:include src="../bottom/general-footer.xhtml"/>
+            </ui:insert>
 
 
     </h:body>

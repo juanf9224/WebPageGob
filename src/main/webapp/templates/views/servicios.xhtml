@@ -14,14 +14,29 @@
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/simple.css" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
         <script type="text/javascript">
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 50) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+                // scroll body to 0px on click
+                $('#back-to-top').click(function () {
+                    $('#back-to-top').tooltip('hide');
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
+                $('#back-to-top').tooltip('show');
+            });
+
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
-
-            function reload() {
-                setTimeout("window.location.reload(1)", 5000);
-            }
-
         </script>
         <title>welcome</title>
     </h:head>
@@ -29,11 +44,11 @@
         <ui:insert name="header">
             <ui:include src="../head/general-header.xhtml" />
         </ui:insert>
-        
+
         <ui:insert name="social-tab">
             <ui:include src="../views/social-tab/social-tab.xhtml" />
         </ui:insert>
-        
+
         <div class="page-wrap">
             <div class="loader">
             </div>
@@ -41,24 +56,27 @@
             <div class="servicios-publicos-content">
                 <p:panel header="Servicios Públicos">
                     <blockquote>
-                    <h2>Certificado de vida y costumbre:</h2><br/>
+                        <h2>Certificado de vida y costumbre:</h2><br/>
 
-                    <p><b>Requisitos:</b> copia de la cédula, copia de certificado de buena conducta y sello de RD$30.00 de la fiscalía.</p><br/>
+                        <p><b>Requisitos:</b> copia de la cédula, copia de certificado de buena conducta y sello de RD$30.00 de la fiscalía.</p><br/>
 
-                    <b>Entrega:</b> Inmediata.
+                        <b>Entrega:</b> Inmediata.
 
-                    <h2>Control de alquileres:</h2>
-                    <p>La Gobernación funge como ente mediador sobre los conflictos que  surgen entre propietario e inquilino, de un inmueble dado en alquiler.  Cuando una de las partes presenta una queja ante nuestro departamento, se procede a citar la otra, con miras de conciliar y llegar a un mutuo acuerdo.</p>
+                        <h2>Control de alquileres:</h2>
+                        <p>La Gobernación funge como ente mediador sobre los conflictos que  surgen entre propietario e inquilino, de un inmueble dado en alquiler.  Cuando una de las partes presenta una queja ante nuestro departamento, se procede a citar la otra, con miras de conciliar y llegar a un mutuo acuerdo.</p>
                     </blockquote>
                 </p:panel>
             </div>
 
         </div>
-        <br />
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
+           role="button" title="Back to Top" data-toggle="tooltip" data-placement="top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
             <br />
-        <ui:insert name="footer">
-            <ui:include src="../bottom/general-footer.xhtml"/>
-        </ui:insert>
+            <br />
+            <ui:insert name="footer">
+                <ui:include src="../bottom/general-footer.xhtml"/>
+            </ui:insert>
 
 
     </h:body>

@@ -17,14 +17,29 @@
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
 
         <script type="text/javascript">
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 50) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+                // scroll body to 0px on click
+                $('#back-to-top').click(function () {
+                    $('#back-to-top').tooltip('hide');
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
+                $('#back-to-top').tooltip('show');
+            });
+
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
-
-            function reload() {
-                setTimeout("window.location.reload(1)", 5000);
-            }
-
         </script>
         <title>welcome</title>
     </h:head>
@@ -52,40 +67,42 @@
 
                 <h:form>
                     <p:panel header="Nomina">
-                            <table class="nomina-content-table">
-                                <tr>
-                                    <th>Mes</th>
-                                    <th>Año</th>
-                                    <th>Tipo de archivo</th>
-                                    <th>Descarga</th>
-                                </tr>
-                                <tr>
-                                    <td>Diciembre</td>
-                                    <td>2015</td>
-                                    <td><p:graphicImage name="images/pdf-icon.png" width="24" /></td>
-                                    <td><p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                                        <p:fileDownload value="#{fileDownloadBean.file}" /> 
-                                        <span class="glyphicon glyphicon-download-alt"></span>
-                                    </p:commandLink></td>
-                                </tr>
-                            </table>
+                        <table class="nomina-content-table">
+                            <tr>
+                                <th>Mes</th>
+                                <th>Año</th>
+                                <th>Tipo de archivo</th>
+                                <th>Descarga</th>
+                            </tr>
+                            <tr>
+                                <td>Diciembre</td>
+                                <td>2015</td>
+                                <td><p:graphicImage name="images/pdf-icon.png" width="24" /></td>
+                            <td><p:commandLink ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                <p:fileDownload value="#{fileDownloadBean.file}" /> 
+                                <span class="glyphicon glyphicon-download-alt"></span>
+                            </p:commandLink></td>
+                            </tr>
+                        </table>
                     </p:panel>
                 </h:form>
                 <script type="text/javascript">
-                function start() {
-                    PF('statusDialog').show();
-                }
+                    function start() {
+                        PF('statusDialog').show();
+                    }
 
-                function stop() {
-                    PF('statusDialog').hide();
-                }
-            </script>
+                    function stop() {
+                        PF('statusDialog').hide();
+                    }
+                </script>
             </div>
-            
-            <br />
-        <br />
+            <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
+               role="button" title="Back to Top" data-toggle="tooltip" data-placement="top">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+                <br />
+                <br />
         </div>
-        
+
         <ui:insert name="footer">
             <ui:include src="../bottom/general-footer.xhtml"/>
         </ui:insert>

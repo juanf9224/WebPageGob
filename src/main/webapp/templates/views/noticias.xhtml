@@ -13,16 +13,30 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/simple.css" />
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/loader.css"/>
-
         <script type="text/javascript">
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 50) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+                // scroll body to 0px on click
+                $('#back-to-top').click(function () {
+                    $('#back-to-top').tooltip('hide');
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
+                $('#back-to-top').tooltip('show');
+            });
+
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
-
-            function reload() {
-                setTimeout("window.location.reload(1)", 5000);
-            }
-
         </script>
     </h:head>
     <h:body>
@@ -45,11 +59,14 @@
                 </ui:insert>
             </div>
         </div>
-        <br />
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
+           role="button" title="Back to Top" data-toggle="tooltip" data-placement="top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
             <br />
-        <ui:insert name="footer">
-            <ui:include src="../bottom/general-footer.xhtml"/>
-        </ui:insert>
+            <br />
+            <ui:insert name="footer">
+                <ui:include src="../bottom/general-footer.xhtml"/>
+            </ui:insert>
     </h:body>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>

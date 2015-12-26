@@ -17,14 +17,29 @@
         <link rel="stylesheet" href="#{request.contextPath}/resources/css/contact-style.css"/>
 
         <script type="text/javascript">
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 50) {
+                        $('#back-to-top').fadeIn();
+                    } else {
+                        $('#back-to-top').fadeOut();
+                    }
+                });
+                // scroll body to 0px on click
+                $('#back-to-top').click(function () {
+                    $('#back-to-top').tooltip('hide');
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
+                $('#back-to-top').tooltip('show');
+            });
+
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
-
-            function reload() {
-                setTimeout("window.location.reload(1)", 5000);
-            }
-
         </script>
         <title>welcome</title>
     </h:head>
@@ -47,11 +62,14 @@
                 <ui:include src="../forms/contact-form.xhtml" />
             </ui:insert>
         </div>
-        <br />
-        <br />
-        <ui:insert name="footer">
-            <ui:include src="../bottom/general-footer.xhtml"/>
-        </ui:insert>
+        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
+           role="button" title="Back to Top" data-toggle="tooltip" data-placement="top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+            <br />
+            <br />
+            <ui:insert name="footer">
+                <ui:include src="../bottom/general-footer.xhtml"/>
+            </ui:insert>
 
     </h:body>
     <script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
