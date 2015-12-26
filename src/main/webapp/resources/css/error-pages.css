@@ -19,7 +19,24 @@ body{
     box-shadow: 8px 10px 8px #268;
     text-align: center;
     color: #fff;
-
 }
+@media screen and (max-width: 480px){
+    .error-message{
+        width:100%;
+        text-align: justify;
+        font-size: 18px;
+        color: #ffffff;
+        box-shadow: 8px 10px 8px #268;
+    }
+}
+
+.error-message a{
+    color:white;
+}
+
+.error-message a:hover{
+    color:black;
+}
+
 
 
