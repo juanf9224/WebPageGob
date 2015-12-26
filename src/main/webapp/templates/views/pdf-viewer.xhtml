@@ -4,12 +4,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>#{request.getParameter(pdf)}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
     </h:head>
     <h:body>
         <p:media value="#{request.contextPath}/resources/files/#{request.getParameter(pdf)}?pfdrid_c=true" player="pdf" height="100%" width="100%" >
             Your browser can't display pdf, <p:commandLink action="app-nomina" value="Volver" />
         </p:media>
     </h:body>
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
 </html>
 
