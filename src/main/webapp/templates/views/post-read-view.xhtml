@@ -42,7 +42,7 @@
 
             <div class="loader">
             </div>
-
+            <div class="post-read-style">
             <center> <p:panelGrid columns="1"  layout="grid" style="border: none !important;">
                     <p:outputLabel value="#{postMB.p.title}" escape="false" style="font-size: 35px;" />
                     <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />
@@ -55,6 +55,7 @@
                     <h:outputText value="#{postMB.p.post}" escape="false" />
 
                 </p:panelGrid></center>
+            </div>
         </div>
         <ui:insert name="footer">
             <ui:include src="../bottom/general-footer.xhtml"/>
