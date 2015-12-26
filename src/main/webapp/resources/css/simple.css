@@ -10,17 +10,6 @@ body{
     font-size: 16px !important;
     line-height: 1.42857143 !important;
 }
-
-.scrollup {
-    width: 40px;
-    height: 40px;
-    position: fixed;
-    bottom: 50px;
-    right: 100px;
-    display: none;
-    text-indent: -9999px;
-}
-
 /* ************************************** HEADER STYLE ****************************************** */
 
 .header-login-button{
