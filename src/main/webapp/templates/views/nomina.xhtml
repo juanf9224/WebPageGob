@@ -73,6 +73,7 @@
                                 <th>Año</th>
                                 <th>Tipo de archivo</th>
                                 <th>Descarga</th>
+                                <th>Ver online</th>
                             </tr>
                             <tr>
                                 <td>Diciembre</td>
@@ -82,6 +83,7 @@
                                 <p:fileDownload value="#{fileDownloadBean.file}" /> 
                                 <span class="glyphicon glyphicon-download-alt"></span>
                             </p:commandLink></td>
+                            <td><a href="#{request.contextPath}/templates/views/pdf-viewer.xhtml?pdf=#{fileDownloadBean.file.name}">Ver...</a></td>
                             </tr>
                         </table>
                     </p:panel>

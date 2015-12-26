@@ -20,6 +20,7 @@ import org.primefaces.model.StreamedContent;
 public class FileDownloadBean {
     
     private StreamedContent file;
+    private StreamedContent pdfView;
      
     public FileDownloadBean() {        
         InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/files/nomina.pdf");
@@ -28,5 +29,9 @@ public class FileDownloadBean {
  
     public StreamedContent getFile() {
         return file;
+    }
+    
+    public StreamedContent getPdfView(){
+        return pdfView;
     }
 }
