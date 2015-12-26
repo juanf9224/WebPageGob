@@ -7,7 +7,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <object type="application/pdf" data="#{request.contextPath}/resources/files/#{request.getParameter(pdf)}.pdf?pfdrid_c=true" height="100%" width="100%" internalinstanceid="5">
+        <object type="application/pdf" data="#{request.contextPath}/resources/files/#{request.getParameter(pdf)}?pfdrid_c=true" height="100%" width="100%" internalinstanceid="5">
             Your browser can't display pdf, <p:commandLink action="app-nomina" value="Volver" />
         </object>
     </h:body>
