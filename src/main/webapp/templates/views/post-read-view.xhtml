@@ -60,7 +60,6 @@
             <div class="post-read-style general-header-style">
                 <p:panel header="#{postMB.p.title}">
                 <center>
-                        <p:outputLabel value="#{postMB.p.title}" escape="false" />
                         <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />
                         <span class="glyphicon glyphicon-calendar"></span><h:outputText id="date-created" value="#{postMB.p.dateCreated}"> 
                              <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
