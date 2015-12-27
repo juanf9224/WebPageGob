@@ -188,6 +188,10 @@ body{
     margin-right: 3%;
 }
 
+.img-position-post img{
+    width:100%;
+}
+
 .post-prev-text{
     width: 70%;
     float: left;
