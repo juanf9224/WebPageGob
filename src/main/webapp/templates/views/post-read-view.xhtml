@@ -61,8 +61,8 @@
                 <center> <p:panelGrid columns="1"  layout="grid" style="border: none !important;">
                         <p:outputLabel value="#{postMB.p.title}" escape="false" style="font-size: 35px;" />
                         <h:outputText value="Creado por: #{postMB.p.createdBy.username}" />
-                        <h:outputText id="date-created" value="#{postMB.p.dateCreated}"> 
-                            <f:convertDateTime  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
+                        <h:outputText id="date-created" value="Fecha de creacion: #{postMB.p.dateCreated}"> 
+                            <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
                         </h:outputText>
                         <p:spacer />
                         <p:graphicImage value="/images/#{postMB.p.imagePath}" id="post-read-image" alt="imagen del post"/>
