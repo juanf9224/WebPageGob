@@ -59,12 +59,12 @@
             </div>
             <div class="post-read-style general-header-style">
                 <p:panel header="#{postMB.p.title}">
-                    <div style="float:left;">
+                    <div style="float:left;width:100%;font-weight:bold;">
                         <span class="glyphicon glyphicon-calendar"></span><h:outputText id="date-created" value="#{postMB.p.dateCreated}"> 
                              <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
                             </h:outputText>
                         <h:outputText value="Creado por: #{postMB.p.createdBy.username}" style="margin-left: 3%;"/>
-                        </div><br/>
+                        </div><br/><br/>
                 <center>
                         
                         <p:graphicImage value="/images/#{postMB.p.imagePath}" id="post-read-image" alt="imagen del post"/>

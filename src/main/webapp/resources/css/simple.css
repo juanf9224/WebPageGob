@@ -133,6 +133,12 @@ body{
     padding: 10px;
 }
 
+.post-read-style .ui-widget-content{
+    border-left: none !important;
+    border-top: none !important;
+    box-shadow: 8px 8px 10px #888;
+}
+
 .posts-link{
     float: left;
     color: black;
