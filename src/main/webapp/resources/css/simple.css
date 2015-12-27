@@ -112,12 +112,12 @@ body{
     margin-bottom:3%;
 }
 
-.youtube-gallery .ui-widget-header{
+/*.youtube-gallery .ui-widget-header{
     background: #38c;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
-}
+}*/
 
 
 
@@ -154,12 +154,12 @@ body{
     border-bottom: none !important;
 }
 
-.post-view-style .ui-widget-header{
+/*.post-view-style .ui-widget-header{
     background: #38c !important;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
-}
+}*/
 .post-view-style .ui-panelgrid-cell{
     width:100%;
     margin-bottom: 3%;
@@ -213,12 +213,12 @@ body{
     list-style-position: outside;
 }
 
-.info-gobernacion .ui-widget-header{
+/*.info-gobernacion .ui-widget-header{
     background: #38c;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
-}
+}*/
 
 
 /* ************************************** SERVICIOS STYLE ****************************************** */
@@ -227,21 +227,21 @@ body{
     text-align: justify; 
 }
 
-.servicios-publicos-content .ui-widget-header{
+/*.servicios-publicos-content .ui-widget-header{
     background: #38c;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
-}
+}*/
 
 /* ************************************** NOMINA STYLE *************************************************** */
 
-.nomina-content-style .ui-widget-header{
+/*.nomina-content-style .ui-widget-header{
     background: #38c;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
-}
+}*/
 
 .nomina-content-style .ui-panelgrid-cell{
     width:100%;
@@ -264,12 +264,12 @@ body{
 
 /* ************************************** CONTACT FORM ********************************************* */
 
-#contact-form-content .ui-widget-header{
+/*#contact-form-content .ui-widget-header{
     background: #38c;
     font-size: 2em;
     color: white;
     box-shadow: 8px 5px 10px #888;
-}
+}*/
 
 /* ************************************** CONTAINER STYLE ****************************************** */
 
@@ -279,6 +279,13 @@ body{
     bottom: 20px;
     right: 20px;
     display:none;
+}
+
+.general-header-style .ui-widget-header{
+    background: #38c;
+    font-size: 2em;
+    color: white;
+    box-shadow: 8px 5px 10px #888;
 }
 
 .page-wrap {
