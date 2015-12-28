@@ -25,7 +25,7 @@ body{
     float:right;
 }
 
-.header-content .navbar-default .navbar-nav, .navbar-nav>.open>a, .container-fluid, .dropdown-menu, .dropdown-menu .btn, .navbar-default{
+.header-content .navbar-default .navbar-nav, .header-content .navbar-nav>.open>a, .header-content .container-fluid, .header-content .dropdown-menu, .header-content .dropdown-menu .btn,.header-content .navbar-default{
     border-color: #38c !important;
     background: #38c;
 }
