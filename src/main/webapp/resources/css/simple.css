@@ -25,6 +25,31 @@ body{
     float:right;
 }
 
+.header-content .navbar-default .navbar-nav, .navbar-nav>.open>a, .container-fluid, .dropdown-menu, .dropdown-menu .btn, .navbar-default{
+    border-color: #38c !important;
+    background: #38c;
+}
+
+.header-content .navbar-default, .navbar-nav>.open>a{
+    border-color:#38c !important;
+}
+
+.header-content .navbar-nav>li>a, .dropdown-menu>li>a{
+    color: #fff !important;
+}
+
+.header-content .btn:hover, .dropdown-menu .btn>a:hover{
+    background-color:#286090;
+}
+
+.header-content .dropdown-toggle{
+    background-color: transparent !important;
+}
+
+.header-content .dropdown-toggle:hover{
+    background-color: #286090 !important;
+}
+
 @media screen and (max-width: 480px){
     .social-icons img{
         width:30px;

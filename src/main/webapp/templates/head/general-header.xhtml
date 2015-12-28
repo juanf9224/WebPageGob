@@ -24,7 +24,7 @@
 
     <h:body>
         <ui:composition>
-            <div id="top" class="top">
+            <div id="top" class="header-content">
                 <h:form>
                 <div id="header-logo">
                     <center><h2 class="header-logo-title">Gobernacion Provincial de Santo Domingo</h2></center>
@@ -54,17 +54,17 @@
 
                         <div class="collapse navbar-collapse" id="bs-pills-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li role="presentation" class="active btn btn-primary"><p:commandLink value="Inicio" action="app-main" /></li>
+                                <li role="presentation" class="btn btn-primary"><p:commandLink value="Inicio" action="app-main" /></li>
                                 <li role="presentation" class="btn"><p:commandLink value="Noticias" action="app-noticias" /></li>
                                 <li role="presentation" class="btn"><p:commandLink value="Sobre Nosotros" action="app-sobre-nosotros" /></li>
                                 <li role="presentation" class="btn"><p:commandLink value="Servicios" action="app-servicios" /></li>
-                                <li role="presentation" class="dropdown">
+                                <li role="presentation" class="dropdown btn">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                         Transparencia <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li role="presentation" class="btn"><p:commandLink value="Nomina" action="app-nomina" /></li>
-                                        <li role="presentation" class="btn"><p:commandLink value="Organigrama" action="app-organigrama" /></li>                               
+                                        <li role="presentation" class="btn btn-block"><p:commandLink value="Nomina" action="app-nomina" /></li>
+                                        <li role="presentation" class="btn btn-block"><p:commandLink value="Organigrama" action="app-organigrama" /></li>                               
                                     </ul>
                                 </li>
                                 <li role="presentation"><p:commandLink value="Contacto" action="app-contacto" /></li>   
