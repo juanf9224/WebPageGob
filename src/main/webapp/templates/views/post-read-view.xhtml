@@ -76,9 +76,9 @@
                 <f:metadata>
                     <f:viewParam name="id" value="#{readPostBean.id}" />
                 </f:metadata>
-<!-- ----------------------------------------------------------TITULO DEL POST------------------------------------------------------- -->
+<!-- *****************************************************TITULO DEL POST************************************************** -->
                 <p:panel header="#{readPostBean.post.title}" id="title-og-meta">
-                    <!-- ---------------------------------------CONTENEDOR DE INFORMACION SOBRE EL POST----------------------------------------------- -->
+                    <!-- ******************************************CONTENEDOR DE INFORMACION SOBRE EL POST********************************************** -->
                     <div class="post-read-info row">
                         <div class="col-lg-2 btn">
                             <span class="glyphicon glyphicon-calendar"></span><h:outputText id="date-created" value="#{readPostBean.post.dateCreated}"> 
@@ -93,13 +93,13 @@
                         </div>
                     </div><br/><br/>
                     <center>
-                        <!-- ---------------------------------------IMAGEN DEL POST----------------------------------------------- -->
+                        <!-- *************************************IMAGEN DEL POST*************************************************** -->
 
                         <div class="imagen-post">
                         <p:graphicImage value="/images/#{readPostBean.post.imagePath}" id="post-read-image" alt="imagen del post"/>
                         </div>
                         <br />
-                        <!-- --------------------------------------- TEXTO DEL POST----------------------------------------------- -->
+                        <!-- ******************************************* TEXTO DEL POST**************************************************** -->
                         <div class="post-text">
                         <h:outputText value="#{readPostBean.post.post}" escape="false" id="post-og-meta"/>
                         </div>
