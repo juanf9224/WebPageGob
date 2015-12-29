@@ -243,12 +243,12 @@ body{
         height: 200px !important;
         border-radius:3%;
     }
-    
+
     .post-read-style .imagen-post{
-    width: 100% !important;
-    height: 200px;
-    padding: 1px !important;
-}
+        width: 100% !important;
+        height: 200px;
+        padding: 1px !important;
+    }
 
     .post-read-style .ui-widget-header{
         font-size:1.3em !important;
@@ -259,6 +259,23 @@ body{
         width:100%;
         font-weight:bold;
         font-size: 0.9em;    
+    }
+
+    .post-read-style .post-text .post-og-meta{
+        width: 100% !important;
+        margin-top: 2% !important;
+        padding: 1px !important;
+    }
+
+    .post-read-style .post-text{
+        padding-top: 50%;
+    }
+
+    .post-read-info .btn{
+        margin-top: 2% !important;
+        outline:0 !important;
+        -webkit-box-shadow:none !important;
+        box-shadow:none !important;
     }
 
     .img-position-post img{
