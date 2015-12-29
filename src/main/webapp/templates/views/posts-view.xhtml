@@ -29,9 +29,9 @@
                                 <p:outputPanel>                            
                                     <h:panelGrid columns="1" cellpadding="5">
                                         <p:column>
-                                            <div class="img-position-post"><center><p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link" target="_BLANK"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink></center></div>
+                                            <div class="img-position-post"><center><p:commandLink action="https://gobernacionsd.whelastic.net/gobernacionsd/faces/templates/views/post-read-view.xhtml?id=#{post.postId}" class="posts-link" target="_BLANK"><h:graphicImage value="/images/#{post.previewName}" width="200" height="150"/></p:commandLink></center></div>
                                             <div class="post-prev-text">
-                                                <p:commandLink action="#{postMB.readPost(post.postId)}" class="posts-link" target="_BLANK"> <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 18px;"/></p:commandLink>
+                                                <p:commandLink action="https://gobernacionsd.whelastic.net/gobernacionsd/faces/templates/views/post-read-view.xhtml?id=#{post.postId}" class="posts-link" target="_BLANK"> <h:outputText value="#{post.title}" style="font-weight: bold; font-size: 18px;"/></p:commandLink>
                                                 <br/>
                                                 <p:spacer height="7"/>
 
