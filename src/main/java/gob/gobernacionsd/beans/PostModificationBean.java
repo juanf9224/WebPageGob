@@ -69,7 +69,7 @@ public class PostModificationBean implements Serializable {
     public String readPost(long id) {
         try {
             this.p = psb.find(id);
-            return "read-post-view";
+            return "read-post-view.xhtl?faces-redirect=true";
 
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage("Could not open the post!");
