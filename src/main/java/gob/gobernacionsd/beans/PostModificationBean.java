@@ -16,7 +16,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
-import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -64,20 +63,6 @@ public class PostModificationBean implements Serializable {
 
     public void setLogin(LoginBean login) {
         this.login = login;
-    }
-
-    public String readPost(long id) {
-        try {
-            this.p = psb.find(id);
-            return "read-post-view";
-
-        } catch (Exception e) {
-            FacesMessage msg = new FacesMessage("Could not open the post!");
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, msg);
-            context.getExternalContext().getFlash().setKeepMessages(true);
-            return "";
-        }
     }
 
     public void onRowSelect(SelectEvent event) {

@@ -37,7 +37,7 @@
 
                                                 <h:outputText value="#{of:abbreviate(post.post, 400)}" escape="false" />
 
-                                                <h:commandLink id="readPost" value="Leer mas..." action="#{postMB.readPost(post.postId)}" style="color: #036fab;"  target="_BLANK"/>
+                                                <a id="readPost" href="https://gobernacionsd.whelastic.net/gobernacionsd/faces/templates/views/post-read-view.xhtml?id=#{post.postId}" style="color: #036fab;"  target="_BLANK"> Leer más...</a>
                                                 
 
                                             </div>
