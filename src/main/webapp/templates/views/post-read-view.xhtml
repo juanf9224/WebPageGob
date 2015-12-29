@@ -7,7 +7,7 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:of="http://omnifaces.org/functions">
     <h:head>
-        <meta property="og:url"                content="#{request.contextPath}/templates/views/post-read-view.xhtml" />
+        <meta property="og:url"                content="https://gobernacionsd.whelastic.net/gobernacionsd/templates/views/post-read-view.xhtml" />
         <meta property="og:type"               content="article" />
         <meta property="og:title"              content="#{postMB.p.title}" />
         <meta property="og:description"        content="#{of:abbreviate(postMB.p.post, 100)}" />
@@ -90,7 +90,7 @@
                              <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
                             </h:outputText>
                         <h:outputText value="Creado por: #{postMB.p.createdBy.username}" style="margin-left: 3%;"/>
-                        <div id="shareBtn" class="share-button btn btn-primary">Share on Facebook</div>
+                        <div id="shareBtn" class="share-button btn btn-primary"><span class="glyphicon glyphicon-share"></span>Compartir</div>
                                                 
                         </div><br/><br/>
                 <center>
