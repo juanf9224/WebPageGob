@@ -9,9 +9,9 @@
     <h:head>
         <meta property="og:url"                content="https://gobernacionsd.whelastic.net/gobernacionsd/templates/views/post-read-view.xhtml" />
         <meta property="og:type"               content="article" />
-        <meta property="og:title"              content="#{postMB.p.title}" />
-        <meta property="og:description"        content="#{of:abbreviate(postMB.p.post, 100)}" />
-        <meta property="og:image"              content="https://gobernacionsd.whelastic.net/gobernacionsd/images/#{postMB.p.imagePath}" />
+        <meta property="og:title"              content="" />
+        <meta property="og:description"        content="" />
+        <meta property="og:image"              content="" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -41,11 +41,21 @@
                 });
 
                 $('#back-to-top').tooltip('show');
+                
+                var title = $('#title-post').text();
+                var img = 'https://gobernacionsd.whelastic.net' + $('#post-read-image').attr('src');
+                var post = $('#post-og-meta').text();
+                var postCutted = post.substr(0, 100) + '...';
+                $("meta[property='og:title']").attr('content', title);
+                $("meta[property='og:image']").attr('content', img);
+                $("meta[property='og:description']").attr('content', postCutted);
             });
 
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
+            
+            
         </script>
         <title>#{postMB.p.title}</title>
     </h:head>
@@ -84,7 +94,7 @@
             <div class="loader">
             </div>
             <div class="post-read-style general-header-style">
-                <p:panel header="#{postMB.p.title}">
+                <p:panel header="#{postMB.p.title}" id="title-og-meta">
                     <div class="post-read-info">
                         <span class="glyphicon glyphicon-calendar"></span><h:outputText id="date-created" value="#{postMB.p.dateCreated}"> 
                              <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
@@ -97,7 +107,7 @@
                         
                         <p:graphicImage value="/images/#{postMB.p.imagePath}" id="post-read-image" alt="imagen del post"/>
                         <p:spacer />
-                        <h:outputText value="#{postMB.p.post}" escape="false" />
+                        <h:outputText value="#{postMB.p.post}" escape="false" id="post-og-meta"/>
 
                        </center></p:panel>
             </div>
