@@ -93,9 +93,13 @@
                     </div><br/><br/>
                     <center>
 
+                        <div class="imagen-post">
                         <p:graphicImage value="/images/#{readPostBean.post.imagePath}" id="post-read-image" alt="imagen del post"/>
-                        <p:spacer />
+                        </div>
+                        <br />
+                        <div class="post-text">
                         <h:outputText value="#{readPostBean.post.post}" escape="false" id="post-og-meta"/>
+                        </div>
 
                     </center></p:panel>
             </div>
