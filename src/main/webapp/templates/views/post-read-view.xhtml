@@ -79,15 +79,15 @@
 
                 <p:panel header="#{readPostBean.post.title}" id="title-og-meta">
                     <div class="post-read-info row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-2 btn">
                             <span class="glyphicon glyphicon-calendar"></span><h:outputText id="date-created" value="#{readPostBean.post.dateCreated}"> 
                                 <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
                             </h:outputText>
                         </div>
-                        <div class="col-lg-3">
-                            <h:outputText value="Creado por: #{readPostBean.post.createdBy.username}" style="margin-left: 3%;"/>
+                        <div class="col-lg-2 btn">
+                            <span class="glyphicon glyphicon-info-sign"></span><h:outputText value="Creado por: #{readPostBean.post.createdBy.username}" />
                         </div><br />
-                        <div class="col-lg-3">
+                        <div class="col-lg-2 btn">
                             <div class="addthis_sharing_toolbox"></div>
                         </div>
                     </div><br/><br/>
