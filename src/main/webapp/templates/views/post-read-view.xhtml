@@ -41,16 +41,15 @@
                 });
 
                 $('#back-to-top').tooltip('show');
-                
-                    var post = $('#post-og-meta').text();
-                    var shortenedPost = post.substr(0, 100) + '...';
-                    $("meta[property='og:description']").attr('content', shortenedPost);
             });
 
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
+                var post = $('#post-og-meta').text();
+                var shortenedPost = post.substr(0, 100) + '...';
+                $("meta[property='og:description']").attr('content', shortenedPost);
             });
-            
+
 
 
         </script>
@@ -77,7 +76,7 @@
                 <f:metadata>
                     <f:viewParam name="id" value="#{readPostBean.id}" />
                 </f:metadata>
-                
+
                 <p:panel header="#{readPostBean.post.title}" id="title-og-meta">
                     <div class="post-read-info row">
                         <div class="col-lg-3">
