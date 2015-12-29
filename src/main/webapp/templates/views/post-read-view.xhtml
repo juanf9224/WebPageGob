@@ -91,15 +91,7 @@
                             </h:outputText>
                         <h:outputText value="Creado por: #{postMB.p.createdBy.username}" style="margin-left: 3%;"/>
                         <div id="shareBtn" class="share-button btn btn-primary">Share on Facebook</div>
-                                                <script>
-                                                    document.getElementById('shareBtn').onclick = function () {
-                                                        FB.ui({
-                                                            display: 'popup',
-                                                            method: 'share',
-                                                            href: #{postMB.readPost(post.postId)}
-                                                        }, function (response) {});
-                                                    };
-                                                </script>
+                                                
                         </div><br/><br/>
                 <center>
                         
@@ -109,6 +101,15 @@
 
                        </center></p:panel>
             </div>
+            <script>
+                                                    document.getElementById('shareBtn').onclick = function () {
+                                                        FB.ui({
+                                                            display: 'popup',
+                                                            method: 'share',
+                                                            href: '#{request.contextPath}/templates/views/post-read-view.xhtml'
+                                                        }, function (response) {});
+                                                    };
+                                                </script>
         </div>
         <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
            role="button" data-toggle="tooltip" data-placement="top">
