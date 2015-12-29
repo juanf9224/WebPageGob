@@ -68,21 +68,23 @@
             <div class="loader">
             </div>
             <div class="post-read-style general-header-style">
-                <h:form>
-                    #{readPostBean.setId(request.getParameter(id))}
-                </h:form>
+
+                <f:metadata>
+                    <f:viewParam name="companyId" value="#{readPostBean.id}" />
+                </f:metadata>
+                
                 <p:panel header="#{readPostBean.post.title}" id="title-og-meta">
                     <div class="post-read-info row">
                         <div class="col-lg-3">
-                        <span class="glyphicon glyphicon-calendar"></span><h:outputText id="date-created" value="#{readPostBean.post.dateCreated}"> 
-                            <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
-                        </h:outputText>
+                            <span class="glyphicon glyphicon-calendar"></span><h:outputText id="date-created" value="#{readPostBean.post.dateCreated}"> 
+                                <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
                         </div>
                         <div class="col-lg-3">
-                        <h:outputText value="Creado por: #{readPostBean.post.createdBy.username}" style="margin-left: 3%;"/>
+                            <h:outputText value="Creado por: #{readPostBean.post.createdBy.username}" style="margin-left: 3%;"/>
                         </div><br />
                         <div class="col-lg-3">
-                        <div class="addthis_sharing_toolbox"></div>
+                            <div class="addthis_sharing_toolbox"></div>
                         </div>
                     </div><br/><br/>
                     <center>
