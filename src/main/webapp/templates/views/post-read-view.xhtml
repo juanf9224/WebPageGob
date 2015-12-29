@@ -10,7 +10,7 @@
         <meta property="og:url"                content="https://gobernacionsd.whelastic.net/gobernacionsd/faces/templates/views/post-read-view.xhtml?id=#{readPostBean.id}" />
         <meta property="og:site_name"          content="Gobernación Provincial de Santo Domingo" />
         <meta property="og:title"          content="#{readPostBean.post.title}" />
-        <meta property="og:description"          content="#{of:abbreviate(readPostBean.post.post, 100)}" />
+        <meta property="og:description"          content="" />
         <meta property="og:image"          content="https://gobernacionsd.whelastic.net/gobernacionsd/images/#{readPostBean.post.imagePath}" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -41,11 +41,16 @@
                 });
 
                 $('#back-to-top').tooltip('show');
+                
+                    var post = $('#post-og-meta').text();
+                    var shortenedPost = post.substr(0, 100) + '...';
+                    $("meta[property='og:description']").attr('content', shortenedPost);
             });
 
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
+            
 
 
         </script>
