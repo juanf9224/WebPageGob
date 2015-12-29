@@ -52,26 +52,8 @@
         <title>#{postMB.p.title}</title>
     </h:head>
     <h:body>
-        <script>
-            window.fbAsyncInit = function () {
-                FB.init({
-                    appId: '551975361632440',
-                    xfbml: true,
-                    version: 'v2.5'
-                });
-            };
-
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-567809396909e569" async="async"></script>
 
         <ui:insert name="header">
             <ui:include src="../head/general-header.xhtml" />
@@ -92,8 +74,7 @@
                             <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="Creado por: #{postMB.p.createdBy.username}" style="margin-left: 3%;"/>
-                        <div id="shareBtn" class="share-button btn btn-primary"><span class="glyphicon glyphicon-share"></span>Compartir</div>
-
+                        <div class="addthis_sharing_toolbox"></div>
                     </div><br/><br/>
                     <center>
 
@@ -103,23 +84,6 @@
 
                     </center></p:panel>
             </div>
-            <script>
-                document.getElementById('shareBtn').onclick = function () {
-                    FB.ui({
-                        display: 'popup',
-                        method: 'share',
-                        href: 'http://gobernacionsd.whelastic.net/gobernacionsd/faces/templates/views/post-read-view.xhtml'
-                    }, function (response) {});
-
-                    var title = $('#title-og-meta').text();
-                    var img = 'https://gobernacionsd.whelastic.net' + $('#post-read-image').attr('src');
-                    var post = $('#post-og-meta').text();
-                    var postCutted = post.substr(0, 100) + '...';
-                    $("meta[property='og:title']").attr('content', title);
-                    $("meta[property='og:image']").attr('content', img);
-                    $("meta[property='og:description']").attr('content', postCutted);
-                };
-            </script>
         </div>
         <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
            role="button" data-toggle="tooltip" data-placement="top">
