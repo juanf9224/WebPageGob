@@ -6,6 +6,11 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <meta property="og:url"                content="#{request.contextPath}/templates/views/post-read-view.xhtml" />
+        <meta property="og:type"               content="article" />
+        <meta property="og:title"              content="#{postMB.p.title}" />
+        <meta property="og:description"        content="#{of:abbreviate(postMB.p.post, 100)}" />
+        <meta property="og:image"              content="https://gobernacionsd.whelastic.net/gobernacionsd/images/#{postMB.p.imagePath}" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -64,6 +69,16 @@
                              <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
                             </h:outputText>
                         <h:outputText value="Creado por: #{postMB.p.createdBy.username}" style="margin-left: 3%;"/>
+                        <div id="shareBtn" class="share-button btn btn-primary">Share on Facebook</div>
+                                                <script>
+                                                    document.getElementById('shareBtn').onclick = function () {
+                                                        FB.ui({
+                                                            display: 'popup',
+                                                            method: 'share',
+                                                            href: #{postMB.readPost(post.postId)}
+                                                        }, function (response) {});
+                                                    };
+                                                </script>
                         </div><br/><br/>
                 <center>
                         

@@ -38,16 +38,7 @@
                                                 <h:outputText value="#{of:abbreviate(post.post, 400)}" escape="false" />
 
                                                 <h:commandLink id="readPost" value="Leer mas..." action="#{postMB.readPost(post.postId)}" style="color: #036fab;"  target="_BLANK"/>
-                                                <div id="shareBtn" class="fb-share-button btn btn-primary">Share on Facebook</div>
-                                                <script>
-                                                    document.getElementById('shareBtn').onclick = function () {
-                                                        FB.ui({
-                                                            display: 'popup',
-                                                            method: 'share',
-                                                            href: #{postMB.readPost(post.postId)}
-                                                        }, function (response) {});
-                                                    };
-                                                </script>
+                                                
 
                                             </div>
                                         </p:column>
