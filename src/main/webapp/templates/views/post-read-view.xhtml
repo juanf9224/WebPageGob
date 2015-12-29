@@ -41,21 +41,13 @@
                 });
 
                 $('#back-to-top').tooltip('show');
-                
-                var title = $('#title-post').text();
-                var img = 'https://gobernacionsd.whelastic.net' + $('#post-read-image').attr('src');
-                var post = $('#post-og-meta').text();
-                var postCutted = post.substr(0, 100) + '...';
-                $("meta[property='og:title']").attr('content', title);
-                $("meta[property='og:image']").attr('content', img);
-                $("meta[property='og:description']").attr('content', postCutted);
             });
 
             $(window).load(function () {
                 $(".loader").fadeOut("slow");
             });
-            
-            
+
+
         </script>
         <title>#{postMB.p.title}</title>
     </h:head>
@@ -97,36 +89,44 @@
                 <p:panel header="#{postMB.p.title}" id="title-og-meta">
                     <div class="post-read-info">
                         <span class="glyphicon glyphicon-calendar"></span><h:outputText id="date-created" value="#{postMB.p.dateCreated}"> 
-                             <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
-                            </h:outputText>
+                            <f:convertDateTime for="date-created"  timeZone="America/Santo_Domingo" pattern="dd/MM/yyyy HH:mm:ss" />
+                        </h:outputText>
                         <h:outputText value="Creado por: #{postMB.p.createdBy.username}" style="margin-left: 3%;"/>
                         <div id="shareBtn" class="share-button btn btn-primary"><span class="glyphicon glyphicon-share"></span>Compartir</div>
-                                                
-                        </div><br/><br/>
-                <center>
-                        
+
+                    </div><br/><br/>
+                    <center>
+
                         <p:graphicImage value="/images/#{postMB.p.imagePath}" id="post-read-image" alt="imagen del post"/>
                         <p:spacer />
                         <h:outputText value="#{postMB.p.post}" escape="false" id="post-og-meta"/>
 
-                       </center></p:panel>
+                    </center></p:panel>
             </div>
             <script>
-                                                    document.getElementById('shareBtn').onclick = function () {
-                                                        FB.ui({
-                                                            display: 'popup',
-                                                            method: 'share',
-                                                            href: 'http://gobernacionsd.whelastic.net/gobernacionsd/faces/templates/views/post-read-view.xhtml'
-                                                        }, function (response) {});
-                                                    };
-                                                </script>
+                document.getElementById('shareBtn').onclick = function () {
+                    FB.ui({
+                        display: 'popup',
+                        method: 'share',
+                        href: 'http://gobernacionsd.whelastic.net/gobernacionsd/faces/templates/views/post-read-view.xhtml'
+                    }, function (response) {});
+
+                    var title = $('#title-og-meta').text();
+                    var img = 'https://gobernacionsd.whelastic.net' + $('#post-read-image').attr('src');
+                    var post = $('#post-og-meta').text();
+                    var postCutted = post.substr(0, 100) + '...';
+                    $("meta[property='og:title']").attr('content', title);
+                    $("meta[property='og:image']").attr('content', img);
+                    $("meta[property='og:description']").attr('content', postCutted);
+                };
+            </script>
         </div>
         <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" 
            role="button" data-toggle="tooltip" data-placement="top">
             <span class="glyphicon glyphicon-chevron-up"></span></a>
-            <ui:insert name="footer">
-                <ui:include src="../bottom/general-footer.xhtml"/>
-            </ui:insert>
+        <ui:insert name="footer">
+            <ui:include src="../bottom/general-footer.xhtml"/>
+        </ui:insert>
 
 
     </h:body>
