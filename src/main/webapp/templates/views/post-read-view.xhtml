@@ -4,7 +4,8 @@
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:p="http://primefaces.org/ui"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:of="http://omnifaces.org/functions">
     <h:head>
         <meta property="og:url"                content="#{request.contextPath}/templates/views/post-read-view.xhtml" />
         <meta property="og:type"               content="article" />
@@ -49,6 +50,26 @@
         <title>#{postMB.p.title}</title>
     </h:head>
     <h:body>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '551975361632440',
+                    xfbml: true,
+                    version: 'v2.5'
+                });
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
 
         <ui:insert name="header">
             <ui:include src="../head/general-header.xhtml" />
