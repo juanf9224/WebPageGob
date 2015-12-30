@@ -57,6 +57,10 @@ body{
  .header-content .navbar-default .navbar-toggle .icon-bar {
      background-color: #286090;
  }
+ 
+ .header-content .navbar{
+     border-radius: 0px;
+ }
 
 @media screen and (max-width: 480px){
     .social-icons img{
