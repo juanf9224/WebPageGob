@@ -10,6 +10,17 @@ body{
     font-size: 16px !important;
     line-height: 1.42857143 !important;
 }
+
+.newssletter-background{
+    background: url('https://onedrive.live.com/embed?cid=B4E6778023E106F0&resid=B4E6778023E106F0%215599&authkey=ACx1PqAuL3eblrw');
+}
+
+.newssletter-message{
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.42857143 !important;
+    color: #333;
+}
 /* ************************************** HEADER STYLE ****************************************** */
 
 .header-login-button{
